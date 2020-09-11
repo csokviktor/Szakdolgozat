@@ -1,0 +1,168 @@
+        
+        %1-es forgalmi helyzet (kulso sav savot valt, belso sav elore halad) kulsonek van elsobbsege
+        %N eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,-60) && isequal(car{actcar}{2}.YData,392)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 340))...
+                && (isequal(car{i}{2}.XData,-20) && isequal(car{i}{2}.YData,392)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -20) && isequal(car{i}{1}{car{i}{3} + 1}(2), 340)))
+            car{i}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,-60) && isequal(car{actcar}{2}.YData,-288)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -340))...
+                && (isequal(car{i}{2}.XData,-20) && isequal(car{i}{2}.YData,-288)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -20) && isequal(car{i}{1}{car{i}{3} + 1}(2), -340)))
+            car{i}{7} = 0;
+        
+        %W eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,-392) && isequal(car{actcar}{2}.YData,-60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -20))...
+                && (isequal(car{i}{2}.XData,-392) && isequal(car{i}{2}.YData,-20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -340) && isequal(car{i}{1}{car{i}{3} + 1}(2), -20)))
+            car{i}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,288) && isequal(car{actcar}{2}.YData,-60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -20))...
+                && (isequal(car{i}{2}.XData,288) && isequal(car{i}{2}.YData,-20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 340) && isequal(car{i}{1}{car{i}{3} + 1}(2), -20)))
+            car{i}{7} = 0;
+        
+        %S eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,60) && isequal(car{actcar}{2}.YData,-392)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -340))...
+                && (isequal(car{i}{2}.XData,20) && isequal(car{i}{2}.YData,-392)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 20) && isequal(car{i}{1}{car{i}{3} + 1}(2), -340)))
+            car{i}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,60) && isequal(car{actcar}{2}.YData,288)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 340))...
+                && (isequal(car{i}{2}.XData,20) && isequal(car{i}{2}.YData,288)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 20) && isequal(car{i}{1}{car{i}{3} + 1}(2), 340)))
+            car{i}{7} = 0;
+        
+        %E eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,392) && isequal(car{actcar}{2}.YData,60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 20))...
+                && (isequal(car{i}{2}.XData,392) && isequal(car{i}{2}.YData,20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 340) && isequal(car{i}{1}{car{i}{3} + 1}(2), 20)))
+            car{i}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,-288) && isequal(car{actcar}{2}.YData,60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 20))...
+                && (isequal(car{i}{2}.XData,-288) && isequal(car{i}{2}.YData,20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -340) && isequal(car{i}{1}{car{i}{3} + 1}(2), 20)))
+            car{i}{7} = 0;
+        
+            
+            
+        %2-es forgalmi helyzet (kulso sav savot valt, belso sav savot valt) kulsonek van elsobbsege
+        %N eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,-60) && isequal(car{actcar}{2}.YData,392)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 340))...
+                && (isequal(car{i}{2}.XData,-20) && isequal(car{i}{2}.YData,392)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -60) && isequal(car{i}{1}{car{i}{3} + 1}(2), 340)))
+            car{i}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,-60) && isequal(car{actcar}{2}.YData,-288)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -340))...
+                && (isequal(car{i}{2}.XData,-20) && isequal(car{i}{2}.YData,-288)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -60) && isequal(car{i}{1}{car{i}{3} + 1}(2), -340)))
+            car{i}{7} = 0;
+        
+        %W eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,-392) && isequal(car{actcar}{2}.YData,-60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -20))...
+                && (isequal(car{i}{2}.XData,-392) && isequal(car{i}{2}.YData,-20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -340) && isequal(car{i}{1}{car{i}{3} + 1}(2), -60)))
+            car{i}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,288) && isequal(car{actcar}{2}.YData,-60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -20))...
+                && (isequal(car{i}{2}.XData,288) && isequal(car{i}{2}.YData,-20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 340) && isequal(car{i}{1}{car{i}{3} + 1}(2), -60)))
+            car{i}{7} = 0;
+        
+        %S eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,60) && isequal(car{actcar}{2}.YData,-392)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -340))...
+                && (isequal(car{i}{2}.XData,20) && isequal(car{i}{2}.YData,-392)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 60) && isequal(car{i}{1}{car{i}{3} + 1}(2), -340)))
+            car{i}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,60) && isequal(car{actcar}{2}.YData,288)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 340))...
+                && (isequal(car{i}{2}.XData,20) && isequal(car{i}{2}.YData,288)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 60) && isequal(car{i}{1}{car{i}{3} + 1}(2), 340)))
+            car{i}{7} = 0;
+        
+        %E eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,392) && isequal(car{actcar}{2}.YData,60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 20))...
+                && (isequal(car{i}{2}.XData,392) && isequal(car{i}{2}.YData,20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 340) && isequal(car{i}{1}{car{i}{3} + 1}(2), 60)))
+            car{i}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,-288) && isequal(car{actcar}{2}.YData,60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 20))...
+                && (isequal(car{i}{2}.XData,-288) && isequal(car{i}{2}.YData,20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -340) && isequal(car{i}{1}{car{i}{3} + 1}(2), 60)))
+            car{i}{7} = 0;
+            
+            
+        %3-as forgalmi helyzet(kulso megy elore, belso savot valt) belsonek van elsobbsege
+        %N eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,-60) && isequal(car{actcar}{2}.YData,392)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -60) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 340))...
+                && (isequal(car{i}{2}.XData,-20) && isequal(car{i}{2}.YData,392)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -60) && isequal(car{i}{1}{car{i}{3} + 1}(2), 340)))
+            car{actcar}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,-60) && isequal(car{actcar}{2}.YData,-288)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -60) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -340))...
+                && (isequal(car{i}{2}.XData,-20) && isequal(car{i}{2}.YData,-288)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -60) && isequal(car{i}{1}{car{i}{3} + 1}(2), -340)))
+            car{actcar}{7} = 0;
+        
+        %W eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,-392) && isequal(car{actcar}{2}.YData,-60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -60))...
+                && (isequal(car{i}{2}.XData,-392) && isequal(car{i}{2}.YData,-20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -340) && isequal(car{i}{1}{car{i}{3} + 1}(2), -60)))
+            car{actcar}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,288) && isequal(car{actcar}{2}.YData,-60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -60))...
+                && (isequal(car{i}{2}.XData,288) && isequal(car{i}{2}.YData,-20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 340) && isequal(car{i}{1}{car{i}{3} + 1}(2), -60)))
+            car{actcar}{7} = 0;
+        
+        %S eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,60) && isequal(car{actcar}{2}.YData,-392)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 60) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -340))...
+                && (isequal(car{i}{2}.XData,20) && isequal(car{i}{2}.YData,-392)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 60) && isequal(car{i}{1}{car{i}{3} + 1}(2), -340)))
+            car{actcar}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,60) && isequal(car{actcar}{2}.YData,288)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 60) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 340))...
+                && (isequal(car{i}{2}.XData,20) && isequal(car{i}{2}.YData,288)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 60) && isequal(car{i}{1}{car{i}{3} + 1}(2), 340)))
+            car{actcar}{7} = 0;
+        
+        %E eleje-vege
+        elseif((isequal(car{actcar}{2}.XData,392) && isequal(car{actcar}{2}.YData,60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 60))...
+                && (isequal(car{i}{2}.XData,392) && isequal(car{i}{2}.YData,20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 340) && isequal(car{i}{1}{car{i}{3} + 1}(2), 60)))
+            car{actcar}{7} = 0;
+        elseif((isequal(car{actcar}{2}.XData,-288) && isequal(car{actcar}{2}.YData,60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 60))...
+                && (isequal(car{i}{2}.XData,-288) && isequal(car{i}{2}.YData,20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -340) && isequal(car{i}{1}{car{i}{3} + 1}(2), 60)))
+            car{actcar}{7} = 0;
+            
+            
+        %4-as forgalmi helyzet(3x1, legbelso megy a kozepsobe kozepso lep elore) legbelsonek van elsobbsege
+        %N vege
+        elseif((isequal(car{actcar}{2}.XData,-20) && isequal(car{actcar}{2}.YData,-288)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -340))...
+                && (isequal(car{i}{2}.XData,20) && isequal(car{i}{2}.YData,-288)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -20) && isequal(car{i}{1}{car{i}{3} + 1}(2), -340)))
+            car{actcar}{7} = 0;
+        
+        %W vege
+        elseif((isequal(car{actcar}{2}.XData,288) && isequal(car{actcar}{2}.YData,-20)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -20))...
+                && (isequal(car{i}{2}.XData,288) && isequal(car{i}{2}.YData,20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 340) && isequal(car{i}{1}{car{i}{3} + 1}(2), -20)))
+            car{actcar}{7} = 0;
+        
+        %S vege
+        elseif((isequal(car{actcar}{2}.XData,20) && isequal(car{actcar}{2}.YData,288)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 340))...
+                && (isequal(car{i}{2}.XData,-20) && isequal(car{i}{2}.YData,288)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 20) && isequal(car{i}{1}{car{i}{3} + 1}(2), 340)))
+            car{actcar}{7} = 0;
+        
+        %E vege
+        elseif((isequal(car{actcar}{2}.XData,-288) && isequal(car{actcar}{2}.YData,20)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -340) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 20))...
+                && (isequal(car{i}{2}.XData,-288) && isequal(car{i}{2}.YData,-20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -340) && isequal(car{i}{1}{car{i}{3} + 1}(2), 20)))
+            car{actcar}{7} = 0;
+            
+            
+        %5-os forgalmi helyzet(kozepso valt ki szelre szel megy elore de 340-392 a valtas) kozepsonek elsobbseg
+        %N vege
+        elseif((isequal(car{actcar}{2}.XData,-60) && isequal(car{actcar}{2}.YData,-340)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -60) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -392))...
+                && (isequal(car{i}{2}.XData,-20) && isequal(car{i}{2}.YData,-340)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -60) && isequal(car{i}{1}{car{i}{3} + 1}(2), -392)))
+            car{actcar}{7} = 0;
+        
+        %W vege
+        elseif((isequal(car{actcar}{2}.XData,340) && isequal(car{actcar}{2}.YData,-60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 392) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -60))...
+                && (isequal(car{i}{2}.XData,340) && isequal(car{i}{2}.YData,-20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 392) && isequal(car{i}{1}{car{i}{3} + 1}(2), -60)))
+            car{actcar}{7} = 0;
+        
+        %S vege
+        elseif((isequal(car{actcar}{2}.XData,60) && isequal(car{actcar}{2}.YData,340)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 60) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 392))...
+                && (isequal(car{i}{2}.XData,20) && isequal(car{i}{2}.YData,340)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 60) && isequal(car{i}{1}{car{i}{3} + 1}(2), 392)))
+            car{actcar}{7} = 0;
+        
+        %E vege
+        elseif((isequal(car{actcar}{2}.XData,-340) && isequal(car{actcar}{2}.YData,60)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -392) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 60))...
+                && (isequal(car{i}{2}.XData,-340) && isequal(car{i}{2}.YData,20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -392) && isequal(car{i}{1}{car{i}{3} + 1}(2), 60)))
+            car{actcar}{7} = 0;
+         
+        
+        %6-os forgalmi helyzet
+        %N eleje
+        elseif((isequal(car{actcar}{2}.XData,20) && isequal(car{actcar}{2}.YData,340)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 288))...
+                && (isequal(car{i}{2}.XData,-20) && isequal(car{i}{2}.YData,340)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 20) && isequal(car{i}{1}{car{i}{3} + 1}(2), 288)))
+            car{actcar}{7} = 0;
+        
+        %W eleje
+        elseif((isequal(car{actcar}{2}.XData,-340) && isequal(car{actcar}{2}.YData,20)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -288) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), 20))...
+                && (isequal(car{i}{2}.XData,-340) && isequal(car{i}{2}.YData,-20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -288) && isequal(car{i}{1}{car{i}{3} + 1}(2), 20)))
+            car{actcar}{7} = 0;
+        
+        %S eleje
+        elseif((isequal(car{actcar}{2}.XData,-20) && isequal(car{actcar}{2}.YData,-340)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), -20) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -288))...
+                && (isequal(car{i}{2}.XData,20) && isequal(car{i}{2}.YData,-340)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), -20) && isequal(car{i}{1}{car{i}{3} + 1}(2), -288)))
+            car{actcar}{7} = 0;
+        
+        %E eleje
+        elseif((isequal(car{actcar}{2}.XData,340) && isequal(car{actcar}{2}.YData,-20)) && (isequal(car{actcar}{1}{car{actcar}{3} + 1}(1), 288) && isequal(car{actcar}{1}{car{actcar}{3} + 1}(2), -20))...
+                && (isequal(car{i}{2}.XData,340) && isequal(car{i}{2}.YData,20)) && (isequal(car{i}{1}{car{i}{3} + 1}(1), 288) && isequal(car{i}{1}{car{i}{3} + 1}(2), -20)))
+            car{actcar}{7} = 0;

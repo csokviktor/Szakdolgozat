@@ -1,0 +1,8 @@
+                elseif(lampaciklusaktualis == 2 && lampaciklusnext == 6)
+                    lampaciklusaktualis = 1;
+                elseif(lampaciklusaktualis == 4 && lampaciklusnext == 8)
+                    lampaciklusaktualis = 1;
+                elseif(lampaciklusaktualis == 6 && lampaciklusnext == 2)
+                    lampaciklusaktualis = 1;
+                elseif(lampaciklusaktualis == 8 && lampaciklusnext == 4)
+                    lampaciklusaktualis = 1;

@@ -1,0 +1,1 @@
+routeMatrixBase = readcell('UtvonalMatrixok.xlsx', 'Range','E5:E5');

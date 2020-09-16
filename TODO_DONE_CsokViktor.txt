@@ -1,0 +1,39 @@
+DONE:
+	- Szimulációs környezet alapjai: ~90%
+	- Szimmulációs környezet kinézete, grafikai elemek, megértést segítő elemek: ~50%
+	- Autók hozzáadása a rendszerhez: ~50%
+	- Autók közlekedési szabályai (elsőbbségadások): ~80%
+	- Autók alap útvonalai: ~90%
+	- Autók lámpafigyelése: ~90%
+	- Autók útvonalváltása, sávváltása önállóan: ~20%
+	- Lámpaciklus típusok és a hozzájuk kapcsolódó kanyarodó és előrehaladó sávok száma az irányokon(dinamikus sáv elosztás az irányokon a 		lámpaciklusnak megfelelően): ~90%
+	- Lámpa ciklusváltása és sávok számának változtatása az irányokon manuálisan (gombnyomásra): ~90%
+	- Lámpa ciklusváltása és sávok számának változtatása az irányokon automatikusan (torlódás automatikus felismerése): ~0%
+	- Szakdolgozat: ~5%
+	
+(~90% = kész de még bugok előfordulhatnak)
+
+
+
+TODO:
+	Logikai:
+	- Be kell fejezni a már félig meglévő funkciót ami azt a feladatot látja el, hogy a járművek új, a következő ciklus szerinti útvonalon közlekedjenek 		bizonyos esetekben
+	- Autók hozzáadásának valószínűségén változtatni, megcsinálni, hogy gombnyomásra lehessen megnövelni az egyik irányról érkező és egy bizonyos irányba 			haladó autók számát, ehhez szükséges egy megfelelő súlyozott random kiválasztó függvény találása, ennek tesztelése, valamint egy GUI 				késztése gombokhoz, és a megfelelő függvény implementálása
+	- Fejleszteni kell az autók elosztását a sávokba, ehhez sokkal dinamikusabb sávváltások szükségesek, a ciklusok közben is kell az autóknak sávot 			váltani, hogy jobban kihasználják a járművek az újonnan létrejövő lehetőségeket, ehhez a járműveknek figyelniük kell a környezetüket és ez 			alapján	döntést hozni, hogy váltsanak sávot vagy ne és ha igen akkor melyik sávba (3 sáv esetén)
+	- Kell egy funkció amihez megfelelő szabályokat kell kitalálni amik alapján képes felismerni, hogy torlódás van a rendszerben az egyik irányon,
+		képes felismerni a torlódás okát és kiválasztja, hogy melyik előre megírt lámpaciklus következzen
+	- Felmerülő bug-ok és logikai hibák kijavítása amik előjönnek a további fejlesztés során
+	- Program futásának optimalizálása ha szükséges	
+
+	Grafikus:
+	- Fejleszteni kell a GUI-t, hogy egyértelműen látszódjon, hogy milyen lámpaciklus fog következni, valamint, hogy látszódjanak ennek a lámpaciklusnak
+		a fázisai
+	- Gombok a túlterheléshez
+	- Meg kell csinálni, hogy látszódjon, hogy az adott sávból merre lehet éppen haladni
+
+	Szakdolgozat:
+	- Meg kell írni a szakdolgozat irodalom kutatás részét (jelenleg használatos technológiák a forgalomirányításban (fő rész), milyen gazdasági és 		környezeti hatásai vannak a torlódásoknak,
+		önvezető autók jelenlegi fejletségi szintje, ezek elfogadottsága, matlab bemutatása, topdown programtervezés bemutatása)
+	- Ki kell bővíteni az algoritmus leírását
+	- Ha már van egy működő program számos szimulációt kell futtatni, hogy kiértékelhető eredmények álljanak rendelkezésre (nagyon sok idő), majd ezek 		kiértékelése
+	- Eredmenyek osszehasonlitasa azzal az esettel amikor nem vezereljuk a keresztezodest csak az alapciklusok mennek

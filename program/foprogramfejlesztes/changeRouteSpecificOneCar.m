@@ -1,5 +1,4 @@
 function changeRouteDeploySpecificOneCar(lampaciklus,k)
-%ciklusvaltas elotti frissitesekre
 global car;
 global routeMatrixBase;
 global routeMatrixLeft;

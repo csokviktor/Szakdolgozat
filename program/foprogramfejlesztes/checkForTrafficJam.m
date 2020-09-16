@@ -1,4 +1,4 @@
-function checkForTrafficJam()
+ function checkForTrafficJam()
 global car;
 global carnum;
 
@@ -36,7 +36,7 @@ for o = 1:carnum
         jamN(2) = 1;
     elseif(isequal(car{o}{2}.XData, nlane1{4}(1)) && isequal(car{o}{2}.XData,nlane1{4}(2)) && isequal(car{o}{7},0))
         jamN(3) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane2{4}(1)) && isequal(car{o}{2}.XData,nlane2{3}(4)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, nlane2{4}(1)) && isequal(car{o}{2}.XData,nlane2{4}(2)) && isequal(car{o}{7},0))
         jamN(4) = 1;
     elseif(isequal(car{o}{2}.XData, nlane2{3}(1)) && isequal(car{o}{2}.XData,nlane2{3}(2)))
         jamN(5) = 1;
@@ -50,7 +50,7 @@ for o = 1:carnum
         jamW(2) = 1;
     elseif(isequal(car{o}{2}.XData, wlane1{4}(1)) && isequal(car{o}{2}.XData,wlane1{4}(2)) && isequal(car{o}{7},0))
         jamW(3) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane2{4}(1)) && isequal(car{o}{2}.XData,wlane2{3}(4)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, wlane2{4}(1)) && isequal(car{o}{2}.XData,wlane2{4}(2)) && isequal(car{o}{7},0))
         jamW(4) = 1;
     elseif(isequal(car{o}{2}.XData, wlane2{3}(1)) && isequal(car{o}{2}.XData,wlane2{3}(2)))
         jamW(5) = 1;
@@ -64,7 +64,7 @@ for o = 1:carnum
         jamS(2) = 1;
     elseif(isequal(car{o}{2}.XData, slane1{4}(1)) && isequal(car{o}{2}.XData,slane1{4}(2)) && isequal(car{o}{7},0))
         jamS(3) = 1;
-    elseif(isequal(car{o}{2}.XData, slane2{4}(1)) && isequal(car{o}{2}.XData,slane2{3}(4)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, slane2{4}(1)) && isequal(car{o}{2}.XData,slane2{4}(2)) && isequal(car{o}{7},0))
         jamS(4) = 1;
     elseif(isequal(car{o}{2}.XData, slane2{3}(1)) && isequal(car{o}{2}.XData,slane2{3}(2)))
         jamS(5) = 1;
@@ -78,7 +78,7 @@ for o = 1:carnum
         jamE(2) = 1;
     elseif(isequal(car{o}{2}.XData, elane1{4}(1)) && isequal(car{o}{2}.XData,elane1{4}(2)) && isequal(car{o}{7},0))
         jamE(3) = 1;
-    elseif(isequal(car{o}{2}.XData, elane2{4}(1)) && isequal(car{o}{2}.XData,elane2{3}(4)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, elane2{4}(1)) && isequal(car{o}{2}.XData,elane2{4}(2)) && isequal(car{o}{7},0))
         jamE(4) = 1;
     elseif(isequal(car{o}{2}.XData, elane2{3}(1)) && isequal(car{o}{2}.XData,elane2{3}(2)))
         jamE(5) = 1;

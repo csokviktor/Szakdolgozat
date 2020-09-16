@@ -1,4 +1,5 @@
 function changeLane()
+%savvaltas a lampaciklusok futasa kozben
 global lampaciklusaktualis;
 global car;
 global carnum;

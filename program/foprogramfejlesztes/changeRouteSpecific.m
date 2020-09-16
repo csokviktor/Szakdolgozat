@@ -1,5 +1,6 @@
 function changeRouteSpecific()
-%eldonti, hogy ki frissitheti az utvonalat ciklusvaltas elott
+%ciklus futasa kozbeni utvonalak frissitese a kovetkezo ciklus szerint
+%ha a kovetkezo ciklus elter
 global car;
 global lampaciklusaktualis;
 global lampaciklusnext;
@@ -8,11 +9,6 @@ global npositions;
 global wpositions;
 global spositions;
 global epositions;
-
-% npositions = cell(1,10);
-% wpositions = cell(1,10);
-% spositions = cell(1,10);
-% epositions = cell(1,10);
 
 
 N1 = sym('N1');
@@ -32,7 +28,7 @@ E2 = sym('E2');
 E3 = sym('E3');
 E4 = sym('E4');
 
-%hozaadott autok utvonalat frissiti a kovetkezo ciklusnak megfeleloen
+
 %% 2x2 - 2x2 kozotti valtasok (minden ujat frissitunk a kovetkezo szerint)
 if((lampaciklusaktualis == 1 && lampaciklusnext == 3) || (lampaciklusaktualis == 1 && lampaciklusnext == 5) || (lampaciklusaktualis == 1 && lampaciklusnext == 7)...
         || (lampaciklusaktualis == 1 && lampaciklusnext == 9) || (lampaciklusaktualis == 3 && lampaciklusnext == 1) || (lampaciklusaktualis == 3 && lampaciklusnext == 5)...

@@ -1,5 +1,5 @@
 function changeRouteAll()
-%ciklusvaltaskor torteno frissitesekre
+%ciklusvaltaskor torteno utvonal frissitesekre minden autonal
 global car;
 global routeMatrixBase;
 global routeMatrixLeft;

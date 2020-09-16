@@ -406,7 +406,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         checkSurrounding();
         %             end
         %         end
-        %checkForTrafficJam();
+        checkForTrafficJam();
         
         %megnezzuk h lephetunk e es az alapjan hatarozzuk meg hogy mi tortenik
         for t = 1:carnum

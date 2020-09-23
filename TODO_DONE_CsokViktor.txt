@@ -13,10 +13,11 @@ DONE:
 	
 (~90% = kész de még bugok előfordulhatnak)
 
-
+gyorsitott video
 
 TODO:
 	Logikai:
+	- Zöld jelzések hosszának változtatása
 	- Be kell fejezni a már félig meglévő funkciót ami azt a feladatot látja el, hogy a járművek új, a következő ciklus szerinti útvonalon közlekedjenek 		bizonyos esetekben
 	- Autók hozzáadásának valószínűségén változtatni, megcsinálni, hogy gombnyomásra lehessen megnövelni az egyik irányról érkező és egy bizonyos irányba 			haladó autók számát, ehhez szükséges egy megfelelő súlyozott random kiválasztó függvény találása, ennek tesztelése, valamint egy GUI 				késztése gombokhoz, és a megfelelő függvény implementálása
 	- Fejleszteni kell az autók elosztását a sávokba, ehhez sokkal dinamikusabb sávváltások szükségesek, a ciklusok közben is kell az autóknak sávot 			váltani, hogy jobban kihasználják a járművek az újonnan létrejövő lehetőségeket, ehhez a járműveknek figyelniük kell a környezetüket és ez 			alapján	döntést hozni, hogy váltsanak sávot vagy ne és ha igen akkor melyik sávba (3 sáv esetén)

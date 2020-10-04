@@ -41,31 +41,32 @@ global overloadETW;
 global overloadETS;
 global nooverload;
 
+f = uifigure('Name', 'Control Buttons');
+bg = uibuttongroup(f,'Position',[0 0 565 425]);
 %lampaciklus kezi allitasahoz
-f1 = uifigure;
-bg1 = uibuttongroup(f1,'Position',[150 150 300 300]);
-tb1 = uibutton(bg1,'Position',[100 225 140 22],'Text','One','ButtonPushedFcn', @(tb1,event) one());
-tb2 = uibutton(bg1,'Position',[100 200 140 22],'Text','Two','ButtonPushedFcn', @(tb2,event) two());
-tb3 = uibutton(bg1,'Position',[100 175 140 22],'Text','Three','ButtonPushedFcn', @(tb3,event) three());
-tb4 = uibutton(bg1,'Position',[100 150 140 22],'Text','Four','ButtonPushedFcn', @(tb4,event) four());
-tb5 = uibutton(bg1,'Position',[100 125 140 22],'Text','Five','ButtonPushedFcn', @(tb5,event) five());
-tb6 = uibutton(bg1,'Position',[100 100 140 22],'Text','Six','ButtonPushedFcn', @(tb6,event) six());
-tb7 = uibutton(bg1,'Position',[100 75 140 22],'Text','Seven','ButtonPushedFcn', @(tb7,event) seven());
-tb8 = uibutton(bg1,'Position',[100 50 140 22],'Text','Eight','ButtonPushedFcn', @(tb8,event) eight());
-tb9 = uibutton(bg1,'Position',[100 25 140 22],'Text','Nine','ButtonPushedFcn', @(tb9,event) nine());
+lbl1 = uilabel(bg, 'Position', [50 350 140 22], 'Text', 'Cycle type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+pb1 = uibutton(bg,'Position',[50 320 140 22],'Text','One','ButtonPushedFcn', @(pb1,event) one());
+pb2 = uibutton(bg,'Position',[50 290 140 22],'Text','Two','ButtonPushedFcn', @(pb2,event) two());
+pb3 = uibutton(bg,'Position',[50 260 140 22],'Text','Three','ButtonPushedFcn', @(pb3,event) three());
+pb4 = uibutton(bg,'Position',[50 230 140 22],'Text','Four','ButtonPushedFcn', @(pb4,event) four());
+pb5 = uibutton(bg,'Position',[50 200 140 22],'Text','Five','ButtonPushedFcn', @(pb5,event) five());
+pb6 = uibutton(bg,'Position',[50 170 140 22],'Text','Six','ButtonPushedFcn', @(pb6,event) six());
+pb7 = uibutton(bg,'Position',[50 140 140 22],'Text','Seven','ButtonPushedFcn', @(pb7,event) seven());
+pb8 = uibutton(bg,'Position',[50 110 140 22],'Text','Eight','ButtonPushedFcn', @(pb8,event) eight());
+pb9 = uibutton(bg,'Position',[50 80 140 22],'Text','Nine','ButtonPushedFcn', @(pb9,event) nine());
 
 %terheles allitasahoz
-f2 = uifigure;
-bg2 = uibuttongroup(f2,'Position',[150 150 300 300]);
-pb1 = uibutton(bg2,'Position',[100 225 140 22],'Text','Overload N To S','ButtonPushedFcn', @(pb1,event) olNTS());
-pb2 = uibutton(bg2,'Position',[100 200 140 22],'Text','Overload N To E','ButtonPushedFcn', @(pb2,event) olNTE());
-pb3 = uibutton(bg2,'Position',[100 175 140 22],'Text','Overload W To E','ButtonPushedFcn', @(pb3,event) olWTE());
-pb4 = uibutton(bg2,'Position',[100 150 140 22],'Text','Overload W To N','ButtonPushedFcn', @(pb4,event) olWTN());
-pb5 = uibutton(bg2,'Position',[100 125 140 22],'Text','Overload S To N','ButtonPushedFcn', @(pb5,event) olSTN());
-pb6 = uibutton(bg2,'Position',[100 100 140 22],'Text','Overload S To W','ButtonPushedFcn', @(pb6,event) olSTW());
-pb7 = uibutton(bg2,'Position',[100 75 140 22],'Text','Overload E To W','ButtonPushedFcn', @(pb7,event) olETW());
-pb8 = uibutton(bg2,'Position',[100 50 140 22],'Text','Overload E To S','ButtonPushedFcn', @(pb8,event) olETS());
-pb9 = uibutton(bg2,'Position',[100 25 140 22],'Text','No Overload','ButtonPushedFcn', @(pb9,event) nool());
+lbl2 = uilabel(bg, 'Position', [350 350 140 22], 'Text', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+pb10 = uibutton(bg,'Position',[350 320 140 22],'Text','Overload N To S','ButtonPushedFcn', @(pb10,event) olNTS());
+pb11 = uibutton(bg,'Position',[350 290 140 22],'Text','Overload N To E','ButtonPushedFcn', @(pb11,event) olNTE());
+pb12 = uibutton(bg,'Position',[350 260 140 22],'Text','Overload W To E','ButtonPushedFcn', @(pb12,event) olWTE());
+pb13 = uibutton(bg,'Position',[350 230 140 22],'Text','Overload W To N','ButtonPushedFcn', @(pb13,event) olWTN());
+pb14 = uibutton(bg,'Position',[350 200 140 22],'Text','Overload S To N','ButtonPushedFcn', @(pb14,event) olSTN());
+pb15 = uibutton(bg,'Position',[350 170 140 22],'Text','Overload S To W','ButtonPushedFcn', @(pb15,event) olSTW());
+pb16 = uibutton(bg,'Position',[350 140 140 22],'Text','Overload E To W','ButtonPushedFcn', @(pb16,event) olETW());
+pb17 = uibutton(bg,'Position',[350 110 140 22],'Text','Overload E To S','ButtonPushedFcn', @(pb17,event) olETS());
+pb18 = uibutton(bg,'Position',[350 80 140 22],'Text','No Overload','ButtonPushedFcn', @(pb18,event) nool());
+
 
 %% lampakhoz tartozo valtozok
 %kozep ellenorzesehez

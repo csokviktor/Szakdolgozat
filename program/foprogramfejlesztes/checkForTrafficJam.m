@@ -3,7 +3,6 @@ global car;
 global carnum;
 
 global lampaciklusnext;
-global lampaciklusaktualis;
 
 global nlane1;
 global nlane2;
@@ -13,6 +12,19 @@ global slane1;
 global slane2;
 global elane1;
 global elane2;
+
+N1 = sym('N1');
+N2 = sym('N2');
+N3 = sym('N3');
+W1 = sym('W1');
+W2 = sym('W2');
+W3 = sym('W3');
+S1 = sym('S1');
+S2 = sym('S2');
+S3 = sym('S3');
+E1 = sym('E1');
+E2 = sym('E2');
+E3 = sym('E3');
 
 jamN = zeros(1,7);
 jamW = zeros(1,7);
@@ -29,74 +41,139 @@ sLeftCntr = 0;
 eStraightCntr = 0;
 eLeftCntr = 0;
 
-%autok poziciojanak vizsgalata
+%torlodas vizsgalata
 for o = 1:carnum 
         %északi oldal
-    if(isequal(car{o}{2}.XData, nlane1{3}(1)) && isequal(car{o}{2}.XData,nlane1{3}(2)))
+    if(isequal(car{o}{2}.XData, nlane1{3}(1)) && isequal(car{o}{2}.YData,nlane1{3}(2)))
         jamN(2) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane1{4}(1)) && isequal(car{o}{2}.XData,nlane1{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, nlane1{4}(1)) && isequal(car{o}{2}.YData,nlane1{4}(2)) && isequal(car{o}{7},0))
         jamN(3) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane2{4}(1)) && isequal(car{o}{2}.XData,nlane2{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, nlane2{4}(1)) && isequal(car{o}{2}.YData,nlane2{4}(2)) && isequal(car{o}{7},0))
         jamN(4) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane2{3}(1)) && isequal(car{o}{2}.XData,nlane2{3}(2)))
+    elseif(isequal(car{o}{2}.XData, nlane2{3}(1)) && isequal(car{o}{2}.YData,nlane2{3}(2)))
         jamN(5) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane2{4}(1)) && isequal(car{o}{2}.XData,nlane2{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, nlane2{4}(1)) && isequal(car{o}{2}.YData,nlane2{4}(2)) && isequal(car{o}{7},0))
         jamN(6) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane1{4}(1)) && isequal(car{o}{2}.XData,nlane1{3}(4)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, nlane1{4}(1)) && isequal(car{o}{2}.YData,nlane1{4}(2)) && isequal(car{o}{7},0))
         jamN(7) = 1;
     
         %nyugati oldal
-    elseif(isequal(car{o}{2}.XData, wlane1{3}(1)) && isequal(car{o}{2}.XData,wlane1{3}(2)))
+    elseif(isequal(car{o}{2}.XData, wlane1{3}(1)) && isequal(car{o}{2}.YData,wlane1{3}(2)))
         jamW(2) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane1{4}(1)) && isequal(car{o}{2}.XData,wlane1{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, wlane1{4}(1)) && isequal(car{o}{2}.YData,wlane1{4}(2)) && isequal(car{o}{7},0))
         jamW(3) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane2{4}(1)) && isequal(car{o}{2}.XData,wlane2{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, wlane2{4}(1)) && isequal(car{o}{2}.YData,wlane2{4}(2)) && isequal(car{o}{7},0))
         jamW(4) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane2{3}(1)) && isequal(car{o}{2}.XData,wlane2{3}(2)))
+    elseif(isequal(car{o}{2}.XData, wlane2{3}(1)) && isequal(car{o}{2}.YData,wlane2{3}(2)))
         jamW(5) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane2{4}(1)) && isequal(car{o}{2}.XData,wlane2{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, wlane2{4}(1)) && isequal(car{o}{2}.YData,wlane2{4}(2)) && isequal(car{o}{7},0))
         jamW(6) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane1{4}(1)) && isequal(car{o}{2}.XData,wlane1{3}(4)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, wlane1{4}(1)) && isequal(car{o}{2}.YData,wlane1{4}(2)) && isequal(car{o}{7},0))
         jamW(7) = 1;
     
         %déli oldal
-    elseif(isequal(car{o}{2}.XData, slane1{3}(1)) && isequal(car{o}{2}.XData,slane1{3}(2)))
+    elseif(isequal(car{o}{2}.XData, slane1{3}(1)) && isequal(car{o}{2}.YData,slane1{3}(2)))
         jamS(2) = 1;
-    elseif(isequal(car{o}{2}.XData, slane1{4}(1)) && isequal(car{o}{2}.XData,slane1{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, slane1{4}(1)) && isequal(car{o}{2}.YData,slane1{4}(2)) && isequal(car{o}{7},0))
         jamS(3) = 1;
-    elseif(isequal(car{o}{2}.XData, slane2{4}(1)) && isequal(car{o}{2}.XData,slane2{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, slane2{4}(1)) && isequal(car{o}{2}.YData,slane2{4}(2)) && isequal(car{o}{7},0))
         jamS(4) = 1;
-    elseif(isequal(car{o}{2}.XData, slane2{3}(1)) && isequal(car{o}{2}.XData,slane2{3}(2)))
+    elseif(isequal(car{o}{2}.XData, slane2{3}(1)) && isequal(car{o}{2}.YData,slane2{3}(2)))
         jamS(5) = 1;
-    elseif(isequal(car{o}{2}.XData, slane2{4}(1)) && isequal(car{o}{2}.XData,slane2{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, slane2{4}(1)) && isequal(car{o}{2}.YData,slane2{4}(2)) && isequal(car{o}{7},0))
         jamS(6) = 1;
-    elseif(isequal(car{o}{2}.XData, slane1{4}(1)) && isequal(car{o}{2}.XData,slane1{3}(4)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, slane1{4}(1)) && isequal(car{o}{2}.YData,slane1{4}(2)) && isequal(car{o}{7},0))
         jamS(7) = 1;
         
         %keleti oldal
-    elseif(isequal(car{o}{2}.XData, elane1{3}(1)) && isequal(car{o}{2}.XData,elane1{3}(2)))
+    elseif(isequal(car{o}{2}.XData, elane1{3}(1)) && isequal(car{o}{2}.YData,elane1{3}(2)))
         jamE(2) = 1;
-    elseif(isequal(car{o}{2}.XData, elane1{4}(1)) && isequal(car{o}{2}.XData,elane1{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, elane1{4}(1)) && isequal(car{o}{2}.YData,elane1{4}(2)) && isequal(car{o}{7},0))
         jamE(3) = 1;
-    elseif(isequal(car{o}{2}.XData, elane2{4}(1)) && isequal(car{o}{2}.XData,elane2{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, elane2{4}(1)) && isequal(car{o}{2}.YData,elane2{4}(2)) && isequal(car{o}{7},0))
         jamE(4) = 1;
-    elseif(isequal(car{o}{2}.XData, elane2{3}(1)) && isequal(car{o}{2}.XData,elane2{3}(2)))
+    elseif(isequal(car{o}{2}.XData, elane2{3}(1)) && isequal(car{o}{2}.YData,elane2{3}(2)))
         jamE(5) = 1;
-    elseif(isequal(car{o}{2}.XData, elane2{4}(1)) && isequal(car{o}{2}.XData,elane2{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, elane2{4}(1)) && isequal(car{o}{2}.YData,elane2{4}(2)) && isequal(car{o}{7},0))
         jamE(6) = 1;
-    elseif(isequal(car{o}{2}.XData, elane1{4}(1)) && isequal(car{o}{2}.XData,elane1{3}(4)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, elane1{4}(1)) && isequal(car{o}{2}.YData,elane1{4}(2)) && isequal(car{o}{7},0))
         jamE(7) = 1;
     end
 end
 
-%torlodas vizsgalata
+
+%torlodas okanak vizsgalata
     %Eszaki oldal
-if((jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1) || (jamN(5) == 1 && jamN(6) == 1 && jamN(7) == 1) || (jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1 && jamN(5) == 1 && jamN(6) == 1 && jamN(7) == 1))
+if((jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1)...
+        || (jamN(5) == 1 && jamN(6) == 1 && jamN(7) == 1)...
+        || (jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1 && jamN(5) == 1 && jamN(6) == 1 && jamN(7) == 1))
+    %megszamoljuk h ki merre akar menni
     for t = 1:carnum
         for r = 1:11
-            
+            if(isequal(car{t}{2}.XData, nlane1{r}(1)) && isequal(car{t}{2}.YData, nlane1{r}(2)) || isequal(car{t}{2}.XData, nlane2{r}(1)) && isequal(car{t}{2}.YData, nlane2{r}(2)))
+                if(isequal(car{t}{5}, S1) || isequal(car{t}{5}, S2) || isequal(car{t}{5}, S3))
+                    nStraightCntr = nStraightCntr + 1;
+                elseif(isequal(car{t}{5}, E1) || isequal(car{t}{5}, E2) || isequal(car{t}{5}, E3))
+                    nLeftCntr = nLeftCntr + 1;
+                end
+            end
         end
     end
+    valami = 1;
+end
+    %Nyugati oldal
+if((jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1)...
+        || (jamW(5) == 1 && jamW(6) == 1 && jamW(7) == 1)...
+        || (jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1 && jamW(5) == 1 && jamW(6) == 1 && jamW(7) == 1))
+    %megszamoljuk h ki merre akar menni
+    for t = 1:carnum
+        for r = 1:11
+            if(isequal(car{t}{2}.XData, wlane1{r}(1)) && isequal(car{t}{2}.YData, wlane1{r}(2)) || isequal(car{t}{2}.XData, wlane2{r}(1)) && isequal(car{t}{2}.YData, wlane2{r}(2)))
+                if(isequal(car{t}{5}, E1) || isequal(car{t}{5}, E2) || isequal(car{t}{5}, E3))
+                    wStraightCntr = wStraightCntr + 1;
+                elseif(isequal(car{t}{5}, N1) || isequal(car{t}{5}, N2) || isequal(car{t}{5}, N3))
+                    wLeftCntr = wLeftCntr + 1;
+                end
+            end
+        end
+    end
+    valami = 1;
+end
+    %Deli oldal
+if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
+    || (jamS(5) == 1 && jamS(6) == 1 && jamS(7) == 1)...
+    || (jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1 && jamS(5) == 1 && jamS(6) == 1 && jamS(7) == 1))
+    %megszamoljuk h ki merre akar menni
+    for t = 1:carnum
+        for r = 1:11
+            if(isequal(car{t}{2}.XData, slane1{r}(1)) && isequal(car{t}{2}.YData, slane1{r}(2)) || isequal(car{t}{2}.XData, slane2{r}(1)) && isequal(car{t}{2}.YData, slane2{r}(2)))
+                if(isequal(car{t}{5}, N1) || isequal(car{t}{5}, N2) || isequal(car{t}{5}, N3))
+                    sStraightCntr = sStraightCntr + 1;
+                elseif(isequal(car{t}{5}, W1) || isequal(car{t}{5}, W2) || isequal(car{t}{5}, W3))
+                    sLeftCntr = sLeftCntr + 1;
+                end
+            end
+        end
+    end    
+    valami = 1;
+end
+    %Keltei oldal
+if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
+    || (jamE(5) == 1 && jamE(6) == 1 && jamE(7) == 1)...
+    || (jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1 && jamE(5) == 1 && jamE(6) == 1 && jamE(7) == 1))
+    %megszamoljuk h ki merre akar menni
+    for t = 1:carnum
+        for r = 1:11
+            if(isequal(car{t}{2}.XData, elane1{r}(1)) && isequal(car{t}{2}.YData, elane1{r}(2)) || isequal(car{t}{2}.XData, elane2{r}(1)) && isequal(car{t}{2}.YData, elane2{r}(2)))
+                if(isequal(car{t}{5}, W1) || isequal(car{t}{5}, W2) || isequal(car{t}{5}, W3))
+                    eStraightCntr = eStraightCntr + 1;
+                elseif(isequal(car{t}{5}, S1) || isequal(car{t}{5}, S2) || isequal(car{t}{5}, S3))
+                    eLeftCntr = eLeftCntr + 1;
+                end
+            end
+        end
+    end
+    valami = 1;   
 end
 
 

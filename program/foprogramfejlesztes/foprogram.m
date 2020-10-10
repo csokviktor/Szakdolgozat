@@ -54,9 +54,11 @@ pb6 = uibutton(bg,'Position',[50 170 140 22],'Text','Six','ButtonPushedFcn', @(p
 pb7 = uibutton(bg,'Position',[50 140 140 22],'Text','Seven','ButtonPushedFcn', @(pb7,event) seven());
 pb8 = uibutton(bg,'Position',[50 110 140 22],'Text','Eight','ButtonPushedFcn', @(pb8,event) eight());
 pb9 = uibutton(bg,'Position',[50 80 140 22],'Text','Nine','ButtonPushedFcn', @(pb9,event) nine());
+lbl2 = uilabel(bg, 'Position', [20 50 200 22], 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+lbl3 = uilabel(bg, 'Position', [20 20 200 22], 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 
 %terheles allitasahoz
-lbl2 = uilabel(bg, 'Position', [350 350 140 22], 'Text', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+lbl4 = uilabel(bg, 'Position', [350 350 140 22], 'Text', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 pb10 = uibutton(bg,'Position',[350 320 140 22],'Text','Overload N To S','ButtonPushedFcn', @(pb10,event) olNTS());
 pb11 = uibutton(bg,'Position',[350 290 140 22],'Text','Overload N To E','ButtonPushedFcn', @(pb11,event) olNTE());
 pb12 = uibutton(bg,'Position',[350 260 140 22],'Text','Overload W To E','ButtonPushedFcn', @(pb12,event) olWTE());
@@ -307,6 +309,10 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     tStart = tic;
     
     while(carnumarrived ~= carnumgoal)
+        %% set the text on the button group
+        lbl2.Text = "Current lamp cycle type: " + int2str(lampaciklusaktualis);
+        lbl3.Text = "Next lamp cycle type: " + int2str(lampaciklusnext);
+        
         %% lampa kivetelek kezelese
         %kivetelek kezelese amik helyet 1-es jon
         if(lampaciklusaktualis == 3 && lampaciklusnext == 2)

@@ -1,6 +1,56 @@
 function plotBIMAGE()
-
 initialize();
+global lbl1;
+global lbl2;
+global lbl3;
+global lbl4;
+global pb1;
+global pb2;
+global pb3;
+global pb4;
+global pb5;
+global pb6;
+global pb7;
+global pb8;
+global pb9;
+global pb10;
+global pb11;
+global pb12;
+global pb13;
+global pb14;
+global pb15;
+global pb16;
+global pb17;
+global pb18;
+figure('Visible','on','Position',[100,100,900,600]);
+%lampaciklus kezi allitasahoz
+lbl1 = uicontrol('Style', 'text', 'Position', [50 350 140 22], 'String', 'Cycle type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+pb1 = uicontrol('Style', 'pushbutton', 'Position',[50 320 140 22], 'String','One','Callback', @one);
+pb2 = uicontrol('Style', 'pushbutton', 'Position',[50 290 140 22],'String','Two','Callback', @two);
+pb3 = uicontrol('Style', 'pushbutton', 'Position',[50 260 140 22],'String','Three','Callback', @three);
+pb4 = uicontrol('Style', 'pushbutton', 'Position',[50 230 140 22],'String','Four','Callback', @four);
+pb5 = uicontrol('Style', 'pushbutton', 'Position',[50 200 140 22],'String','Five','Callback', @five);
+pb6 = uicontrol('Style', 'pushbutton', 'Position',[50 170 140 22],'String','Six','Callback', @six);
+pb7 = uicontrol('Style', 'pushbutton', 'Position',[50 140 140 22],'String','Seven','Callback', @seven);
+pb8 = uicontrol('Style', 'pushbutton', 'Position',[50 110 140 22],'String','Eight','Callback', @eight);
+pb9 = uicontrol('Style', 'pushbutton', 'Position',[50 80 140 22],'String','Nine','Callback', @nine);
+lbl2 = uicontrol('Style', 'pushbutton', 'Position', [20 50 200 22], 'String', 'Current lamp cycle type: ', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+lbl3 = uicontrol('Style', 'pushbutton', 'Position', [20 20 200 22], 'String', 'Next lamp cycle type: ', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+
+%terheles allitasahoz
+lbl4 = uicontrol('Style', 'text', 'Position', [350 350 140 22], 'String', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+pb10 = uicontrol('Style', 'pushbutton', 'Position',[350 320 140 22],'String','Overload N To S','Callback', @olNTS);
+pb11 = uicontrol('Style', 'pushbutton', 'Position',[350 290 140 22],'String','Overload N To E','Callback', @olNTE);
+pb12 = uicontrol('Style', 'pushbutton', 'Position',[350 260 140 22],'String','Overload W To E','Callback', @olWTE);
+pb13 = uicontrol('Style', 'pushbutton', 'Position',[350 230 140 22],'String','Overload W To N','Callback', @olWTN);
+pb14 = uicontrol('Style', 'pushbutton', 'Position',[350 200 140 22],'String','Overload S To N','Callback', @olSTN);
+pb15 = uicontrol('Style', 'pushbutton', 'Position',[350 170 140 22],'String','Overload S To W','Callback', @olSTW);
+pb16 = uicontrol('Style', 'pushbutton', 'Position',[350 140 140 22],'String','Overload E To W','Callback', @olETW);
+pb17 = uicontrol('Style', 'pushbutton', 'Position',[350 110 140 22],'String','Overload E To S','Callback', @olETS);
+pb18 = uicontrol('Style', 'pushbutton', 'Position',[350 80 140 22],'String','No Overload','Callback', @nool);
+
+% map size
+axes('Units','Pixels','Position',[50,100,400,400]);
 global n1;
 global n2;
 global n3;
@@ -456,12 +506,232 @@ end
 
 
 
+end
+%lampaciklusok valtasa kezileg
+function one(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 1;
+end
+function two(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 2;
+end
+function three(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 3;
+end
+function four(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 4;
+end
+function five(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 5;
+end
+function six(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 6;
+end
+function seven(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 7;
+end
+function eight(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 8;
+end
+function nine(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 9;
+end
 
+%tulterheles kezelese
+function olNTS(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 1;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olNTE(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 1;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olWTE(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 1;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olWTN(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 1;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olSTN(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
-% map size
-axis([-600, 600, -600, 600]);
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 1;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olSTW(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
+
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 1;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olETW(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
+
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 1;
+overloadETS = 0;
+nooverload = 0;
+end
+function olETS(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
+
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 1;
+nooverload = 0;
+end
+function nool(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
+
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 1;
 end

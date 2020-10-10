@@ -43,7 +43,7 @@ if((lampaciklusaktualis == 1 && lampaciklusnext == 3) || (lampaciklusaktualis ==
                     || (isequal(car{k}{2}.XData, wpositions{j}(1)) && isequal(car{k}{2}.YData, wpositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, spositions{j}(1)) && isequal(car{k}{2}.YData, spositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, epositions{j}(1)) && isequal(car{k}{2}.YData, epositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -60,7 +60,7 @@ if((lampaciklusaktualis == 1 && lampaciklusnext == 2) || (lampaciklusaktualis ==
             if((isequal(car{k}{2}.XData, wpositions{j}(1)) && isequal(car{k}{2}.YData, wpositions{j}(2)) && (isequal(car{k}{5},N3) || isequal(car{k}{5},N4)))...
                     || (isequal(car{k}{2}.XData, spositions{j}(1)) && isequal(car{k}{2}.YData, spositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, epositions{j}(1)) && isequal(car{k}{2}.YData, epositions{j}(2)) && (isequal(car{k}{5},N3) || isequal(car{k}{5},N4))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -72,7 +72,7 @@ elseif((lampaciklusaktualis == 1 && lampaciklusnext == 4) || (lampaciklusaktuali
             if((isequal(car{k}{2}.XData, npositions{j}(1)) && isequal(car{k}{2}.YData, npositions{j}(2)) && (isequal(car{k}{5},W3) || isequal(car{k}{5},W4)))...
                     || (isequal(car{k}{2}.XData, spositions{j}(1)) && isequal(car{k}{2}.YData, spositions{j}(2)) && (isequal(car{k}{5},W3) || isequal(car{k}{5},W4)))...
                     || (isequal(car{k}{2}.XData, epositions{j}(1)) && isequal(car{k}{2}.YData, epositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -84,7 +84,7 @@ elseif((lampaciklusaktualis == 1 && lampaciklusnext == 6) || (lampaciklusaktuali
             if((isequal(car{k}{2}.XData, npositions{j}(1)) && isequal(car{k}{2}.YData, npositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, wpositions{j}(1)) && isequal(car{k}{2}.YData, wpositions{j}(2)) && (isequal(car{k}{5},S3) || isequal(car{k}{5},S4)))...
                     || (isequal(car{k}{2}.XData, epositions{j}(1)) && isequal(car{k}{2}.YData, epositions{j}(2)) && (isequal(car{k}{5},S3) || isequal(car{k}{5},S4))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -96,7 +96,7 @@ elseif((lampaciklusaktualis == 1 && lampaciklusnext == 8) || (lampaciklusaktuali
             if((isequal(car{k}{2}.XData, npositions{j}(1)) && isequal(car{k}{2}.YData, npositions{j}(2)) && (isequal(car{k}{5},E3) || isequal(car{k}{5},E4)))...
                     || (isequal(car{k}{2}.XData, wpositions{j}(1)) && isequal(car{k}{2}.YData, wpositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, spositions{j}(1)) && isequal(car{k}{2}.YData, spositions{j}(2)) && (isequal(car{k}{5},E3) || isequal(car{k}{5},E4))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -112,7 +112,7 @@ elseif(lampaciklusaktualis == 2 && lampaciklusnext == 4)
         for j = 1:10
             if((isequal(car{k}{2}.XData, npositions{j}(1)) && isequal(car{k}{2}.YData, npositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, epositions{j}(1)) && isequal(car{k}{2}.YData, epositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -122,7 +122,7 @@ elseif(lampaciklusaktualis == 2 && lampaciklusnext == 8)
         for j = 1:10
             if((isequal(car{k}{2}.XData, npositions{j}(1)) && isequal(car{k}{2}.YData, npositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, wpositions{j}(1)) && isequal(car{k}{2}.YData, wpositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -132,7 +132,7 @@ elseif(lampaciklusaktualis == 4 && lampaciklusnext == 2)
         for j = 1:10
             if((isequal(car{k}{2}.XData, wpositions{j}(1)) && isequal(car{k}{2}.YData, wpositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, spositions{j}(1)) && isequal(car{k}{2}.YData, spositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -142,7 +142,7 @@ elseif(lampaciklusaktualis == 4 && lampaciklusnext == 6)
         for j = 1:10
             if((isequal(car{k}{2}.XData, npositions{j}(1)) && isequal(car{k}{2}.YData, npositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, wpositions{j}(1)) && isequal(car{k}{2}.YData, wpositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -152,7 +152,7 @@ elseif(lampaciklusaktualis == 6 && lampaciklusnext == 4)
         for j = 1:10
             if((isequal(car{k}{2}.XData, spositions{j}(1)) && isequal(car{k}{2}.YData, spositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, epositions{j}(1)) && isequal(car{k}{2}.YData, epositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -162,7 +162,7 @@ elseif(lampaciklusaktualis == 6 && lampaciklusnext == 8)
         for j = 1:10
             if((isequal(car{k}{2}.XData, wpositions{j}(1)) && isequal(car{k}{2}.YData, wpositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, spositions{j}(1)) && isequal(car{k}{2}.YData, spositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -172,7 +172,7 @@ elseif(lampaciklusaktualis == 8 && lampaciklusnext == 2)
         for j = 1:10
             if((isequal(car{k}{2}.XData, spositions{j}(1)) && isequal(car{k}{2}.YData, spositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, epositions{j}(1)) && isequal(car{k}{2}.YData, epositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -182,7 +182,7 @@ elseif(lampaciklusaktualis == 8 && lampaciklusnext == 6)
         for j = 1:10
             if((isequal(car{k}{2}.XData, npositions{j}(1)) && isequal(car{k}{2}.YData, npositions{j}(2)))...
                     || (isequal(car{k}{2}.XData, epositions{j}(1)) && isequal(car{k}{2}.YData, epositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -195,7 +195,7 @@ elseif((lampaciklusaktualis == 2 && lampaciklusnext == 1) || (lampaciklusaktuali
     for k = 1:carnum
         for j = 1:10
             if((isequal(car{k}{2}.XData, npositions{j}(1)) && isequal(car{k}{2}.YData, npositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -205,7 +205,7 @@ elseif((lampaciklusaktualis == 4 && lampaciklusnext == 1) || (lampaciklusaktuali
     for k = 1:carnum
         for j = 1:10
             if((isequal(car{k}{2}.XData, wpositions{j}(1)) && isequal(car{k}{2}.YData, wpositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -215,7 +215,7 @@ elseif((lampaciklusaktualis == 6 && lampaciklusnext == 1) || (lampaciklusaktuali
     for k = 1:carnum
         for j = 1:10
             if((isequal(car{k}{2}.XData, spositions{j}(1)) && isequal(car{k}{2}.YData, spositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end
@@ -225,7 +225,7 @@ elseif((lampaciklusaktualis == 8 && lampaciklusnext == 1) || (lampaciklusaktuali
     for k = 1:carnum
         for j = 1:10
             if((isequal(car{k}{2}.XData, epositions{j}(1)) && isequal(car{k}{2}.YData, epositions{j}(2))))
-                changeRouteDeploySpecificOneCar(lampaciklusnext,k);
+                changeRouteSpecificOneCar(lampaciklusnext,k);
                 break;
             end
         end

@@ -1,4 +1,4 @@
-function changeRouteDeploySpecificOneCar(lampaciklus,k)
+function changeRouteSpecificOneCar(lampaciklus,k)
 global car;
 global routeMatrixBase;
 global routeMatrixLeft;

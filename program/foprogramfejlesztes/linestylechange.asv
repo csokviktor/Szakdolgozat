@@ -311,8 +311,8 @@ switch lampaciklus
         s2s.LineStyle = '-';
         s3s.LineStyle = '--';
         
-        e1s.LineStyle = '--';
-        e2s.LineStyle = '-';
-        e3s.LineStyle = '--';
+        e1.LineStyle = '--';
+        e2.LineStyle = '-';
+        e3.LineStyle = '--';
 end
 end

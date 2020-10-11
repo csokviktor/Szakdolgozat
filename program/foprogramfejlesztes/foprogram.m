@@ -1,6 +1,7 @@
 plotBIMAGE();
 global lbl2;
 global lbl3;
+global lbl5;
 
 %% utvonalhoz tartozo valtozok letrehozasa
 % global routeMatrixBase;
@@ -287,6 +288,25 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         %% set the text on the button group
         lbl2.String = "Current lamp cycle type: " + int2str(lampaciklusaktualis);
         lbl3.String = "Next lamp cycle type: " + int2str(lampaciklusnext);
+        if(nooverload == 1)
+            lbl5.String = "Overload type: " + newline + "No overload";
+        elseif(overloadNTS == 1)
+            lbl5.String = "Overload type: " + newline + "North to South";
+        elseif(overloadNTE == 1)
+            lbl5.String = "Overload type: " + newline + "North to East";
+        elseif(overloadWTE == 1)
+            lbl5.String = "Overload type: " + newline + "West to East";
+        elseif(overloadWTN == 1)
+            lbl5.String = "Overload type: " + newline + "West to North";
+        elseif(overloadSTN == 1)
+            lbl5.String = "Overload type: " + newline + "South to North";
+        elseif(overloadSTW == 1)
+            lbl5.String = "Overload type: " + newline + "South to West";
+        elseif(overloadETW == 1)
+            lbl5.String = "Overload type: " + newline + "East to West";
+        elseif(overloadETS == 1)
+            lbl5.String = "Overload type: " + newline + "East to South";
+        end
         
         %% lampa kivetelek kezelese
         %kivetelek kezelese amik helyet 1-es jon

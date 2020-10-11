@@ -23,7 +23,8 @@ global pb15;
 global pb16;
 global pb17;
 global pb18;
-figure('Visible','on','Position',[100,100,1000,500]);
+
+figure('Visible','on','Position',[100,100,1000,500], 'Name', 'Intersection GUI', 'NumberTitle','off');
 %lampaciklus kezi allitasahoz
 lbl1 = uicontrol('Style', 'text', 'Position', [570 450 140 22], 'String', 'Cycle type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 pb1 = uicontrol('Style', 'pushbutton', 'Position',[570 420 140 22], 'String','One','Callback', @one);

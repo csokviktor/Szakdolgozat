@@ -16,15 +16,19 @@ global elane2;
 N1 = sym('N1');
 N2 = sym('N2');
 N3 = sym('N3');
+N4 = sym('N4');
 W1 = sym('W1');
 W2 = sym('W2');
 W3 = sym('W3');
+W4 = sym('W4');
 S1 = sym('S1');
 S2 = sym('S2');
 S3 = sym('S3');
+S4 = sym('S4');
 E1 = sym('E1');
 E2 = sym('E2');
 E3 = sym('E3');
+E4 = sym('E4');
 
 jamN = zeros(1,7);
 jamW = zeros(1,7);
@@ -111,9 +115,9 @@ if((jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1)...
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, nlane1{r}(1)) && isequal(car{t}{2}.YData, nlane1{r}(2)) || isequal(car{t}{2}.XData, nlane2{r}(1)) && isequal(car{t}{2}.YData, nlane2{r}(2)))
-                if(isequal(car{t}{5}, S1) || isequal(car{t}{5}, S2) || isequal(car{t}{5}, S3))
+                if(isequal(car{t}{5}, S2) || isequal(car{t}{5}, S3) || isequal(car{t}{5}, S4))
                     nStraightCntr = nStraightCntr + 1;
-                elseif(isequal(car{t}{5}, E1) || isequal(car{t}{5}, E2) || isequal(car{t}{5}, E3))
+                elseif(isequal(car{t}{5}, E2) || isequal(car{t}{5}, E3) || isequal(car{t}{5}, E4))
                     nLeftCntr = nLeftCntr + 1;
                 end
             end
@@ -129,9 +133,9 @@ if((jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1)...
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, wlane1{r}(1)) && isequal(car{t}{2}.YData, wlane1{r}(2)) || isequal(car{t}{2}.XData, wlane2{r}(1)) && isequal(car{t}{2}.YData, wlane2{r}(2)))
-                if(isequal(car{t}{5}, E1) || isequal(car{t}{5}, E2) || isequal(car{t}{5}, E3))
+                if(isequal(car{t}{5}, E2) || isequal(car{t}{5}, E3) || isequal(car{t}{5}, E4))
                     wStraightCntr = wStraightCntr + 1;
-                elseif(isequal(car{t}{5}, N1) || isequal(car{t}{5}, N2) || isequal(car{t}{5}, N3))
+                elseif(isequal(car{t}{5}, N2) || isequal(car{t}{5}, N3) || isequal(car{t}{5}, N4))
                     wLeftCntr = wLeftCntr + 1;
                 end
             end
@@ -147,9 +151,9 @@ if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, slane1{r}(1)) && isequal(car{t}{2}.YData, slane1{r}(2)) || isequal(car{t}{2}.XData, slane2{r}(1)) && isequal(car{t}{2}.YData, slane2{r}(2)))
-                if(isequal(car{t}{5}, N1) || isequal(car{t}{5}, N2) || isequal(car{t}{5}, N3))
+                if(isequal(car{t}{5}, N2) || isequal(car{t}{5}, N3) || isequal(car{t}{5}, N4))
                     sStraightCntr = sStraightCntr + 1;
-                elseif(isequal(car{t}{5}, W1) || isequal(car{t}{5}, W2) || isequal(car{t}{5}, W3))
+                elseif(isequal(car{t}{5}, W2) || isequal(car{t}{5}, W3) || isequal(car{t}{5}, W4))
                     sLeftCntr = sLeftCntr + 1;
                 end
             end
@@ -165,9 +169,9 @@ if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, elane1{r}(1)) && isequal(car{t}{2}.YData, elane1{r}(2)) || isequal(car{t}{2}.XData, elane2{r}(1)) && isequal(car{t}{2}.YData, elane2{r}(2)))
-                if(isequal(car{t}{5}, W1) || isequal(car{t}{5}, W2) || isequal(car{t}{5}, W3))
+                if(isequal(car{t}{5}, W2) || isequal(car{t}{5}, W3) || isequal(car{t}{5}, W4))
                     eStraightCntr = eStraightCntr + 1;
-                elseif(isequal(car{t}{5}, S1) || isequal(car{t}{5}, S2) || isequal(car{t}{5}, S3))
+                elseif(isequal(car{t}{5}, S2) || isequal(car{t}{5}, S3) || isequal(car{t}{5}, S4))
                     eLeftCntr = eLeftCntr + 1;
                 end
             end

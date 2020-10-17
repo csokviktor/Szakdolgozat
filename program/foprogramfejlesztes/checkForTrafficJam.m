@@ -1,8 +1,9 @@
- function checkForTrafficJam()
+function checkForTrafficJam()
 global car;
 global carnum;
 
 global lampaciklusnext;
+global lampaciklusaktualis;
 
 global nlane1;
 global nlane2;
@@ -45,7 +46,7 @@ sLeftCntr = 0;
 eStraightCntr = 0;
 eLeftCntr = 0;
 
-%torlodas vizsgalata
+%% torlodas letezesenek vizsgalata
 for o = 1:carnum 
         %északi oldal
     if(isequal(car{o}{2}.XData, nlane1{3}(1)) && isequal(car{o}{2}.YData,nlane1{3}(2)))
@@ -106,7 +107,8 @@ for o = 1:carnum
 end
 
 
-%torlodas okanak vizsgalata
+
+%% torlodas okanak vizsgalata
     %Eszaki oldal
 if((jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1)...
         || (jamN(5) == 1 && jamN(6) == 1 && jamN(7) == 1)...
@@ -123,7 +125,17 @@ if((jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1)...
             end
         end
     end
-    valami = 1;
+    
+    %TODO: check if it works
+    if(nStraightCntr > nLeftCntr + 2)
+        lampaciklusnext = 2;
+    elseif(nLeftCntr > nStraightCntr + 3)
+        lampaciklusnext = 3;
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+    
+    return
 end
     %Nyugati oldal
 if((jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1)...
@@ -141,7 +153,16 @@ if((jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1)...
             end
         end
     end
-    valami = 1;
+    
+    if(wStraightCntr > wLeftCntr + 2)
+        lampaciklusnext = 4;
+    elseif(wLeftCntr > wStraightCntr + 3)
+        lampaciklusnext = 5;
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+    
+    return
 end
     %Deli oldal
 if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
@@ -159,7 +180,16 @@ if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
             end
         end
     end    
-    valami = 1;
+    
+    if(sStraightCntr > sLeftCntr + 2)
+        lampaciklusnext = 6;
+    elseif(sLeftCntr > sStraightCntr + 3)
+        lampaciklusnext = 7;
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+    
+    return
 end
     %Keltei oldal
 if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
@@ -177,7 +207,16 @@ if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
             end
         end
     end
-    valami = 1;   
+    
+    if(eStraightCntr > eLeftCntr + 2)
+        lampaciklusnext = 8;
+    elseif(eLeftCntr > eStraightCntr + 3)
+        lampaciklusnext = 9;
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+    
+    return
 end
 
 

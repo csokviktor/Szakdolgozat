@@ -401,7 +401,6 @@ hold on
 plot(E5sx,E5sy,'k', 'linewidth', 1.5)
 hold on
 
-%TODO: create a small modell of the lamps
 global lightsmall;
 global lightpossmall;
 lightsmall = cell(1,12);

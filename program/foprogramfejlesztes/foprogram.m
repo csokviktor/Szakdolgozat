@@ -387,27 +387,9 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             changeRouteAll();
         end
         
-        % ellenorzi hogy ha a lampa ele ert akkor mit mutat a lampa es a
-        % szerint cselekszik
-        %         for cars = 1:carnum
-        %             if(car{cars}{8} == 0)
-        %                 if(car{cars}{3} < 13)
-        %                     for lamps = 1:12
-        %                         if(car{cars}{2}.XData == lampStop{lamps}(1) && car{cars}{2}.YData == lampStop{lamps}(2)) % ha a lampa elott vagyunk
+
         checkLampStatus(); %tudjuk h melyik lampa elott vagyunk
-        %                             break; %csak egy lampa elott lehetunk szoval a tobbire mar nem kell vizsgalni
-        %                         end
-        %                     end
-        %                 end
-        %             end
-        %         end
-        
-        %megvizsgaljuk, hogy lephetunk e
-        %         for h = 1:carnum
-        %             if(car{h}{8} == 0)
         checkSurrounding();
-        %             end
-        %         end
         checkForTrafficJam();
         
         %megnezzuk h lephetunk e es az alapjan hatarozzuk meg hogy mi tortenik
@@ -871,6 +853,8 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                 end
                 
             else
+                %TODO: lampChange valtoztatasa forgalomtol fuggoen
+                changeMainLampCycleLength()
                 lampChange = 5;
             end
             

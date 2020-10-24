@@ -93,7 +93,7 @@ cycledone = 0;
 
 prompt1 = {'Enter cycle number:','Intelligent(1-YES, 0-NO):'};
 dlgtitle1 = 'Input';
-dims1 = [1 20];
+dims1 = [1 30];
 definput1 = {'1','0'};
 initializedatastr = inputdlg(prompt1,dlgtitle1,dims1,definput1);
 cyclenumgoal = str2double(initializedatastr{1});
@@ -158,16 +158,16 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     generateNewCarRand = 0;
     whileLoopCounter = 0;
     
-%     %autok szamanak bekerese felhasznalotol
-%     prompt2 = {'Enter car number:','Enter cycle type:'};
-%     dlgtitle2 = 'Input';
-%     dims2 = [1 20];
-%     definput2 = {'100','1'};
-%     initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
-%     carnumgoal = str2double(initializedatastr{1});
-%     cycletype = str2double(initializedatastr{2});
-    carnumgoal = 300;
-    cycletype = 1;
+    %autok szamanak bekerese felhasznalotol
+    prompt2 = {'Enter car number:','Enter cycle type:'};
+    dlgtitle2 = 'Input';
+    dims2 = [1 30];
+    definput2 = {'100','1'};
+    initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
+    carnumgoal = str2double(initializedatastr{1});
+    cycletype = str2double(initializedatastr{2});
+    %carnumgoal = 300;
+    %cycletype = 1;
     
     if(cycledone == 5 || cycledone == 6 || cycledone == 7 || cycledone == 8 || cycledone == 9)
         olNTS();

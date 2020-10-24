@@ -33,6 +33,7 @@ global overloadETW;
 global overloadETS;
 global nooverload;
 global lampaciklusnext;
+
 f = uifigure('Name', 'Control Buttons');
 bg = uibuttongroup(f,'Position',[0 0 565 425]);
 %lampaciklus kezi allitasahoz
@@ -46,9 +47,11 @@ pb6 = uibutton(bg,'Position',[50 170 140 22],'Text','Six','ButtonPushedFcn', @(p
 pb7 = uibutton(bg,'Position',[50 140 140 22],'Text','Seven','ButtonPushedFcn', @(pb7,event) seven());
 pb8 = uibutton(bg,'Position',[50 110 140 22],'Text','Eight','ButtonPushedFcn', @(pb8,event) eight());
 pb9 = uibutton(bg,'Position',[50 80 140 22],'Text','Nine','ButtonPushedFcn', @(pb9,event) nine());
+lbl2 = uilabel(bg, 'Position', [50 50 140 22], 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+lbl3 = uilabel(bg, 'Position', [50 20 140 22], 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 
 %terheles allitasahoz
-lbl2 = uilabel(bg, 'Position', [350 350 140 22], 'Text', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+lbl4 = uilabel(bg, 'Position', [350 350 140 22], 'Text', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 pb10 = uibutton(bg,'Position',[350 320 140 22],'Text','Overload N To S','ButtonPushedFcn', @(pb10,event) olNTS());
 pb11 = uibutton(bg,'Position',[350 290 140 22],'Text','Overload N To E','ButtonPushedFcn', @(pb11,event) olNTE());
 pb12 = uibutton(bg,'Position',[350 260 140 22],'Text','Overload W To E','ButtonPushedFcn', @(pb12,event) olWTE());
@@ -59,11 +62,10 @@ pb16 = uibutton(bg,'Position',[350 140 140 22],'Text','Overload E To W','ButtonP
 pb17 = uibutton(bg,'Position',[350 110 140 22],'Text','Overload E To S','ButtonPushedFcn', @(pb17,event) olETS());
 pb18 = uibutton(bg,'Position',[350 80 140 22],'Text','No Overload','ButtonPushedFcn', @(pb18,event) nool());
 
-lbl3 = uilabel(bg, 'Position', [50 50 140 22], 'Text', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 
 while(1)
     x = 1;
-    lbl3.Text = int2str(lampaciklusnext);
+    lbl2.Text = "Next cycle " + int2str(lampaciklusnext);
     pause(0.1)
 end
 

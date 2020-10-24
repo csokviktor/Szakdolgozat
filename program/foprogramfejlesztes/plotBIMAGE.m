@@ -1,6 +1,59 @@
 function plotBIMAGE()
-
 initialize();
+global lbl1;
+global lbl2;
+global lbl3;
+global lbl4;
+global lbl5;
+global pb1;
+global pb2;
+global pb3;
+global pb4;
+global pb5;
+global pb6;
+global pb7;
+global pb8;
+global pb9;
+global pb10;
+global pb11;
+global pb12;
+global pb13;
+global pb14;
+global pb15;
+global pb16;
+global pb17;
+global pb18;
+
+figure('Visible','on','Position',[100,100,1000,500], 'Name', 'Intersection GUI', 'NumberTitle','off');
+%lampaciklus kezi allitasahoz
+lbl1 = uicontrol('Style', 'text', 'Position', [570 450 140 22], 'String', 'Cycle type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+pb1 = uicontrol('Style', 'pushbutton', 'Position',[570 420 140 22], 'String','One','Callback', @one);
+pb2 = uicontrol('Style', 'pushbutton', 'Position',[570 390 140 22],'String','Two','Callback', @two);
+pb3 = uicontrol('Style', 'pushbutton', 'Position',[570 360 140 22],'String','Three','Callback', @three);
+pb4 = uicontrol('Style', 'pushbutton', 'Position',[570 330 140 22],'String','Four','Callback', @four);
+pb5 = uicontrol('Style', 'pushbutton', 'Position',[570 300 140 22],'String','Five','Callback', @five);
+pb6 = uicontrol('Style', 'pushbutton', 'Position',[570 270 140 22],'String','Six','Callback', @six);
+pb7 = uicontrol('Style', 'pushbutton', 'Position',[570 240 140 22],'String','Seven','Callback', @seven);
+pb8 = uicontrol('Style', 'pushbutton', 'Position',[570 210 140 22],'String','Eight','Callback', @eight);
+pb9 = uicontrol('Style', 'pushbutton', 'Position',[570 180 140 22],'String','Nine','Callback', @nine);
+lbl2 = uicontrol('Style', 'text', 'Position', [555 150 170 22], 'String', 'Current lamp cycle type: ', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+lbl3 = uicontrol('Style', 'text', 'Position', [555 120 170 22], 'String', 'Next lamp cycle type: ', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+
+%terheles allitasahoz
+lbl4 = uicontrol('Style', 'text', 'Position', [800 450 140 22], 'String', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+pb10 = uicontrol('Style', 'pushbutton', 'Position',[800 420 140 22],'String','Overload N To S','Callback', @olNTS);
+pb11 = uicontrol('Style', 'pushbutton', 'Position',[800 390 140 22],'String','Overload N To E','Callback', @olNTE);
+pb12 = uicontrol('Style', 'pushbutton', 'Position',[800 360 140 22],'String','Overload W To E','Callback', @olWTE);
+pb13 = uicontrol('Style', 'pushbutton', 'Position',[800 330 140 22],'String','Overload W To N','Callback', @olWTN);
+pb14 = uicontrol('Style', 'pushbutton', 'Position',[800 300 140 22],'String','Overload S To N','Callback', @olSTN);
+pb15 = uicontrol('Style', 'pushbutton', 'Position',[800 270 140 22],'String','Overload S To W','Callback', @olSTW);
+pb16 = uicontrol('Style', 'pushbutton', 'Position',[800 240 140 22],'String','Overload E To W','Callback', @olETW);
+pb17 = uicontrol('Style', 'pushbutton', 'Position',[800 210 140 22],'String','Overload E To S','Callback', @olETS);
+pb18 = uicontrol('Style', 'pushbutton', 'Position',[800 180 140 22],'String','No Overload','Callback', @nool);
+lbl5 = uicontrol('Style', 'text', 'Position', [785 110 170 50], 'String', 'Overload type: ', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+
+% map size
+axes('Units','Pixels','Position',[50,70,450,400]);
 global n1;
 global n2;
 global n3;
@@ -233,9 +286,8 @@ L(4) = "Car to E";
 lgd = legend(LH,L);
 lgd.AutoUpdate = 'off';
 
-%direction of travel indicator
+%% direction of travel indicator box
 
-%TODO: create a small modell of the intersection
 %borders
 border1x = [-540, -140];
 border1y = [540, 540];
@@ -349,7 +401,100 @@ hold on
 plot(E5sx,E5sy,'k', 'linewidth', 1.5)
 hold on
 
-%TODO: create a small modell of the lamps
+global lightsmall;
+global lightpossmall;
+lightsmall = cell(1,12);
+for i = 1:12
+    lightsmall{i} = cell(1,5);  %1:kozep, 2:bal, 3:felso, 4:jobb, 5:allapot
+end
+
+lightpossmall = cell(1,12);
+for i = 1:12
+    lightpossmall{i} = cell(1,4);
+end
+
+lightpossmall{1}{1} = [-400 430]; %N1 kozep
+lightpossmall{1}{2} = [-390 430]; %N1 bal
+lightpossmall{1}{3} = [-400 420]; %N1 felso
+lightpossmall{1}{4} = [-410 430]; %N1 jobb
+
+lightpossmall{2}{1} = [-360 430]; %N2 kozep
+lightpossmall{2}{2} = [-350 430]; %N2 bal
+lightpossmall{2}{3} = [-360 420]; %N2 felso
+lightpossmall{2}{4} = [-370 430]; %N2 jobb
+
+lightpossmall{3}{1} = [-320 430]; %N3 kozep
+lightpossmall{3}{2} = [-310 430]; %N3 bal
+lightpossmall{3}{3} = [-320 420]; %N3 felso
+lightpossmall{3}{4} = [-330 430]; %N3 jobb
+
+
+lightpossmall{4}{1} = [-430 280]; %W1 kozep
+lightpossmall{4}{2} = [-430 290]; %W1 bal
+lightpossmall{4}{3} = [-420 280]; %W1 felso
+lightpossmall{4}{4} = [-430 270]; %W1 jobb
+
+lightpossmall{5}{1} = [-430 320]; %W2 kozep
+lightpossmall{5}{2} = [-430 330]; %W2 bal
+lightpossmall{5}{3} = [-420 320]; %W2 felso
+lightpossmall{5}{4} = [-430 310]; %W2 jobb
+
+lightpossmall{6}{1} = [-430 360]; %W3 kozep
+lightpossmall{6}{2} = [-430 370]; %W3 bal
+lightpossmall{6}{3} = [-420 360]; %W3 felso
+lightpossmall{6}{4} = [-430 350]; %W3 jobb
+
+
+lightpossmall{7}{1} = [-280 250]; %S1 kozep
+lightpossmall{7}{2} = [-290 250]; %S1 bal
+lightpossmall{7}{3} = [-280 260]; %S1 felso
+lightpossmall{7}{4} = [-270 250]; %S1 jobb
+
+lightpossmall{8}{1} = [-320 250]; %S2 kozep
+lightpossmall{8}{2} = [-330 250]; %S2 bal
+lightpossmall{8}{3} = [-320 260]; %S2 felso
+lightpossmall{8}{4} = [-310 250]; %S2 jobb
+
+lightpossmall{9}{1} = [-360 250]; %S3 kozep
+lightpossmall{9}{2} = [-370 250]; %S3 bal
+lightpossmall{9}{3} = [-360 260]; %S3 felso
+lightpossmall{9}{4} = [-350 250]; %S3 jobb
+
+
+lightpossmall{10}{1} = [-250 400]; %E1 kozep
+lightpossmall{10}{2} = [-250 390]; %E1 bal
+lightpossmall{10}{3} = [-260 400]; %E1 felso
+lightpossmall{10}{4} = [-250 410]; %E1 jobb
+
+lightpossmall{11}{1} = [-250 360]; %E2 kozep
+lightpossmall{11}{2} = [-250 350]; %E2 bal
+lightpossmall{11}{3} = [-260 360]; %E2 felso
+lightpossmall{11}{4} = [-250 370]; %E2 jobb
+
+lightpossmall{12}{1} = [-250 320]; %E3 kozep
+lightpossmall{12}{2} = [-250 310]; %E3 bal
+lightpossmall{12}{3} = [-260 320]; %E3 felso
+lightpossmall{12}{4} = [-250 330]; %E3 jobb
+
+for i=1:12
+    for j = 1:4
+    lightsmall{i}{j} = plot(lightpossmall{i}{j}(1),lightpossmall{i}{j}(2),'s', 'MarkerSize', 4, 'MarkerEdgeColor', 'black', 'MarkerFaceColor', 'black');
+    end
+end
+
+%sorban a harmadik lampanak a lathatatlanna tetele
+for k=3:3:12
+    for e=1:4
+    lightsmall{3}{e}.MarkerEdgeColor = 'white';
+    lightsmall{3}{e}.MarkerFaceColor = 'white';
+    lightsmall{6}{e}.MarkerEdgeColor = 'white';
+    lightsmall{6}{e}.MarkerFaceColor = 'white';
+    lightsmall{9}{e}.MarkerEdgeColor = 'white';
+    lightsmall{9}{e}.MarkerFaceColor = 'white';
+    lightsmall{12}{e}.MarkerEdgeColor = 'white';
+    lightsmall{12}{e}.MarkerFaceColor = 'white';
+    end
+end
 
 
 
@@ -363,20 +508,232 @@ hold on
 
 
 
+end
+%lampaciklusok valtasa kezileg
+function one(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 1;
+end
+function two(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 2;
+end
+function three(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 3;
+end
+function four(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 4;
+end
+function five(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 5;
+end
+function six(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 6;
+end
+function seven(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 7;
+end
+function eight(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 8;
+end
+function nine(source,eventdata)
+global lampaciklusnext;
+lampaciklusnext = 9;
+end
 
+%tulterheles kezelese
+function olNTS(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 1;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olNTE(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 1;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olWTE(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 1;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olWTN(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 1;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olSTN(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 1;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olSTW(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 1;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 0;
+end
+function olETW(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 1;
+overloadETS = 0;
+nooverload = 0;
+end
+function olETS(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 1;
+nooverload = 0;
+end
+function nool(source,eventdata)
+global overloadNTS;
+global overloadNTE;
+global overloadWTE;
+global overloadWTN;
+global overloadSTN;
+global overloadSTW;
+global overloadETW;
+global overloadETS;
+global nooverload;
 
-
-
-
-
-% map size
-axis([-600, 600, -600, 600]);
+overloadNTS = 0;
+overloadNTE = 0;
+overloadWTE = 0;
+overloadWTN = 0;
+overloadSTN = 0;
+overloadSTW = 0;
+overloadETW = 0;
+overloadETS = 0;
+nooverload = 1;
 end

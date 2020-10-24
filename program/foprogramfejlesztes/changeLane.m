@@ -4,6 +4,8 @@ global lampaciklusaktualis;
 global car;
 global carnum;
 
+global row;
+
 global routeMatrixBase;
 global routeMatrixLeft;
 global routeMatrixStraight;
@@ -44,7 +46,9 @@ E4 = sym('E4');
 X7 = sym('X7');
 X5 = sym('X5');
 
-if(isequal(light{3}{5}, X7) || isequal(light{6}{5}, X7) || isequal(light{9}{5}, X7) || isequal(light{12}{5}, X7) || isequal(light{2}{5}, X5) || isequal(light{5}{5}, X5) || isequal(light{8}{5}, X5) || isequal(light{11}{5}, X5))
+bool = rem(row, 2);
+
+if(bool == 1)
     range = 5;
 else
     range = 10;

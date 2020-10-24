@@ -17,6 +17,8 @@ global light;
 global vantorlodas; %torlodas tipusanak felismeresehez
 global lampaciklusaktualis;
 global lampaciklusnext;
+global row;
+global lampChange;
 
 %3x1 esetben a szembesav tiltasahoz
 global blockn2;
@@ -109,7 +111,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     %lampaciklus es lampa valtasahoz(szamlalok)
     lampChange = 2;
     lampChangeCntr = 1;
-    lampCycleChange = 13;
+    lampCycleChange = 9;
     row = 1;
     
     %autokhoz tartozo szamlalok
@@ -455,7 +457,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             lampChangeCntr = 1;
             
             % lampaciklust valtunk ha a vegere ertunk
-            if(lampCycleChange == 13)
+            if(lampCycleChange == 9)
                 lampCycleChange = 1;
                 
                 %kivetelek kezelese amik helyet 1-es jon
@@ -525,28 +527,28 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                         row = 1;
                         TM = ControllerMatrix;
                     case 2 %N-rol elore miatt, 0 shift
-                        row = 13;
+                        row = 9;
                         TM = ControllerMatrix;
                     case 3 %N-rol balra miatt, 0 shift
-                        row = 25;
+                        row = 17;
                         TM = ControllerMatrix;
                     case 4 %W-rol elore miatt, 3 shift
-                        row = 13;
+                        row = 9;
                         TM = circshift(ControllerMatrix,3,2);
                     case 5 %W-rol balra miatt, 3 shift
-                        row = 25;
+                        row = 17;
                         TM = circshift(ControllerMatrix,3,2);
                     case 6 %S-rol elore miatt, 6 shift
-                        row = 13;
+                        row = 9;
                         TM = circshift(ControllerMatrix,6,2);
                     case 7 %S-rol balra miatt, 6 shift
-                        row = 25;
+                        row = 17;
                         TM = circshift(ControllerMatrix,6,2);
                     case 8 %E-rol elore miatt, 9 shift
-                        row = 13;
+                        row = 9;
                         TM = circshift(ControllerMatrix,9,2);
                     case 9 %E-rol balra miatt, 9 shift
-                        row = 25;
+                        row = 17;
                         TM = circshift(ControllerMatrix,9,2);
                 end
                 linestylechange(lampaciklusaktualis);
@@ -834,9 +836,9 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             %beallitjuk hogy mennyi legyen a lampa ideje az adott sornak
             %megfeleloen es vizsgaljuk hogy addig nem enged uj zoldet amig
             %van valaki a keresztezodesben
-            if(row == 3 || row == 6 || row == 9 || row == 12 || row == 15 || row == 18 || ...
-                    row == 21 || row == 24 || row == 27 || row == 30 || row == 33 || row == 36)
-                lampChange = 2;
+            if(row == 2 || row == 4 || row == 6 || row == 8 || row == 10 || row == 12 || ...
+                    row == 14 || row == 16 || row == 18 || row == 20 || row == 22 || row == 24)
+                lampChange = 3;
                 for m = 1:carnum
                     for n = 1:16
                         if(car{m}{2}.XData == middlepos{n}(1) && car{m}{2}.YData == middlepos{n}(2))
@@ -855,7 +857,6 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             else
                 %TODO: lampChange valtoztatasa forgalomtol fuggoen
                 changeMainLampCycleLength()
-                lampChange = 5;
             end
             
             lampCycleChange = lampCycleChange + 1;

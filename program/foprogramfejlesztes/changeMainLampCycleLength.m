@@ -15,6 +15,9 @@ global elane1;
 global elane2;
 global elane3;
 
+global row;
+global lampChange;
+
 N1 = sym('N1');
 N2 = sym('N2');
 N3 = sym('N3');
@@ -50,25 +53,25 @@ for i = 1:carnum
         if((isequal(car{i}{2}.XData, nlane1{o}(1)) && isequal(car{i}{2}.YData, nlane1{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, nlane2{o}(1)) && isequal(car{i}{2}.YData, nlane2{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, nlane3{o}(1)) && isequal(car{i}{2}.YData, nlane3{o}(2)))...
-                &&  not(isequal(car{i}{5}, N1) && isequal(car{i}{5}, N2) && isequal(car{i}{5}, N3) && isequal(car{i}{5}, N4)))
+                &&  (~isequal(car{i}{5}, N1) && ~isequal(car{i}{5}, N2) && ~isequal(car{i}{5}, N3) && ~isequal(car{i}{5}, N4)))
             nLaneCntrFar = nLaneCntrFar + 1;
             
         elseif((isequal(car{i}{2}.XData, wlane1{o}(1)) && isequal(car{i}{2}.YData, wlane1{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, wlane2{o}(1)) && isequal(car{i}{2}.YData, wlane2{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, wlane3{o}(1)) && isequal(car{i}{2}.YData, wlane3{o}(2)))...
-                &&  not(isequal(car{i}{5}, W1) && isequal(car{i}{5}, W2) && isequal(car{i}{5}, W3) && isequal(car{i}{5}, W4)))
+                &&  (~isequal(car{i}{5}, W1) && ~isequal(car{i}{5}, W2) && ~isequal(car{i}{5}, W3) && ~isequal(car{i}{5}, W4)))
             wLaneCntrFar = wLaneCntrFar + 1;
             
         elseif((isequal(car{i}{2}.XData, slane1{o}(1)) && isequal(car{i}{2}.YData, slane1{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, slane2{o}(1)) && isequal(car{i}{2}.YData, slane2{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, slane3{o}(1)) && isequal(car{i}{2}.YData, slane3{o}(2)))...
-                &&  not(isequal(car{i}{5}, S1) && isequal(car{i}{5}, S2) && isequal(car{i}{5}, S3) && isequal(car{i}{5}, S4)))
+                &&  (~isequal(car{i}{5}, S1) && ~isequal(car{i}{5}, S2) && ~isequal(car{i}{5}, S3) && ~isequal(car{i}{5}, S4)))
             sLaneCntrFar = sLaneCntrFar + 1;
             
         elseif((isequal(car{i}{2}.XData, elane1{o}(1)) && isequal(car{i}{2}.YData, elane1{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, elane2{o}(1)) && isequal(car{i}{2}.YData, elane2{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, elane3{o}(1)) && isequal(car{i}{2}.YData, elane3{o}(2)))...
-                &&  not(isequal(car{i}{5}, E1) && isequal(car{i}{5}, E2) && isequal(car{i}{5}, E3) && isequal(car{i}{5}, E4)))
+                &&  (~isequal(car{i}{5}, E1) && ~isequal(car{i}{5}, E2) && ~isequal(car{i}{5}, E3) && ~isequal(car{i}{5}, E4)))
             eLaneCntrFar = eLaneCntrFar + 1;
         end
     end
@@ -78,31 +81,63 @@ for i = 1:carnum
         if((isequal(car{i}{2}.XData, nlane1{u}(1)) && isequal(car{i}{2}.YData, nlane1{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, nlane2{u}(1)) && isequal(car{i}{2}.YData, nlane2{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, nlane3{u}(1)) && isequal(car{i}{2}.YData, nlane3{u}(2)))...
-                &&  not(isequal(car{i}{5}, N1) && isequal(car{i}{5}, N2) && isequal(car{i}{5}, N3) && isequal(car{i}{5}, N4)))
+                &&  (~isequal(car{i}{5}, N1) && ~isequal(car{i}{5}, N2) && ~isequal(car{i}{5}, N3) && ~isequal(car{i}{5}, N4)))
             nLaneCntrClose = nLaneCntrClose + 1;
             
         elseif((isequal(car{i}{2}.XData, wlane1{u}(1)) && isequal(car{i}{2}.YData, wlane1{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, wlane2{u}(1)) && isequal(car{i}{2}.YData, wlane2{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, wlane3{u}(1)) && isequal(car{i}{2}.YData, wlane3{u}(2)))...
-                &&  not(isequal(car{i}{5}, W1) && isequal(car{i}{5}, W2) && isequal(car{i}{5}, W3) && isequal(car{i}{5}, W4)))
+                &&  (~isequal(car{i}{5}, W1) && ~isequal(car{i}{5}, W2) && ~isequal(car{i}{5}, W3) && ~isequal(car{i}{5}, W4)))
             wLaneCntrClose = wLaneCntrClose + 1;
             
         elseif((isequal(car{i}{2}.XData, slane1{u}(1)) && isequal(car{i}{2}.YData, slane1{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, slane2{u}(1)) && isequal(car{i}{2}.YData, slane2{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, slane3{u}(1)) && isequal(car{i}{2}.YData, slane3{u}(2)))...
-                &&  not(isequal(car{i}{5}, S1) && isequal(car{i}{5}, S2) && isequal(car{i}{5}, S3) && isequal(car{i}{5}, S4)))
+                &&  (~isequal(car{i}{5}, S1) && ~isequal(car{i}{5}, S2) && ~isequal(car{i}{5}, S3) && ~isequal(car{i}{5}, S4)))
             sLaneCntrClose = sLaneCntrClose + 1;
             
         elseif((isequal(car{i}{2}.XData, elane1{u}(1)) && isequal(car{i}{2}.YData, elane1{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, elane2{u}(1)) && isequal(car{i}{2}.YData, elane2{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, elane3{u}(1)) && isequal(car{i}{2}.YData, elane3{u}(2)))...
-                &&  not(isequal(car{i}{5}, E1) && isequal(car{i}{5}, E2) && isequal(car{i}{5}, E3) && isequal(car{i}{5}, E4)))
+                &&  (~isequal(car{i}{5}, E1) && ~isequal(car{i}{5}, E2) && ~isequal(car{i}{5}, E3) && ~isequal(car{i}{5}, E4)))
             eLaneCntrClose = eLaneCntrClose + 1;
         end
     end
 end
 
-disp(eLaneCntrClose)
+%North
+if(row == 1 || row == 9 || row == 17)
+    if(nLaneCntrClose == 0)
+        lampChange = 2;
+        return
+    else
+        lampChange = 5;
+    end
+%West
+elseif(row == 3 || row == 11 || row == 19)
+    if(wLaneCntrClose == 0)
+        lampChange = 2;
+        return
+    else
+        lampChange = 5;
+    end
+%South
+elseif(row == 5 || row == 13 || row == 21)
+    if(sLaneCntrClose == 0)
+        lampChange = 2;
+        return
+    else
+        lampChange = 5;
+    end
+%East
+elseif(row == 7 || row == 15 || row == 23)
+    if(eLaneCntrClose == 0)
+        lampChange = 2;
+        return
+    else
+        lampChange = 5;
+    end
+end
 
 
 end

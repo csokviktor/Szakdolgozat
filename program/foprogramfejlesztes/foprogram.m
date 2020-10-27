@@ -49,6 +49,12 @@ global nooverload;
 
 
 %% lampakhoz tartozo valtozok
+global jamBoolN;
+global jamBoolW;
+global jamBoolS;
+global jamBoolE;
+
+
 %kozep ellenorzesehez
 middlepos = {[-60 60] [-20 60] [20 60] [60 60]...
     [-60 20] [-20 20] [20 20] [60 20]...
@@ -131,6 +137,11 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     allow6 = 0;
     allow8 = 0;
     allow2x2 = 0;
+    
+    jamBoolN = 0;
+    jamBoolW = 0;
+    jamBoolS = 0;
+    jamBoolE = 0;
     
     %tulterheles kezelese
     overloadNTS = 0;

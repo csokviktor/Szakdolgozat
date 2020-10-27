@@ -14,6 +14,11 @@ global slane2;
 global elane1;
 global elane2;
 
+global jamBoolN;
+global jamBoolW;
+global jamBoolS;
+global jamBoolE;
+
 N1 = sym('N1');
 N2 = sym('N2');
 N3 = sym('N3');
@@ -126,7 +131,11 @@ if((jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1)...
         end
     end
     
-    %TODO: check if it works
+    jamBoolN = 1;
+    jamBoolW = 0;
+    jamBoolS = 0;
+    jamBoolE = 0;
+    
     if(nStraightCntr > nLeftCntr + 2)
         lampaciklusnext = 2;
     elseif(nLeftCntr > nStraightCntr + 3)
@@ -153,6 +162,11 @@ if((jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1)...
             end
         end
     end
+    
+    jamBoolN = 0;
+    jamBoolW = 1;
+    jamBoolS = 0;
+    jamBoolE = 0;
     
     if(wStraightCntr > wLeftCntr + 2)
         lampaciklusnext = 4;
@@ -181,6 +195,11 @@ if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
         end
     end    
     
+    jamBoolN = 0;
+    jamBoolW = 0;
+    jamBoolS = 1;
+    jamBoolE = 0;
+    
     if(sStraightCntr > sLeftCntr + 2)
         lampaciklusnext = 6;
     elseif(sLeftCntr > sStraightCntr + 3)
@@ -207,6 +226,11 @@ if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
             end
         end
     end
+    
+    jamBoolN = 0;
+    jamBoolW = 0;
+    jamBoolS = 0;
+    jamBoolE = 1;
     
     if(eStraightCntr > eLeftCntr + 2)
         lampaciklusnext = 8;

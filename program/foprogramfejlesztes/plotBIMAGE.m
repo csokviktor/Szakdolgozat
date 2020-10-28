@@ -23,6 +23,7 @@ global pb15;
 global pb16;
 global pb17;
 global pb18;
+global popUp;
 
 figure('Visible','on','Position',[100,100,1000,500], 'Name', 'Intersection GUI', 'NumberTitle','off');
 %lampaciklus kezi allitasahoz
@@ -38,6 +39,10 @@ pb8 = uicontrol('Style', 'pushbutton', 'Position',[570 210 140 22],'String','Eig
 pb9 = uicontrol('Style', 'pushbutton', 'Position',[570 180 140 22],'String','Nine','Callback', @nine);
 lbl2 = uicontrol('Style', 'text', 'Position', [555 150 170 22], 'String', 'Current lamp cycle type: ', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 lbl3 = uicontrol('Style', 'text', 'Position', [555 120 170 22], 'String', 'Next lamp cycle type: ', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+lbl6 = uicontrol('Style', 'text', 'Position', [555 80 170 30], 'String', 'Max amount of cars to add in a round', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+popUp = uicontrol('Style', 'popupmenu', 'Position', [595 50 100 22], 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+popUp.String = {'1', '2', '3', '4', '5', '6', '7', '8'};
+popUp.Value = 6;
 
 %terheles allitasahoz
 lbl4 = uicontrol('Style', 'text', 'Position', [800 450 140 22], 'String', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');

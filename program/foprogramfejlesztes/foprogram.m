@@ -2,6 +2,7 @@ plotBIMAGE();
 global lbl2;
 global lbl3;
 global lbl5;
+global popUp;
 
 %% utvonalhoz tartozo valtozok letrehozasa
 % global routeMatrixBase;
@@ -175,7 +176,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     prompt2 = {'Enter car number:','Enter cycle type:'};
     dlgtitle2 = 'Input';
     dims2 = [1 30];
-    definput2 = {'100','1'};
+    definput2 = {'300','1'};
     initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
     carnumgoal = str2double(initializedatastr{1});
     cycletype = str2double(initializedatastr{2});
@@ -368,7 +369,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         % uj auto generalasa
         if(whileLoopCounter == 3)
             whileLoopCounter = 0;
-            generateNewCarRand = randi([1 8]);
+            generateNewCarRand = randi([1 popUp.Value]);
             for i = 1:generateNewCarRand
                 if(carnumadded ~= carnumgoal)
                     addCar(); %hozzáadjuk a következo autót
@@ -849,7 +850,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             %van valaki a keresztezodesben
             if(row == 2 || row == 4 || row == 6 || row == 8 || row == 10 || row == 12 || ...
                     row == 14 || row == 16 || row == 18 || row == 20 || row == 22 || row == 24)
-                lampChange = 3;
+                lampChange = 2;
                 for m = 1:carnum
                     for n = 1:16
                         if(car{m}{2}.XData == middlepos{n}(1) && car{m}{2}.YData == middlepos{n}(2))
@@ -868,8 +869,9 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             else
                 %TODO: lampChange valtoztatasa forgalomtol fuggoen
                 changeMainLampCycleLength()
+                disp(lampChange)
+                valami = 1;
             end
-            
             lampCycleChange = lampCycleChange + 1;
         end
         
@@ -883,5 +885,5 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     cycledone = cycledone + 1;
     elapsedtime{cycledone}{1} = toc(tStart);
 end
-figure(2);
-results = bar(elapsedtime);
+% figure(2);
+% results = bar(elapsedtime);

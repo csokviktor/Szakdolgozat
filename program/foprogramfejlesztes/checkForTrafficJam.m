@@ -113,12 +113,12 @@ end
 
 
 
-%% torlodas okanak vizsgalata
-    %Eszaki oldal
+%% torlodas okanak vizsgalata, megszamoljuk h ki merre akar menni
+
+%Eszaki oldal
 if((jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1)...
         || (jamN(5) == 1 && jamN(6) == 1 && jamN(7) == 1)...
         || (jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1 && jamN(5) == 1 && jamN(6) == 1 && jamN(7) == 1))
-    %megszamoljuk h ki merre akar menni
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, nlane1{r}(1)) && isequal(car{t}{2}.YData, nlane1{r}(2)) || isequal(car{t}{2}.XData, nlane2{r}(1)) && isequal(car{t}{2}.YData, nlane2{r}(2)))
@@ -130,27 +130,15 @@ if((jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1)...
             end
         end
     end
-    
     jamBoolN = 1;
-    jamBoolW = 0;
-    jamBoolS = 0;
-    jamBoolE = 0;
-    
-    if(nStraightCntr > nLeftCntr + 2)
-        lampaciklusnext = 2;
-    elseif(nLeftCntr > nStraightCntr + 3)
-        lampaciklusnext = 3;
-    else
-        lampaciklusnext = lampaciklusaktualis;
-    end
-    
-    return
+else
+    jamBoolN = 0;
 end
-    %Nyugati oldal
+
+%Nyugati oldal
 if((jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1)...
         || (jamW(5) == 1 && jamW(6) == 1 && jamW(7) == 1)...
         || (jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1 && jamW(5) == 1 && jamW(6) == 1 && jamW(7) == 1))
-    %megszamoljuk h ki merre akar menni
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, wlane1{r}(1)) && isequal(car{t}{2}.YData, wlane1{r}(2)) || isequal(car{t}{2}.XData, wlane2{r}(1)) && isequal(car{t}{2}.YData, wlane2{r}(2)))
@@ -162,27 +150,15 @@ if((jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1)...
             end
         end
     end
-    
-    jamBoolN = 0;
     jamBoolW = 1;
-    jamBoolS = 0;
-    jamBoolE = 0;
-    
-    if(wStraightCntr > wLeftCntr + 2)
-        lampaciklusnext = 4;
-    elseif(wLeftCntr > wStraightCntr + 3)
-        lampaciklusnext = 5;
-    else
-        lampaciklusnext = lampaciklusaktualis;
-    end
-    
-    return
+else
+    jamBoolW = 0;
 end
-    %Deli oldal
+
+%Deli oldal
 if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
     || (jamS(5) == 1 && jamS(6) == 1 && jamS(7) == 1)...
     || (jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1 && jamS(5) == 1 && jamS(6) == 1 && jamS(7) == 1))
-    %megszamoljuk h ki merre akar menni
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, slane1{r}(1)) && isequal(car{t}{2}.YData, slane1{r}(2)) || isequal(car{t}{2}.XData, slane2{r}(1)) && isequal(car{t}{2}.YData, slane2{r}(2)))
@@ -194,27 +170,15 @@ if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
             end
         end
     end    
-    
-    jamBoolN = 0;
-    jamBoolW = 0;
     jamBoolS = 1;
-    jamBoolE = 0;
-    
-    if(sStraightCntr > sLeftCntr + 2)
-        lampaciklusnext = 6;
-    elseif(sLeftCntr > sStraightCntr + 3)
-        lampaciklusnext = 7;
-    else
-        lampaciklusnext = lampaciklusaktualis;
-    end
-    
-    return
+else
+    jamBoolS = 0;
 end
-    %Keltei oldal
+
+%Keltei oldal
 if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
     || (jamE(5) == 1 && jamE(6) == 1 && jamE(7) == 1)...
     || (jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1 && jamE(5) == 1 && jamE(6) == 1 && jamE(7) == 1))
-    %megszamoljuk h ki merre akar menni
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, elane1{r}(1)) && isequal(car{t}{2}.YData, elane1{r}(2)) || isequal(car{t}{2}.XData, elane2{r}(1)) && isequal(car{t}{2}.YData, elane2{r}(2)))
@@ -226,12 +190,40 @@ if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
             end
         end
     end
-    
-    jamBoolN = 0;
-    jamBoolW = 0;
-    jamBoolS = 0;
     jamBoolE = 1;
+else
+    jamBoolE = 0;
+end
+
+%% Eldontjuk milyen ciklus kovetkezzen
+if((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 0))
+    if(nStraightCntr > nLeftCntr + 2)
+        lampaciklusnext = 2;
+    elseif(nLeftCntr > nStraightCntr + 3)
+        lampaciklusnext = 3;
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
     
+elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
+    if(wStraightCntr > wLeftCntr + 2)
+        lampaciklusnext = 4;
+    elseif(wLeftCntr > wStraightCntr + 3)
+        lampaciklusnext = 5;
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+    
+elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
+    if(sStraightCntr > sLeftCntr + 2)
+        lampaciklusnext = 6;
+    elseif(sLeftCntr > sStraightCntr + 3)
+        lampaciklusnext = 7;
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+    
+elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
     if(eStraightCntr > eLeftCntr + 2)
         lampaciklusnext = 8;
     elseif(eLeftCntr > eStraightCntr + 3)
@@ -239,12 +231,9 @@ if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
     else
         lampaciklusnext = lampaciklusaktualis;
     end
-    
-    return
+else
+    lampaciklusnext = lampaciklusaktualis;
 end
-
-
-
 
 
 end

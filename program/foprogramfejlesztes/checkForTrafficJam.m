@@ -44,12 +44,19 @@ jamE = zeros(1,7);
 
 nStraightCntr = 0;
 nLeftCntr = 0;
+nOtherCntr = 0;
+
 wStraightCntr = 0;
 wLeftCntr = 0;
+wOtherCntr = 0;
+
 sStraightCntr = 0;
 sLeftCntr = 0;
+sOtherCntr = 0;
+
 eStraightCntr = 0;
 eLeftCntr = 0;
+eOtherCntr = 0;
 
 %% torlodas letezesenek vizsgalata
 for o = 1:carnum 
@@ -126,6 +133,8 @@ if((jamN(2) == 1 && jamN(3) == 1 && jamN(4) == 1)...
                     nStraightCntr = nStraightCntr + 1;
                 elseif(isequal(car{t}{5}, E2) || isequal(car{t}{5}, E3) || isequal(car{t}{5}, E4))
                     nLeftCntr = nLeftCntr + 1;
+                else
+                    nOtherCntr = nOtherCntr + 1;
                 end
             end
         end
@@ -146,6 +155,8 @@ if((jamW(2) == 1 && jamW(3) == 1 && jamW(4) == 1)...
                     wStraightCntr = wStraightCntr + 1;
                 elseif(isequal(car{t}{5}, N2) || isequal(car{t}{5}, N3) || isequal(car{t}{5}, N4))
                     wLeftCntr = wLeftCntr + 1;
+                else
+                    wOtherCntr = wOtherCntr + 1;
                 end
             end
         end
@@ -166,6 +177,8 @@ if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
                     sStraightCntr = sStraightCntr + 1;
                 elseif(isequal(car{t}{5}, W2) || isequal(car{t}{5}, W3) || isequal(car{t}{5}, W4))
                     sLeftCntr = sLeftCntr + 1;
+                else
+                    sOtherCntr = sOtherCntr + 1;
                 end
             end
         end
@@ -186,6 +199,8 @@ if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
                     eStraightCntr = eStraightCntr + 1;
                 elseif(isequal(car{t}{5}, S2) || isequal(car{t}{5}, S3) || isequal(car{t}{5}, S4))
                     eLeftCntr = eLeftCntr + 1;
+                else
+                    eOtherCntr = eOtherCntr + 1;
                 end
             end
         end
@@ -196,44 +211,176 @@ else
 end
 
 %% Eldontjuk milyen ciklus kovetkezzen
+if((jamBoolN == 1) || (jamBoolW == 1) || (jamBoolS == 1) || (jamBoolE == 1))
+    nCarNum = nOtherCntr + nStraightCntr + nLeftCntr;
+    wCarNum = wOtherCntr + wStraightCntr + wLeftCntr;
+    sCarNum = sOtherCntr + sStraightCntr + sLeftCntr;
+    eCarNum = eOtherCntr + eStraightCntr + eLeftCntr;
+end
+
+
+%North
 if((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 0))
-    if(nStraightCntr > nLeftCntr + 2)
-        lampaciklusnext = 2;
-    elseif(nLeftCntr > nStraightCntr + 3)
-        lampaciklusnext = 3;
+    decideNextCycleN()
+elseif((jamBoolN == 1) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
+    if(nCarNum > wCarNum + 4)
+        decideNextCycleN()
+    elseif(wCarNum > nCarNum + 4)
+        decideNextCycleW()
     else
         lampaciklusnext = lampaciklusaktualis;
     end
+elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
+    if(nCarNum > sCarNum + 4)
+        decideNextCycleN()
+    elseif(sCarNum > nCarNum + 4)
+        decideNextCycleS()
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
+    if(nCarNum > eCarNum + 4)
+        decideNextCycleN()
+    elseif(eCarNum > nCarNum + 4)
+        decideNextCycleE()
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+
     
+%West
 elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
-    if(wStraightCntr > wLeftCntr + 2)
-        lampaciklusnext = 4;
-    elseif(wLeftCntr > wStraightCntr + 3)
-        lampaciklusnext = 5;
+    decideNextCycleW()
+elseif((jamBoolN == 1) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
+    if(wCarNum > nCarNum + 4)
+        decideNextCycleW()
+    elseif(nCarNum > wCarNum + 4)
+        decideNextCycleN()
     else
         lampaciklusnext = lampaciklusaktualis;
     end
+elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 1) && (jamBoolE == 0))
+    if(wCarNum > sCarNum + 4)
+        decideNextCycleW()
+    elseif(sCarNum > wCarNum + 4)
+        decideNextCycleS()
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 1))
+    if(wCarNum > eCarNum + 4)
+        decideNextCycleW()
+    elseif(eCarNum > wCarNum + 4)
+        decideNextCycleE()
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+   
     
+%South
 elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
-    if(sStraightCntr > sLeftCntr + 2)
-        lampaciklusnext = 6;
-    elseif(sLeftCntr > sStraightCntr + 3)
-        lampaciklusnext = 7;
+    decideNextCycleS()
+elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
+    if(sCarNum > nCarNum + 4)
+        decideNextCycleS()
+    elseif(nCarNum > sCarNum + 4)
+        decideNextCycleN()
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 1) && (jamBoolE == 0))
+    if(sCarNum > wCarNum + 4)
+        decideNextCycleS()
+    elseif(wCarNum > sCarNum + 4)
+        decideNextCycleW()
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 1))
+    if(sCarNum > eCarNum + 4)
+        decideNextCycleS()
+    elseif(eCarNum > sCarNum + 4)
+        decideNextCycleE()
     else
         lampaciklusnext = lampaciklusaktualis;
     end
     
+    
+%East
 elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
-    if(eStraightCntr > eLeftCntr + 2)
-        lampaciklusnext = 8;
-    elseif(eLeftCntr > eStraightCntr + 3)
-        lampaciklusnext = 9;
+    decideNextCycleE()
+elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
+    if(eCarNum > nCarNum + 4)
+        decideNextCycleE()
+    elseif(nCarNum > eCarNum + 4)
+        decideNextCycleN()
     else
         lampaciklusnext = lampaciklusaktualis;
     end
+elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 1))
+    if(eCarNum > wCarNum + 4)
+        decideNextCycleE()
+    elseif(wCarNum > eCarNum + 4)
+        decideNextCycleW()
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 1))
+    if(eCarNum > sCarNum + 4)
+        decideNextCycleE()
+    elseif(sCarNum > eCarNum + 4)
+        decideNextCycleS()
+    else
+        lampaciklusnext = lampaciklusaktualis;
+    end
+    
 else
     lampaciklusnext = lampaciklusaktualis;
 end
+
+
+
+    function decideNextCycleN()
+        if(nStraightCntr > nLeftCntr + 2)
+            lampaciklusnext = 2;
+        elseif(nLeftCntr > nStraightCntr + 3)
+            lampaciklusnext = 3;
+        else
+            lampaciklusnext = lampaciklusaktualis;
+        end
+    end
+
+    function decideNextCycleW()
+        if(wStraightCntr > wLeftCntr + 2)
+            lampaciklusnext = 4;
+        elseif(wLeftCntr > wStraightCntr + 3)
+            lampaciklusnext = 5;
+        else
+            lampaciklusnext = lampaciklusaktualis;
+        end
+    end
+
+    function decideNextCycleS()
+        if(sStraightCntr > sLeftCntr + 2)
+            lampaciklusnext = 6;
+        elseif(sLeftCntr > sStraightCntr + 3)
+            lampaciklusnext = 7;
+        else
+            lampaciklusnext = lampaciklusaktualis;
+        end
+    end
+
+    function decideNextCycleE()
+        if(eStraightCntr > eLeftCntr + 2)
+            lampaciklusnext = 8;
+        elseif(eLeftCntr > eStraightCntr + 3)
+            lampaciklusnext = 9;
+        else
+            lampaciklusnext = lampaciklusaktualis;
+        end
+    end
+
+
 
 
 end

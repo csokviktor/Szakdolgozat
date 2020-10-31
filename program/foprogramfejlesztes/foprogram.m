@@ -2,6 +2,7 @@ plotBIMAGE();
 global lbl2;
 global lbl3;
 global lbl5;
+global popUp;
 
 %% utvonalhoz tartozo valtozok letrehozasa
 % global routeMatrixBase;
@@ -17,6 +18,8 @@ global light;
 global vantorlodas; %torlodas tipusanak felismeresehez
 global lampaciklusaktualis;
 global lampaciklusnext;
+global row;
+global lampChange;
 
 %3x1 esetben a szembesav tiltasahoz
 global blockn2;
@@ -47,6 +50,12 @@ global nooverload;
 
 
 %% lampakhoz tartozo valtozok
+global jamBoolN;
+global jamBoolW;
+global jamBoolS;
+global jamBoolE;
+
+
 %kozep ellenorzesehez
 middlepos = {[-60 60] [-20 60] [20 60] [60 60]...
     [-60 20] [-20 20] [20 20] [60 20]...
@@ -93,7 +102,7 @@ cycledone = 0;
 
 prompt1 = {'Enter cycle number:','Intelligent(1-YES, 0-NO):'};
 dlgtitle1 = 'Input';
-dims1 = [1 20];
+dims1 = [1 30];
 definput1 = {'1','0'};
 initializedatastr = inputdlg(prompt1,dlgtitle1,dims1,definput1);
 cyclenumgoal = str2double(initializedatastr{1});
@@ -109,7 +118,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     %lampaciklus es lampa valtasahoz(szamlalok)
     lampChange = 2;
     lampChangeCntr = 1;
-    lampCycleChange = 13;
+    lampCycleChange = 9;
     row = 1;
     
     %autokhoz tartozo szamlalok
@@ -129,6 +138,11 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     allow6 = 0;
     allow8 = 0;
     allow2x2 = 0;
+    
+    jamBoolN = 0;
+    jamBoolW = 0;
+    jamBoolS = 0;
+    jamBoolE = 0;
     
     %tulterheles kezelese
     overloadNTS = 0;
@@ -158,16 +172,16 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     generateNewCarRand = 0;
     whileLoopCounter = 0;
     
-%     %autok szamanak bekerese felhasznalotol
-%     prompt2 = {'Enter car number:','Enter cycle type:'};
-%     dlgtitle2 = 'Input';
-%     dims2 = [1 20];
-%     definput2 = {'100','1'};
-%     initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
-%     carnumgoal = str2double(initializedatastr{1});
-%     cycletype = str2double(initializedatastr{2});
-    carnumgoal = 300;
-    cycletype = 1;
+    %autok szamanak bekerese felhasznalotol
+    prompt2 = {'Enter car number:','Enter cycle type:'};
+    dlgtitle2 = 'Input';
+    dims2 = [1 30];
+    definput2 = {'300','1'};
+    initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
+    carnumgoal = str2double(initializedatastr{1});
+    cycletype = str2double(initializedatastr{2});
+    %carnumgoal = 300;
+    %cycletype = 1;
     
     if(cycledone == 5 || cycledone == 6 || cycledone == 7 || cycledone == 8 || cycledone == 9)
         olNTS();
@@ -355,7 +369,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         % uj auto generalasa
         if(whileLoopCounter == 3)
             whileLoopCounter = 0;
-            generateNewCarRand = randi([1 8]);
+            generateNewCarRand = randi([1 popUp.Value]);
             for i = 1:generateNewCarRand
                 if(carnumadded ~= carnumgoal)
                     addCar(); %hozzáadjuk a következo autót
@@ -455,7 +469,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             lampChangeCntr = 1;
             
             % lampaciklust valtunk ha a vegere ertunk
-            if(lampCycleChange == 13)
+            if(lampCycleChange == 9)
                 lampCycleChange = 1;
                 
                 %kivetelek kezelese amik helyet 1-es jon
@@ -525,28 +539,28 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                         row = 1;
                         TM = ControllerMatrix;
                     case 2 %N-rol elore miatt, 0 shift
-                        row = 13;
+                        row = 9;
                         TM = ControllerMatrix;
                     case 3 %N-rol balra miatt, 0 shift
-                        row = 25;
+                        row = 17;
                         TM = ControllerMatrix;
                     case 4 %W-rol elore miatt, 3 shift
-                        row = 13;
+                        row = 9;
                         TM = circshift(ControllerMatrix,3,2);
                     case 5 %W-rol balra miatt, 3 shift
-                        row = 25;
+                        row = 17;
                         TM = circshift(ControllerMatrix,3,2);
                     case 6 %S-rol elore miatt, 6 shift
-                        row = 13;
+                        row = 9;
                         TM = circshift(ControllerMatrix,6,2);
                     case 7 %S-rol balra miatt, 6 shift
-                        row = 25;
+                        row = 17;
                         TM = circshift(ControllerMatrix,6,2);
                     case 8 %E-rol elore miatt, 9 shift
-                        row = 13;
+                        row = 9;
                         TM = circshift(ControllerMatrix,9,2);
                     case 9 %E-rol balra miatt, 9 shift
-                        row = 25;
+                        row = 17;
                         TM = circshift(ControllerMatrix,9,2);
                 end
                 linestylechange(lampaciklusaktualis);
@@ -834,8 +848,8 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             %beallitjuk hogy mennyi legyen a lampa ideje az adott sornak
             %megfeleloen es vizsgaljuk hogy addig nem enged uj zoldet amig
             %van valaki a keresztezodesben
-            if(row == 3 || row == 6 || row == 9 || row == 12 || row == 15 || row == 18 || ...
-                    row == 21 || row == 24 || row == 27 || row == 30 || row == 33 || row == 36)
+            if(row == 2 || row == 4 || row == 6 || row == 8 || row == 10 || row == 12 || ...
+                    row == 14 || row == 16 || row == 18 || row == 20 || row == 22 || row == 24)
                 lampChange = 2;
                 for m = 1:carnum
                     for n = 1:16
@@ -855,9 +869,9 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             else
                 %TODO: lampChange valtoztatasa forgalomtol fuggoen
                 changeMainLampCycleLength()
-                lampChange = 5;
+                disp(lampChange)
+                valami = 1;
             end
-            
             lampCycleChange = lampCycleChange + 1;
         end
         
@@ -871,5 +885,5 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     cycledone = cycledone + 1;
     elapsedtime{cycledone}{1} = toc(tStart);
 end
-figure(2);
-results = bar(elapsedtime);
+% figure(2);
+% results = bar(elapsedtime);

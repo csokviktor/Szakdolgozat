@@ -18,6 +18,9 @@ global light;
 global vantorlodas; %torlodas tipusanak felismeresehez
 global lampaciklusaktualis;
 global lampaciklusnext;
+global lampaciklusnexttemp;
+
+global cycleVerificationCntr;
 global row;
 global lampChange;
 
@@ -282,6 +285,8 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     end
     
     %uj lampaciklus kezelese
+    cycleVerificationCntr = 0;
+    lampaciklusnexttemp = [0 0];
     lampaciklusnext = cycletype;
     lampaciklusaktualis = lampaciklusnext;
     
@@ -404,7 +409,6 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
 
         checkLampStatus(); %tudjuk h melyik lampa elott vagyunk
         checkSurrounding();
-        checkForTrafficJam();
         
         %megnezzuk h lephetunk e es az alapjan hatarozzuk meg hogy mi tortenik
         for t = 1:carnum
@@ -462,6 +466,9 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         lampChangeCntr = lampChangeCntr + 1;
         
         %% lampak
+        
+        %torlodas ellenorzese
+        checkForTrafficJam();
         
         %ha eleget lepett az auto resz valtjuk a lampat
         if(lampChange == lampChangeCntr)

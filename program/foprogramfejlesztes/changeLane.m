@@ -28,7 +28,6 @@ global elane1;
 global elane2;
 global elane3;
 
-global light;
 
 N2 = sym('N2');
 N3 = sym('N3');

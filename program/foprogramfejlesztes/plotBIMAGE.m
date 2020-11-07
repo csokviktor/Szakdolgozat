@@ -517,56 +517,38 @@ end
 %lampaciklusok valtasa kezileg
 function one(source,eventdata)
 global lampaciklusnext;
-global lampaciklusnexttemp;
-lampaciklusnexttemp = 1;
 lampaciklusnext = 1;
 end
 function two(source,eventdata)
 global lampaciklusnext;
-global lampaciklusnexttemp;
-lampaciklusnexttemp = 2;
 lampaciklusnext = 2;
 end
 function three(source,eventdata)
 global lampaciklusnext;
-global lampaciklusnexttemp;
-lampaciklusnexttemp = 3;
 lampaciklusnext = 3;
 end
 function four(source,eventdata)
 global lampaciklusnext;
-global lampaciklusnexttemp;
-lampaciklusnexttemp = 4;
 lampaciklusnext = 4;
 end
 function five(source,eventdata)
 global lampaciklusnext;
-global lampaciklusnexttemp;
-lampaciklusnexttemp = 5;
 lampaciklusnext = 5;
 end
 function six(source,eventdata)
 global lampaciklusnext;
-global lampaciklusnexttemp;
-lampaciklusnexttemp = 6;
 lampaciklusnext = 6;
 end
 function seven(source,eventdata)
 global lampaciklusnext;
-global lampaciklusnexttemp;
-lampaciklusnexttemp = 7;
 lampaciklusnext = 7;
 end
 function eight(source,eventdata)
 global lampaciklusnext;
-global lampaciklusnexttemp;
-lampaciklusnexttemp = 8;
 lampaciklusnext = 8;
 end
 function nine(source,eventdata)
 global lampaciklusnext;
-global lampaciklusnexttemp;
-lampaciklusnexttemp = 9;
 lampaciklusnext = 9;
 end
 

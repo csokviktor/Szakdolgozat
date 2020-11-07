@@ -42,7 +42,7 @@ lbl3 = uicontrol('Style', 'text', 'Position', [555 120 170 22], 'String', 'Next 
 lbl6 = uicontrol('Style', 'text', 'Position', [555 80 170 30], 'String', 'Max amount of cars to add in a round', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 popUp = uicontrol('Style', 'popupmenu', 'Position', [595 50 100 22], 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 popUp.String = {'1', '2', '3', '4', '5', '6', '7', '8'};
-popUp.Value = 6;
+popUp.Value = 5;
 
 %terheles allitasahoz
 lbl4 = uicontrol('Style', 'text', 'Position', [800 450 140 22], 'String', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');

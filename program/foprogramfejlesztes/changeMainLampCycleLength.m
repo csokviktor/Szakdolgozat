@@ -116,9 +116,11 @@ if(row == 1 || row == 9 || row == 17)
         lampChange = 2;
     elseif(jamBoolN == 1)
         lampChange = 10;
-    elseif((nLaneCntrClose >= 4) && (nLaneCntrClose <= 6))
-        lampChange = 6;
-    else %meg egy 8-os kene hogy ha sokan vannak de meg nincs torlodas
+    elseif((nLaneCntrClose >= 4) && (nLaneCntrClose <= 6) && (nLaneCntrFar < 2))
+        lampChange = 4;
+    elseif((nLaneCntrClose >= 4) && (nLaneCntrClose <= 6) && (nLaneCntrFar > 7))
+        lampChange = 8;
+    else 
         lampChange = 6;
     end
 %West
@@ -127,8 +129,10 @@ elseif(row == 3 || row == 11 || row == 19)
         lampChange = 2;
     elseif(jamBoolW == 1)
         lampChange = 10;
-    elseif((wLaneCntrClose >= 4) && (wLaneCntrClose <= 6))
-        lampChange = 6;
+    elseif((wLaneCntrClose >= 4) && (wLaneCntrClose <= 6)&& (wLaneCntrFar < 2))
+        lampChange = 4;
+    elseif((wLaneCntrClose >= 4) && (wLaneCntrClose <= 6) && (wLaneCntrFar > 7))
+        lampChange = 8;
     else
         lampChange = 6;
     end
@@ -138,8 +142,10 @@ elseif(row == 5 || row == 13 || row == 21)
         lampChange = 2;
     elseif(jamBoolS == 1)
         lampChange = 10;
-    elseif((sLaneCntrClose >= 4) && (sLaneCntrClose <= 6))
-        lampChange = 6;
+    elseif((sLaneCntrClose >= 4) && (sLaneCntrClose <= 6) && (sLaneCntrFar < 2))
+        lampChange = 4;
+    elseif((sLaneCntrClose >= 4) && (sLaneCntrClose <= 6) && (sLaneCntrFar > 7))
+        lampChange = 8;
     else
         lampChange = 6;
     end
@@ -149,8 +155,10 @@ elseif(row == 7 || row == 15 || row == 23)
         lampChange = 2;
     elseif(jamBoolE == 1)
         lampChange = 10;    
-    elseif((eLaneCntrClose >= 4) && (eLaneCntrClose <= 6))
-        lampChange = 6;
+    elseif((eLaneCntrClose >= 4) && (eLaneCntrClose <= 6) && (eLaneCntrFar < 2))
+        lampChange = 4;
+    elseif((eLaneCntrClose >= 4) && (eLaneCntrClose <= 6) && (eLaneCntrFar > 7))
+        lampChange = 8;
     else
         lampChange = 6;
     end

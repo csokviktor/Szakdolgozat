@@ -190,7 +190,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
 %     initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
 %     carnumgoal = str2double(initializedatastr{1});
 %     cycletype = str2double(initializedatastr{2});
-    carnumgoal = 500;
+    carnumgoal = 400;
     
     if(cycledone == 0)
         overloadNTS = 0;

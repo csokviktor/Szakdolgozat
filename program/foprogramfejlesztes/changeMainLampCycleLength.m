@@ -112,11 +112,11 @@ end
 
 %North
 if(row == 1 || row == 9 || row == 17)
-    if(nLaneCntrClose <= 3)
+    if(nLaneCntrClose <= 1)
         lampChange = 2;
     elseif(jamBoolN == 1)
         lampChange = 10;
-    elseif((nLaneCntrClose >= 4) && (nLaneCntrClose <= 6) && (nLaneCntrFar < 2))
+    elseif((nLaneCntrClose >= 2) && (nLaneCntrClose <= 4) && (nLaneCntrFar < 2))
         lampChange = 4;
     elseif((nLaneCntrClose >= 4) && (nLaneCntrClose <= 6) && (nLaneCntrFar > 7))
         lampChange = 8;
@@ -125,11 +125,11 @@ if(row == 1 || row == 9 || row == 17)
     end
 %West
 elseif(row == 3 || row == 11 || row == 19)
-    if(wLaneCntrClose <= 3)
+    if(wLaneCntrClose <= 1)
         lampChange = 2;
     elseif(jamBoolW == 1)
         lampChange = 10;
-    elseif((wLaneCntrClose >= 4) && (wLaneCntrClose <= 6)&& (wLaneCntrFar < 2))
+    elseif((wLaneCntrClose >= 2) && (wLaneCntrClose <= 4)&& (wLaneCntrFar < 2))
         lampChange = 4;
     elseif((wLaneCntrClose >= 4) && (wLaneCntrClose <= 6) && (wLaneCntrFar > 7))
         lampChange = 8;
@@ -138,11 +138,11 @@ elseif(row == 3 || row == 11 || row == 19)
     end
 %South
 elseif(row == 5 || row == 13 || row == 21)
-    if(sLaneCntrClose <= 3)
+    if(sLaneCntrClose <= 1)
         lampChange = 2;
     elseif(jamBoolS == 1)
         lampChange = 10;
-    elseif((sLaneCntrClose >= 4) && (sLaneCntrClose <= 6) && (sLaneCntrFar < 2))
+    elseif((sLaneCntrClose >= 2) && (sLaneCntrClose <= 4) && (sLaneCntrFar < 2))
         lampChange = 4;
     elseif((sLaneCntrClose >= 4) && (sLaneCntrClose <= 6) && (sLaneCntrFar > 7))
         lampChange = 8;
@@ -151,11 +151,11 @@ elseif(row == 5 || row == 13 || row == 21)
     end
 %East
 elseif(row == 7 || row == 15 || row == 23)
-    if(eLaneCntrClose <= 3)
+    if(eLaneCntrClose <= 1)
         lampChange = 2;
     elseif(jamBoolE == 1)
         lampChange = 10;    
-    elseif((eLaneCntrClose >= 4) && (eLaneCntrClose <= 6) && (eLaneCntrFar < 2))
+    elseif((eLaneCntrClose >= 2) && (eLaneCntrClose <= 4) && (eLaneCntrFar < 2))
         lampChange = 4;
     elseif((eLaneCntrClose >= 4) && (eLaneCntrClose <= 6) && (eLaneCntrFar > 7))
         lampChange = 8;

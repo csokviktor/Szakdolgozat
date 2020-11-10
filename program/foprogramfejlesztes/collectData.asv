@@ -150,16 +150,19 @@ end
 % end
 
 if(light{1}{5} == X6 || light{1}{5} == X8)
-    greenDirection = 1;
-elseif(light{4}{5} == X6 || light{4}{5} == X8)
-    greenDirection = 2;
-elseif(light{7}{5} == X6 || light{7}{5} == X8)
-    greenDirection = 3;
-elseif(light{10}{5} == X6 || light{10}{5} == X8)
-    greenDirection = 4;
 end
 
 
+%Give the overload type
+% global overloadNTS;
+% global overloadNTE;
+% global overloadWTE;
+% global overloadWTN;
+% global overloadSTN;
+% global overloadSTW;
+% global overloadETW;
+% global overloadETS;
+% global nooverload;
 if(nooverload == 1)
     overloadType = 0;
 elseif(overloadNTS)

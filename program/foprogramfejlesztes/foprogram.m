@@ -190,7 +190,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
 %     initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
 %     carnumgoal = str2double(initializedatastr{1});
 %     cycletype = str2double(initializedatastr{2});
-    carnumgoal = 400;
+    carnumgoal = 100;
     
     if(cycledone == 0)
         overloadNTS = 0;
@@ -784,7 +784,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             
             light = changeLight(TM, row, light);
            
-            resultMatrix = collectData(resultMatrix, car, carnum, lampaciklusaktualis, row);
+            
             
             
             %beallitjuk hogy mennyi legyen a lampa ideje az adott sornak
@@ -816,6 +816,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             lampCycleChange = lampCycleChange + 1;
         end
         
+        resultMatrix = collectData(resultMatrix, car, carnum, lampaciklusaktualis, light);
         
         %utkozes kezeles
         if(isequal(collision{1}, 1))

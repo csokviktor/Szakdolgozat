@@ -114,11 +114,6 @@ definput1 = {'1','0'};
 initializedatastr = inputdlg(prompt1,dlgtitle1,dims1,definput1);
 cyclenumgoal = str2double(initializedatastr{1});
 intelligent = str2double(initializedatastr{2});
-elapsedtime = cell(1,cyclenumgoal);
-for q = 1:cyclenumgoal
-    elapsedtime{q} = cell(1,11);
-    elapsedtime{q}{11} = 0;
-end
 
 while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     %valtozok nullazasa
@@ -190,7 +185,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
 %     initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
 %     carnumgoal = str2double(initializedatastr{1});
 %     cycletype = str2double(initializedatastr{2});
-    carnumgoal = 100;
+    carnumgoal = 400;
     
     if(cycledone == 0)
         overloadNTS = 0;
@@ -301,7 +296,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 1;
-        cycletype = 1;
+        cycletype = 2;
     elseif(cycledone == 10)
         overloadNTS = 1;
         overloadNTE = 0;
@@ -312,7 +307,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 2;
     elseif(cycledone == 11)
         overloadNTS = 0;
         overloadNTE = 1;
@@ -323,7 +318,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 2;
     elseif(cycledone == 12)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -334,7 +329,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 2;
     elseif(cycledone == 13)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -345,7 +340,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 2;
     elseif(cycledone == 14)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -356,7 +351,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 2;
     elseif(cycledone == 15)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -367,7 +362,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 2;
     elseif(cycledone == 16)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -378,7 +373,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 1;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 2;
     elseif(cycledone == 17)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -389,7 +384,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 1;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 2;
     elseif(cycledone == 18)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -400,7 +395,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 1;
-        cycletype = 1;
+        cycletype = 3;
     elseif(cycledone == 19)
         overloadNTS = 1;
         overloadNTE = 0;
@@ -411,7 +406,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 3;
     elseif(cycledone == 20)
         overloadNTS = 0;
         overloadNTE = 1;
@@ -422,7 +417,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 3;
     elseif(cycledone == 21)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -433,7 +428,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 3;
     elseif(cycledone == 22)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -444,7 +439,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 3;
     elseif(cycledone == 23)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -455,7 +450,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 3;
     elseif(cycledone == 24)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -466,7 +461,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 3;
     elseif(cycledone == 25)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -477,7 +472,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 1;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 3;
     elseif(cycledone == 26)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -488,7 +483,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 1;
         nooverload = 0;
-        cycletype = 1;
+        cycletype = 3;
     end
     
     
@@ -508,8 +503,6 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         car{i}{8} = 0;
     end
     
-    %idomeres elinditasa
-    tStart = tic;
     
     while(carnumarrived ~= carnumgoal)
         %% set the text on the button group
@@ -595,9 +588,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         if(lampaciklusaktualis ~= lampaciklusnext)
             changeRouteSpecific();
         elseif(lampaciklusaktualis == lampaciklusnext) %utvonalak frissitese, hogy jobb pozicioba legyenek
-            tStart2 = tic;
             changeLane();
-            elapsedtime{cycledone+1}{11} = elapsedtime{cycledone+1}{11} + toc(tStart2);
         end
         
         
@@ -828,7 +819,4 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     path = strcat('C:\Users\csokviktor\Desktop\eredmenyek\test', int2str(cycledone), '.xlsx');
     xlswrite(path, resultMatrix)
     cycledone = cycledone + 1;
-    elapsedtime{cycledone}{1} = toc(tStart);
 end
-% figure(2);
-% results = bar(elapsedtime);

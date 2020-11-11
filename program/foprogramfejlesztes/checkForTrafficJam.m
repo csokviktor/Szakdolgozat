@@ -344,7 +344,11 @@ if(intelligent == 1)
             end
             
         else
-            lampaciklusnext = lampaciklusaktualis;
+            if((lampaciklusnexttemp(1) == 0))
+                lampaciklusnexttemp(1) = 1;
+            elseif(cycleVerificationCntr == 20)
+                lampaciklusnexttemp(2) = 1;
+            end
         end
     end
     

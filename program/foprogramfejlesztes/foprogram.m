@@ -185,7 +185,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
 %     initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
 %     carnumgoal = str2double(initializedatastr{1});
 %     cycletype = str2double(initializedatastr{2});
-    carnumgoal = 400;
+    carnumgoal = 500;
     
     if(cycledone == 0)
         overloadNTS = 0;
@@ -800,7 +800,8 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                 end
                 
             else
-                changeMainLampCycleLength()
+                lampChange = 6;
+                %changeMainLampCycleLength()
                 disp(lampChange)
                 disp(row)
             end
@@ -813,7 +814,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         if(isequal(collision{1}, 1))
             break;
         end
-        pause(0.5);
+        pause(0.1);
         whileLoopCounter = whileLoopCounter + 1;
     end
     path = strcat('C:\Users\csokviktor\Desktop\eredmenyek\test', int2str(cycledone), '.xlsx');

@@ -42,7 +42,7 @@ lbl3 = uicontrol('Style', 'text', 'Position', [555 120 170 22], 'String', 'Next 
 lbl6 = uicontrol('Style', 'text', 'Position', [555 80 170 30], 'String', 'Max amount of cars to add in a round', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 popUp = uicontrol('Style', 'popupmenu', 'Position', [595 50 100 22], 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
 popUp.String = {'1', '2', '3', '4', '5', '6', '7', '8'};
-popUp.Value = 5;
+popUp.Value = 6;
 
 %terheles allitasahoz
 lbl4 = uicontrol('Style', 'text', 'Position', [800 450 140 22], 'String', 'Overload type selector', 'HorizontalAlignment', 'center', 'FontWeight', 'bold');
@@ -517,39 +517,66 @@ end
 %lampaciklusok valtasa kezileg
 function one(source,eventdata)
 global lampaciklusnext;
-lampaciklusnext = 1;
+global intelligent;
+if(intelligent == 0)
+    lampaciklusnext = 1;
+end
 end
 function two(source,eventdata)
 global lampaciklusnext;
-lampaciklusnext = 2;
+global intelligent;
+if(intelligent == 0)
+    lampaciklusnext = 2;
+end
 end
 function three(source,eventdata)
 global lampaciklusnext;
-lampaciklusnext = 3;
+global intelligent;
+if(intelligent == 0)
+    lampaciklusnext = 3;
+end
 end
 function four(source,eventdata)
 global lampaciklusnext;
-lampaciklusnext = 4;
+global intelligent;
+if(intelligent == 0)
+    lampaciklusnext = 4;
+end
 end
 function five(source,eventdata)
 global lampaciklusnext;
-lampaciklusnext = 5;
+global intelligent;
+if(intelligent == 0)
+    lampaciklusnext = 5;
+end
 end
 function six(source,eventdata)
 global lampaciklusnext;
-lampaciklusnext = 6;
+global intelligent;
+if(intelligent == 0)
+    lampaciklusnext = 6;
+end
 end
 function seven(source,eventdata)
 global lampaciklusnext;
-lampaciklusnext = 7;
+global intelligent;
+if(intelligent == 0)
+    lampaciklusnext = 7;
+end
 end
 function eight(source,eventdata)
 global lampaciklusnext;
-lampaciklusnext = 8;
+global intelligent;
+if(intelligent == 0)
+    lampaciklusnext = 8;
+end
 end
 function nine(source,eventdata)
 global lampaciklusnext;
-lampaciklusnext = 9;
+global intelligent;
+if(intelligent == 0)
+    lampaciklusnext = 9;
+end
 end
 
 %tulterheles kezelese

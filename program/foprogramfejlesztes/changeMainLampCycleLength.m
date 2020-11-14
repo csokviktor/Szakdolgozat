@@ -23,6 +23,8 @@ global jamBoolE;
 global row;
 global lampChange;
 
+global lampaciklusaktualis;
+
 N1 = sym('N1');
 N2 = sym('N2');
 N3 = sym('N3');
@@ -110,47 +112,158 @@ for i = 1:carnum
     end
 end
 
-%North
+
 if(row == 1 || row == 9 || row == 17)
-    if(nLaneCntrClose <= 3)
-        lampChange = 2;
-    elseif(jamBoolN == 1)
-        lampChange = 10;
-    elseif((nLaneCntrClose >= 4) && (nLaneCntrClose <= 6))
-        lampChange = 6;
-    else %meg egy 8-os kene hogy ha sokan vannak de meg nincs torlodas
-        lampChange = 6;
+    if(lampaciklusaktualis == 1 || lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
+        closeCntr = nLaneCntrClose;
+        farCntr = nLaneCntrFar;
+        jamBool = jamBoolN;
+    elseif(lampaciklusaktualis == 4 || lampaciklusaktualis == 5)
+        closeCntr = wLaneCntrClose;
+        farCntr = wLaneCntrFar;
+        jamBool = jamBoolW;
+    elseif(lampaciklusaktualis == 6 || lampaciklusaktualis == 7)
+        closeCntr = sLaneCntrClose;
+        farCntr = sLaneCntrFar;
+        jamBool = jamBoolS;
+    elseif(lampaciklusaktualis == 8 || lampaciklusaktualis == 9)
+        closeCntr = eLaneCntrClose;
+        farCntr = eLaneCntrFar;
+        jamBool = jamBoolE;
     end
-%West
+    
+    if(row == 9)
+        if(closeCntr <= 1)
+            lampChange = 2;
+        elseif(jamBool == 1)
+            lampChange = 10;
+        elseif((closeCntr >= 3) && (closeCntr <= 6) && (farCntr < 3))
+            lampChange = 4;
+        elseif((closeCntr >= 6) && (closeCntr <= 9) && (farCntr > 9))
+            lampChange = 8;
+        else
+            lampChange = 6;
+        end
+    else
+        if(closeCntr <= 1)
+            lampChange = 2;
+        elseif(jamBool == 1)
+            lampChange = 10;
+        elseif((closeCntr >= 2) && (closeCntr <= 4) && (farCntr < 2))
+            lampChange = 4;
+        elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
+            lampChange = 8;
+        else
+            lampChange = 6;
+        end
+    end
+
+
 elseif(row == 3 || row == 11 || row == 19)
-    if(wLaneCntrClose <= 3)
+    if(lampaciklusaktualis == 1 || lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
+        closeCntr = wLaneCntrClose;
+        farCntr = wLaneCntrFar;
+        jamBool = jamBoolW;
+    elseif(lampaciklusaktualis == 4 || lampaciklusaktualis == 5)
+        closeCntr = sLaneCntrClose;
+        farCntr = sLaneCntrFar;
+        jamBool = jamBoolS;
+    elseif(lampaciklusaktualis == 6 || lampaciklusaktualis == 7)
+        closeCntr = eLaneCntrClose;
+        farCntr = eLaneCntrFar;
+        jamBool = jamBoolE;
+    elseif(lampaciklusaktualis == 8 || lampaciklusaktualis == 9)
+        closeCntr = nLaneCntrClose;
+        farCntr = nLaneCntrFar;
+        jamBool = jamBoolN;
+    end
+    
+    if(closeCntr <= 1)
         lampChange = 2;
-    elseif(jamBoolW == 1)
+    elseif(jamBool == 1)
         lampChange = 10;
-    elseif((wLaneCntrClose >= 4) && (wLaneCntrClose <= 6))
-        lampChange = 6;
+    elseif((closeCntr >= 2) && (closeCntr <= 4)&& (farCntr < 2))
+        lampChange = 4;
+    elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
+        lampChange = 8;
     else
         lampChange = 6;
     end
-%South
+
+    
 elseif(row == 5 || row == 13 || row == 21)
-    if(sLaneCntrClose <= 3)
-        lampChange = 2;
-    elseif(jamBoolS == 1)
-        lampChange = 10;
-    elseif((sLaneCntrClose >= 4) && (sLaneCntrClose <= 6))
-        lampChange = 6;
-    else
-        lampChange = 6;
+    if(lampaciklusaktualis == 1 || lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
+        closeCntr = sLaneCntrClose;
+        farCntr = sLaneCntrFar;
+        jamBool = jamBoolS;
+    elseif(lampaciklusaktualis == 4 || lampaciklusaktualis == 5)
+        closeCntr = eLaneCntrClose;
+        farCntr = eLaneCntrFar;
+        jamBool = jamBoolE;
+    elseif(lampaciklusaktualis == 6 || lampaciklusaktualis == 7)
+        closeCntr = nLaneCntrClose;
+        farCntr = nLaneCntrFar;
+        jamBool = jamBoolN;
+    elseif(lampaciklusaktualis == 8 || lampaciklusaktualis == 9)
+        closeCntr = wLaneCntrClose;
+        farCntr = wLaneCntrFar;
+        jamBool = jamBoolW;
     end
-%East
+    
+    if(row == 13)
+        if(closeCntr <= 1)
+            lampChange = 2;
+        elseif(jamBool == 1)
+            lampChange = 10;
+        elseif((closeCntr >= 2) && (closeCntr <= 3) && (farCntr < 2))
+            lampChange = 4;
+        elseif((closeCntr >= 3) && (closeCntr <= 4) && (farCntr > 5))
+            lampChange = 8;
+        else
+            lampChange = 6;
+        end
+    else
+        if(closeCntr <= 1)
+            lampChange = 2;
+        elseif(jamBool == 1)
+            lampChange = 10;
+        elseif((closeCntr >= 2) && (closeCntr <= 4) && (farCntr < 2))
+            lampChange = 4;
+        elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
+            lampChange = 8;
+        else
+            lampChange = 6;
+        end
+    end
+    
+
 elseif(row == 7 || row == 15 || row == 23)
-    if(eLaneCntrClose <= 3)
+    if(lampaciklusaktualis == 1 || lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
+        closeCntr = eLaneCntrClose;
+        farCntr = eLaneCntrFar;
+        jamBool = jamBoolE;
+    elseif(lampaciklusaktualis == 4 || lampaciklusaktualis == 5)
+        closeCntr = nLaneCntrClose;
+        farCntr = nLaneCntrFar;
+        jamBool = jamBoolN;
+    elseif(lampaciklusaktualis == 6 || lampaciklusaktualis == 7)
+        closeCntr = wLaneCntrClose;
+        farCntr = wLaneCntrFar;
+        jamBool = jamBoolW;
+    elseif(lampaciklusaktualis == 8 || lampaciklusaktualis == 9)
+        closeCntr = sLaneCntrClose;
+        farCntr = sLaneCntrFar;
+        jamBool = jamBoolS;
+    end
+    
+    if(closeCntr <= 1)
         lampChange = 2;
-    elseif(jamBoolE == 1)
+    elseif(jamBool == 1)
         lampChange = 10;    
-    elseif((eLaneCntrClose >= 4) && (eLaneCntrClose <= 6))
-        lampChange = 6;
+    elseif((closeCntr >= 2) && (closeCntr <= 4) && (farCntr < 2))
+        lampChange = 4;
+    elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
+        lampChange = 8;
     else
         lampChange = 6;
     end

@@ -13,6 +13,7 @@ global popUp;
 % global endgoalsFT4;
 % global endgoalsFT6;
 % global endgoalsFT8;
+
 global ControllerMatrix;
 global light;
 global vantorlodas; %torlodas tipusanak felismeresehez
@@ -66,6 +67,8 @@ middlepos = {[-60 60] [-20 60] [20 60] [60 60]...
     [-60 -60] [-20 -60] [20 -60] [60 -60]};
 
 
+
+
 %valtozok
 X1 = sym('X1');
 X2 = sym('X2');
@@ -101,6 +104,7 @@ collision{1} = 0;
 
 
 %% foprogram
+global intelligent;
 cycledone = 0;
 
 prompt1 = {'Enter cycle number:','Intelligent(1-YES, 0-NO):'};
@@ -110,11 +114,6 @@ definput1 = {'1','0'};
 initializedatastr = inputdlg(prompt1,dlgtitle1,dims1,definput1);
 cyclenumgoal = str2double(initializedatastr{1});
 intelligent = str2double(initializedatastr{2});
-elapsedtime = cell(1,cyclenumgoal);
-for q = 1:cyclenumgoal
-    elapsedtime{q} = cell(1,11);
-    elapsedtime{q}{11} = 0;
-end
 
 while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     %valtozok nullazasa
@@ -171,118 +170,322 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     %sarga lampa tartasahoz ha van belul valaki
     breakbool1 = 0;
     
+    %eredmeny matrix
+    resultMatrix = []; %[ncarNO, wcarNO, scarNO, ecarNO, greenDirection, lampCycleType, overloadType]
+    
     %autok generalasahoz
     generateNewCarRand = 0;
     whileLoopCounter = 0;
     
     %autok szamanak bekerese felhasznalotol
-    prompt2 = {'Enter car number:','Enter cycle type:'};
-    dlgtitle2 = 'Input';
-    dims2 = [1 30];
-    definput2 = {'300','1'};
-    initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
-    carnumgoal = str2double(initializedatastr{1});
-    cycletype = str2double(initializedatastr{2});
-    %carnumgoal = 300;
-    %cycletype = 1;
+%     prompt2 = {'Enter car number:','Enter cycle type:'};
+%     dlgtitle2 = 'Input';
+%     dims2 = [1 30];
+%     definput2 = {'500','1'};
+%     initializedatastr = inputdlg(prompt2,dlgtitle2,dims2,definput2);
+%     carnumgoal = str2double(initializedatastr{1});
+%     cycletype = str2double(initializedatastr{2});
+    carnumgoal = 400;
     
-    if(cycledone == 5 || cycledone == 6 || cycledone == 7 || cycledone == 8 || cycledone == 9)
-        olNTS();
-        elapsedtime{cycledone+1}{2} = overloadNTS;
-        elapsedtime{cycledone+1}{3} = overloadNTE;
-        elapsedtime{cycledone+1}{4} = overloadWTE;
-        elapsedtime{cycledone+1}{5} = overloadWTN;
-        elapsedtime{cycledone+1}{6} = overloadSTN;
-        elapsedtime{cycledone+1}{7} = overloadSTW;
-        elapsedtime{cycledone+1}{8} = overloadETW;
-        elapsedtime{cycledone+1}{9} = overloadETS;
-        elapsedtime{cycledone+1}{10} = nooverload;
-%         cycletype = 1;
-    elseif(cycledone == 10 || cycledone == 11 || cycledone == 12 || cycledone == 13 || cycledone == 14)
-        olNTE();
-        elapsedtime{cycledone+1}{2} = overloadNTS;
-        elapsedtime{cycledone+1}{3} = overloadNTE;
-        elapsedtime{cycledone+1}{4} = overloadWTE;
-        elapsedtime{cycledone+1}{5} = overloadWTN;
-        elapsedtime{cycledone+1}{6} = overloadSTN;
-        elapsedtime{cycledone+1}{7} = overloadSTW;
-        elapsedtime{cycledone+1}{8} = overloadETW;
-        elapsedtime{cycledone+1}{9} = overloadETS;
-        elapsedtime{cycledone+1}{10} = nooverload;
-%         cycletype = 3;
-    elseif(cycledone == 15 || cycledone == 16 || cycledone == 17 || cycledone == 18 || cycledone == 19)
-        olWTE();
-        elapsedtime{cycledone+1}{2} = overloadNTS;
-        elapsedtime{cycledone+1}{3} = overloadNTE;
-        elapsedtime{cycledone+1}{4} = overloadWTE;
-        elapsedtime{cycledone+1}{5} = overloadWTN;
-        elapsedtime{cycledone+1}{6} = overloadSTN;
-        elapsedtime{cycledone+1}{7} = overloadSTW;
-        elapsedtime{cycledone+1}{8} = overloadETW;
-        elapsedtime{cycledone+1}{9} = overloadETS;
-        elapsedtime{cycledone+1}{10} = nooverload;
-%         cycletype = 4;
-    elseif(cycledone == 20 || cycledone == 21 || cycledone == 22 || cycledone == 23 || cycledone == 24)
-        olWTN();
-        elapsedtime{cycledone+1}{2} = overloadNTS;
-        elapsedtime{cycledone+1}{3} = overloadNTE;
-        elapsedtime{cycledone+1}{4} = overloadWTE;
-        elapsedtime{cycledone+1}{5} = overloadWTN;
-        elapsedtime{cycledone+1}{6} = overloadSTN;
-        elapsedtime{cycledone+1}{7} = overloadSTW;
-        elapsedtime{cycledone+1}{8} = overloadETW;
-        elapsedtime{cycledone+1}{9} = overloadETS;
-        elapsedtime{cycledone+1}{10} = nooverload;
-%         cycletype = 5;
-    elseif(cycledone == 25 || cycledone == 26 || cycledone == 27 || cycledone == 28 || cycledone == 29)
-        olSTN();
-        elapsedtime{cycledone+1}{2} = overloadNTS;
-        elapsedtime{cycledone+1}{3} = overloadNTE;
-        elapsedtime{cycledone+1}{4} = overloadWTE;
-        elapsedtime{cycledone+1}{5} = overloadWTN;
-        elapsedtime{cycledone+1}{6} = overloadSTN;
-        elapsedtime{cycledone+1}{7} = overloadSTW;
-        elapsedtime{cycledone+1}{8} = overloadETW;
-        elapsedtime{cycledone+1}{9} = overloadETS;
-        elapsedtime{cycledone+1}{10} = nooverload;
-%         cycletype = 6;
-    elseif(cycledone == 30 || cycledone == 31 || cycledone == 32 || cycledone == 33 || cycledone == 34)
-        olSTW();
-        elapsedtime{cycledone+1}{2} = overloadNTS;
-        elapsedtime{cycledone+1}{3} = overloadNTE;
-        elapsedtime{cycledone+1}{4} = overloadWTE;
-        elapsedtime{cycledone+1}{5} = overloadWTN;
-        elapsedtime{cycledone+1}{6} = overloadSTN;
-        elapsedtime{cycledone+1}{7} = overloadSTW;
-        elapsedtime{cycledone+1}{8} = overloadETW;
-        elapsedtime{cycledone+1}{9} = overloadETS;
-        elapsedtime{cycledone+1}{10} = nooverload;
-%         cycletype = 7;
-    elseif(cycledone == 35 || cycledone == 36 || cycledone == 37 || cycledone == 38 || cycledone == 39)
-        olETW();
-        elapsedtime{cycledone+1}{2} = overloadNTS;
-        elapsedtime{cycledone+1}{3} = overloadNTE;
-        elapsedtime{cycledone+1}{4} = overloadWTE;
-        elapsedtime{cycledone+1}{5} = overloadWTN;
-        elapsedtime{cycledone+1}{6} = overloadSTN;
-        elapsedtime{cycledone+1}{7} = overloadSTW;
-        elapsedtime{cycledone+1}{8} = overloadETW;
-        elapsedtime{cycledone+1}{9} = overloadETS;
-        elapsedtime{cycledone+1}{10} = nooverload;
-%         cycletype = 8;
-    elseif(cycledone == 40 || cycledone == 41 || cycledone == 42 || cycledone == 43 || cycledone == 44)
-        olETS();
-        elapsedtime{cycledone+1}{2} = overloadNTS;
-        elapsedtime{cycledone+1}{3} = overloadNTE;
-        elapsedtime{cycledone+1}{4} = overloadWTE;
-        elapsedtime{cycledone+1}{5} = overloadWTN;
-        elapsedtime{cycledone+1}{6} = overloadSTN;
-        elapsedtime{cycledone+1}{7} = overloadSTW;
-        elapsedtime{cycledone+1}{8} = overloadETW;
-        elapsedtime{cycledone+1}{9} = overloadETS;
-        elapsedtime{cycledone+1}{10} = nooverload;
-%         cycletype = 9;
+    if(cycledone == 0)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 1;
+        cycletype = 1;
+    elseif(cycledone == 1)
+        overloadNTS = 1;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 2)
+        overloadNTS = 0;
+        overloadNTE = 1;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 3)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 1;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 4)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 1;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 5)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 1;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 6)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 1;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 7)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 1;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 8)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 1;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 9)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 1;
+        cycletype = 2;
+    elseif(cycledone == 10)
+        overloadNTS = 1;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 2;
+    elseif(cycledone == 11)
+        overloadNTS = 0;
+        overloadNTE = 1;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 2;
+    elseif(cycledone == 12)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 1;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 2;
+    elseif(cycledone == 13)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 1;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 2;
+    elseif(cycledone == 14)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 1;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 2;
+    elseif(cycledone == 15)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 1;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 2;
+    elseif(cycledone == 16)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 1;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 2;
+    elseif(cycledone == 17)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 1;
+        nooverload = 0;
+        cycletype = 2;
+    elseif(cycledone == 18)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 1;
+        cycletype = 3;
+    elseif(cycledone == 19)
+        overloadNTS = 1;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 3;
+    elseif(cycledone == 20)
+        overloadNTS = 0;
+        overloadNTE = 1;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 3;
+    elseif(cycledone == 21)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 1;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 3;
+    elseif(cycledone == 22)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 1;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 3;
+    elseif(cycledone == 23)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 1;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 3;
+    elseif(cycledone == 24)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 1;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 3;
+    elseif(cycledone == 25)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 1;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 3;
+    elseif(cycledone == 26)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 1;
+        nooverload = 0;
+        cycletype = 3;
     end
+    
     
     %uj lampaciklus kezelese
     cycleVerificationCntr = 0;
@@ -300,8 +503,6 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         car{i}{8} = 0;
     end
     
-    %idomeres elinditasa
-    tStart = tic;
     
     while(carnumarrived ~= carnumgoal)
         %% set the text on the button group
@@ -387,9 +588,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         if(lampaciklusaktualis ~= lampaciklusnext)
             changeRouteSpecific();
         elseif(lampaciklusaktualis == lampaciklusnext) %utvonalak frissitese, hogy jobb pozicioba legyenek
-            tStart2 = tic;
             changeLane();
-            elapsedtime{cycledone+1}{11} = elapsedtime{cycledone+1}{11} + toc(tStart2);
         end
         
         
@@ -540,7 +739,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                 elseif(lampaciklusaktualis == 8)
                     blockw2 = 0;
                 end
-                % a matrixot forgatjuk a torlodasnak megfeleloen (ciklus kezi allitasa gombokkal egyenlore)
+                % a matrixot forgatjuk a torlodasnak megfeleloen
                 switch lampaciklusaktualis
                     case 1 %Nincs torlodas
                         row = 1;
@@ -574,281 +773,8 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             end
             
             
-            for i=1:12 %12 lampara beallitjuk hogy mit kell mutassanak
-                if(TM(row,i) == X1) %piros
-                    light{i}{1}.MarkerEdgeColor = 'white';
-                    light{i}{1}.MarkerFaceColor = 'white';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'white';
-                    light{i}{2}.MarkerFaceColor = 'white';
-                    light{i}{2}.Marker = 's';
-                    
-                    light{i}{3}.MarkerEdgeColor = 'red';
-                    light{i}{3}.MarkerFaceColor = 'red';
-                    light{i}{3}.Marker = 's';
-                    
-                    light{i}{4}.MarkerEdgeColor = 'white';
-                    light{i}{4}.MarkerFaceColor = 'white';
-                    light{i}{4}.Marker = 's';
-                    
-                    light{i}{5} = X1;
-                    
-                elseif(TM(row,i) == X2) %sarga
-                    light{i}{1}.MarkerEdgeColor = 'yellow';
-                    light{i}{1}.MarkerFaceColor = 'yellow';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'white';
-                    light{i}{2}.MarkerFaceColor = 'white';
-                    light{i}{2}.Marker = 's';
-                    
-                    light{i}{3}.MarkerEdgeColor = 'white';
-                    light{i}{3}.MarkerFaceColor = 'white';
-                    light{i}{3}.Marker = 's';
-                    
-                    light{i}{4}.MarkerEdgeColor = 'white';
-                    light{i}{4}.MarkerFaceColor = 'white';
-                    light{i}{4}.Marker = 's';
-                    
-                    light{i}{5} = X2;
-                    
-                    
-                elseif(TM(row,i) == X3) %elore
-                    light{i}{1}.MarkerEdgeColor = 'white';
-                    light{i}{1}.MarkerFaceColor = 'white';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'white';
-                    light{i}{2}.MarkerFaceColor = 'white';
-                    light{i}{2}.Marker = 's';
-                    
-                    light{i}{3}.MarkerEdgeColor = 'green';
-                    light{i}{3}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{3}.Marker = 'v';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{3}.Marker = '>';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{3}.Marker = '^';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{3}.Marker = '<';
-                    end
-                    
-                    light{i}{4}.MarkerEdgeColor = 'white';
-                    light{i}{4}.MarkerFaceColor = 'white';
-                    light{i}{4}.Marker = 's';
-                    
-                    light{i}{5} = X3;
-                    
-                    
-                elseif(TM(row,i) == X4) %jobbra
-                    light{i}{1}.MarkerEdgeColor = 'white';
-                    light{i}{1}.MarkerFaceColor = 'white';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'white';
-                    light{i}{2}.MarkerFaceColor = 'white';
-                    light{i}{2}.Marker = 's';
-                    
-                    light{i}{3}.MarkerEdgeColor = 'white';
-                    light{i}{3}.MarkerFaceColor = 'white';
-                    light{i}{3}.Marker = 's';
-                    
-                    light{i}{4}.MarkerEdgeColor = 'green';
-                    light{i}{4}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{4}.Marker = '<';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{4}.Marker = 'v';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{4}.Marker = '>';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{4}.Marker = '^';
-                    end
-                    
-                    light{i}{5} = X4;
-                    
-                elseif(TM(row,i) == X5) %balra
-                    light{i}{1}.MarkerEdgeColor = 'white';
-                    light{i}{1}.MarkerFaceColor = 'white';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'green';
-                    light{i}{2}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{2}.Marker = '>';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{2}.Marker = '^';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{2}.Marker = '<';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{2}.Marker = 'v';
-                    end
-                    
-                    light{i}{3}.MarkerEdgeColor = 'white';
-                    light{i}{3}.MarkerFaceColor = 'white';
-                    light{i}{3}.Marker = 's';
-                    
-                    light{i}{4}.MarkerEdgeColor = 'white';
-                    light{i}{4}.MarkerFaceColor = 'white';
-                    light{i}{4}.Marker = 's';
-                    
-                    light{i}{5} = X5;
-                    
-                elseif(TM(row,i) == X6) %elore es jobbra
-                    light{i}{1}.MarkerEdgeColor = 'white';
-                    light{i}{1}.MarkerFaceColor = 'white';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'white';
-                    light{i}{2}.MarkerFaceColor = 'white';
-                    light{i}{2}.Marker = 's';
-                    
-                    light{i}{3}.MarkerEdgeColor = 'green';
-                    light{i}{3}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{3}.Marker = 'v';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{3}.Marker = '>';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{3}.Marker = '^';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{3}.Marker = '<';
-                    end
-                    
-                    light{i}{4}.MarkerEdgeColor = 'green';
-                    light{i}{4}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{4}.Marker = '<';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{4}.Marker = 'v';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{4}.Marker = '>';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{4}.Marker = '^';
-                    end
-                    
-                    light{i}{5} = X6;
-                    
-                elseif(TM(row,i) == X7) %elore es balra
-                    light{i}{1}.MarkerEdgeColor = 'white';
-                    light{i}{1}.MarkerFaceColor = 'white';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'green';
-                    light{i}{2}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{2}.Marker = '>';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{2}.Marker = '^';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{2}.Marker = '<';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{2}.Marker = 'v';
-                    end
-                    
-                    light{i}{3}.MarkerEdgeColor = 'green';
-                    light{i}{3}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{3}.Marker = 'v';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{3}.Marker = '>';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{3}.Marker = '^';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{3}.Marker = '<';
-                    end
-                    
-                    light{i}{4}.MarkerEdgeColor = 'white';
-                    light{i}{4}.MarkerFaceColor = 'white';
-                    light{i}{4}.Marker = 's';
-                    
-                    light{i}{5} = X7;
-                    
-                elseif(TM(row,i) == X8) %elore es jobbra es balra
-                    light{i}{1}.MarkerEdgeColor = 'white';
-                    light{i}{1}.MarkerFaceColor = 'white';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'green';
-                    light{i}{2}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{2}.Marker = '>';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{2}.Marker = '^';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{2}.Marker = '<';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{2}.Marker = 'v';
-                    end
-                    
-                    light{i}{3}.MarkerEdgeColor = 'green';
-                    light{i}{3}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{3}.Marker = 'v';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{3}.Marker = '>';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{3}.Marker = '^';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{3}.Marker = '<';
-                    end
-                    
-                    light{i}{4}.MarkerEdgeColor = 'green';
-                    light{i}{4}.MarkerFaceColor = 'green';
-                    if((i == 1) || (i == 2) || (i == 3))
-                        light{i}{4}.Marker = '<';
-                    elseif((i == 4) || (i == 5) || (i == 6))
-                        light{i}{4}.Marker = 'v';
-                    elseif((i == 7) || (i == 8) || (i == 9))
-                        light{i}{4}.Marker = '>';
-                    elseif((i == 10) || (i == 11) || (i == 12))
-                        light{i}{4}.Marker = '^';
-                    end
-                    
-                    light{i}{5} = X8;
-                    
-                elseif(TM(row,i) == X9) %piros sarga
-                    light{i}{1}.MarkerEdgeColor = 'yellow';
-                    light{i}{1}.MarkerFaceColor = 'yellow';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'white';
-                    light{i}{2}.MarkerFaceColor = 'white';
-                    light{i}{2}.Marker = 's';
-                    
-                    light{i}{3}.MarkerEdgeColor = 'red';
-                    light{i}{3}.MarkerFaceColor = 'red';
-                    light{i}{3}.Marker = 's';
-                    
-                    light{i}{4}.MarkerEdgeColor = 'white';
-                    light{i}{4}.MarkerFaceColor = 'white';
-                    light{i}{4}.Marker = 's';
-                    
-                    light{i}{5} = X9;
-                    
-                elseif(TM(row,i) == X10) %off
-                    light{i}{1}.MarkerEdgeColor = 'white';
-                    light{i}{1}.MarkerFaceColor = 'white';
-                    light{i}{1}.Marker = 's';
-                    
-                    light{i}{2}.MarkerEdgeColor = 'white';
-                    light{i}{2}.MarkerFaceColor = 'white';
-                    light{i}{2}.Marker = 's';
-                    
-                    light{i}{3}.MarkerEdgeColor = 'white';
-                    light{i}{3}.MarkerFaceColor = 'white';
-                    light{i}{3}.Marker = 's';
-                    
-                    light{i}{4}.MarkerEdgeColor = 'white';
-                    light{i}{4}.MarkerFaceColor = 'white';
-                    light{i}{4}.Marker = 's';
-                    
-                    light{i}{5} = X10;
-                    
-                end
-            end
+            light = changeLight(TM, row, light);
+           
             
             
             
@@ -874,13 +800,14 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                 end
                 
             else
-                %TODO: lampChange valtoztatasa forgalomtol fuggoen
                 changeMainLampCycleLength()
                 disp(lampChange)
-                valami = 1;
+                disp(row)
             end
             lampCycleChange = lampCycleChange + 1;
         end
+        
+        resultMatrix = collectData(resultMatrix, car, carnum, lampaciklusaktualis, light);
         
         %utkozes kezeles
         if(isequal(collision{1}, 1))
@@ -889,8 +816,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         pause(0.5);
         whileLoopCounter = whileLoopCounter + 1;
     end
+    path = strcat('C:\Users\csokviktor\Desktop\eredmenyek\test', int2str(cycledone), '.xlsx');
+    xlswrite(path, resultMatrix)
     cycledone = cycledone + 1;
-    elapsedtime{cycledone}{1} = toc(tStart);
 end
-% figure(2);
-% results = bar(elapsedtime);

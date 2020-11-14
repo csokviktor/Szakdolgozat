@@ -6,6 +6,8 @@ global lampaciklusnext;
 global lampaciklusnexttemp;
 global lampaciklusaktualis;
 
+global intelligent;
+
 global cycleVerificationCntr;
 
 global nlane1;
@@ -62,8 +64,8 @@ eLeftCntr = 0;
 eOtherCntr = 0;
 
 %% torlodas letezesenek vizsgalata
-for o = 1:carnum 
-        %északi oldal
+for o = 1:carnum
+    %északi oldal
     if(isequal(car{o}{2}.XData, nlane1{3}(1)) && isequal(car{o}{2}.YData,nlane1{3}(2)))
         jamN(2) = 1;
     elseif(isequal(car{o}{2}.XData, nlane1{4}(1)) && isequal(car{o}{2}.YData,nlane1{4}(2)) && isequal(car{o}{7},0))
@@ -76,7 +78,7 @@ for o = 1:carnum
         jamN(6) = 1;
     elseif(isequal(car{o}{2}.XData, nlane1{4}(1)) && isequal(car{o}{2}.YData,nlane1{4}(2)) && isequal(car{o}{7},0))
         jamN(7) = 1;
-    
+        
         %nyugati oldal
     elseif(isequal(car{o}{2}.XData, wlane1{3}(1)) && isequal(car{o}{2}.YData,wlane1{3}(2)))
         jamW(2) = 1;
@@ -90,7 +92,7 @@ for o = 1:carnum
         jamW(6) = 1;
     elseif(isequal(car{o}{2}.XData, wlane1{4}(1)) && isequal(car{o}{2}.YData,wlane1{4}(2)) && isequal(car{o}{7},0))
         jamW(7) = 1;
-    
+        
         %déli oldal
     elseif(isequal(car{o}{2}.XData, slane1{3}(1)) && isequal(car{o}{2}.YData,slane1{3}(2)))
         jamS(2) = 1;
@@ -171,8 +173,8 @@ end
 
 %Deli oldal
 if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
-    || (jamS(5) == 1 && jamS(6) == 1 && jamS(7) == 1)...
-    || (jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1 && jamS(5) == 1 && jamS(6) == 1 && jamS(7) == 1))
+        || (jamS(5) == 1 && jamS(6) == 1 && jamS(7) == 1)...
+        || (jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1 && jamS(5) == 1 && jamS(6) == 1 && jamS(7) == 1))
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, slane1{r}(1)) && isequal(car{t}{2}.YData, slane1{r}(2)) || isequal(car{t}{2}.XData, slane2{r}(1)) && isequal(car{t}{2}.YData, slane2{r}(2)))
@@ -185,7 +187,7 @@ if((jamS(2) == 1 && jamS(3) == 1 && jamS(4) == 1)...
                 end
             end
         end
-    end    
+    end
     jamBoolS = 1;
 else
     jamBoolS = 0;
@@ -193,8 +195,8 @@ end
 
 %Keltei oldal
 if((jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1)...
-    || (jamE(5) == 1 && jamE(6) == 1 && jamE(7) == 1)...
-    || (jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1 && jamE(5) == 1 && jamE(6) == 1 && jamE(7) == 1))
+        || (jamE(5) == 1 && jamE(6) == 1 && jamE(7) == 1)...
+        || (jamE(2) == 1 && jamE(3) == 1 && jamE(4) == 1 && jamE(5) == 1 && jamE(6) == 1 && jamE(7) == 1))
     for t = 1:carnum
         for r = 1:11
             if(isequal(car{t}{2}.XData, elane1{r}(1)) && isequal(car{t}{2}.YData, elane1{r}(2)) || isequal(car{t}{2}.XData, elane2{r}(1)) && isequal(car{t}{2}.YData, elane2{r}(2)))
@@ -213,157 +215,163 @@ else
     jamBoolE = 0;
 end
 
- 
+
 
 %% Eldontjuk milyen ciklus kovetkezzen ha meg nincs kivalasztva uj
-if(lampaciklusnext == lampaciklusaktualis)
-    if((jamBoolN == 1) || (jamBoolW == 1) || (jamBoolS == 1) || (jamBoolE == 1))
-        nCarNum = nOtherCntr + nStraightCntr + nLeftCntr;
-        wCarNum = wOtherCntr + wStraightCntr + wLeftCntr;
-        sCarNum = sOtherCntr + sStraightCntr + sLeftCntr;
-        eCarNum = eOtherCntr + eStraightCntr + eLeftCntr;
+if(intelligent == 1)
+    if(lampaciklusnext == lampaciklusaktualis)
+        if((jamBoolN == 1) || (jamBoolW == 1) || (jamBoolS == 1) || (jamBoolE == 1))
+            nCarNum = nOtherCntr + nStraightCntr + nLeftCntr;
+            wCarNum = wOtherCntr + wStraightCntr + wLeftCntr;
+            sCarNum = sOtherCntr + sStraightCntr + sLeftCntr;
+            eCarNum = eOtherCntr + eStraightCntr + eLeftCntr;
+        end
+        
+        
+        %North
+        if((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 0))
+            decideNextCycleN()
+        elseif((jamBoolN == 1) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
+            if(nCarNum > wCarNum + 4)
+                decideNextCycleN()
+            elseif(wCarNum > nCarNum + 4)
+                decideNextCycleW()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+        elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
+            if(nCarNum > sCarNum + 4)
+                decideNextCycleN()
+            elseif(sCarNum > nCarNum + 4)
+                decideNextCycleS()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+        elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
+            if(nCarNum > eCarNum + 4)
+                decideNextCycleN()
+            elseif(eCarNum > nCarNum + 4)
+                decideNextCycleE()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+            
+            
+            %West
+        elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
+            decideNextCycleW()
+        elseif((jamBoolN == 1) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
+            if(wCarNum > nCarNum + 4)
+                decideNextCycleW()
+            elseif(nCarNum > wCarNum + 4)
+                decideNextCycleN()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+        elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 1) && (jamBoolE == 0))
+            if(wCarNum > sCarNum + 4)
+                decideNextCycleW()
+            elseif(sCarNum > wCarNum + 4)
+                decideNextCycleS()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+        elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 1))
+            if(wCarNum > eCarNum + 4)
+                decideNextCycleW()
+            elseif(eCarNum > wCarNum + 4)
+                decideNextCycleE()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+            
+            
+            %South
+        elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
+            decideNextCycleS()
+        elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
+            if(sCarNum > nCarNum + 4)
+                decideNextCycleS()
+            elseif(nCarNum > sCarNum + 4)
+                decideNextCycleN()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+        elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 1) && (jamBoolE == 0))
+            if(sCarNum > wCarNum + 4)
+                decideNextCycleS()
+            elseif(wCarNum > sCarNum + 4)
+                decideNextCycleW()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+        elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 1))
+            if(sCarNum > eCarNum + 4)
+                decideNextCycleS()
+            elseif(eCarNum > sCarNum + 4)
+                decideNextCycleE()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+            
+            
+            %East
+        elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
+            decideNextCycleE()
+        elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
+            if(eCarNum > nCarNum + 4)
+                decideNextCycleE()
+            elseif(nCarNum > eCarNum + 4)
+                decideNextCycleN()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+        elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 1))
+            if(eCarNum > wCarNum + 4)
+                decideNextCycleE()
+            elseif(wCarNum > eCarNum + 4)
+                decideNextCycleW()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+        elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 1))
+            if(eCarNum > sCarNum + 4)
+                decideNextCycleE()
+            elseif(sCarNum > eCarNum + 4)
+                decideNextCycleS()
+            else
+                lampaciklusnext = lampaciklusaktualis;
+            end
+            
+        else
+            if((lampaciklusnexttemp(1) == 0))
+                lampaciklusnexttemp(1) = 1;
+            elseif(cycleVerificationCntr == 20)
+                lampaciklusnexttemp(2) = 1;
+            end
+        end
     end
     
     
-    %North
-    if((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 0))
-        decideNextCycleN()
-    elseif((jamBoolN == 1) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
-        if(nCarNum > wCarNum + 4)
-            decideNextCycleN()
-        elseif(wCarNum > nCarNum + 4)
-            decideNextCycleW()
-        else
-            lampaciklusnext = lampaciklusaktualis;
+    
+    
+    %% Verifikalas uj ciklus engedelyezesehez ha valtozik a tipus
+    %lampaciklusnexttemp = [fix, valtozo]
+    %uj otlet lampaciklusnexttemp = [elozo, mostani]
+    %kivalaszt elozot, var x mennyiseget kovi kivalasztasahoz, ha a ketto
+    %egyezik akkor mehet kovi ciklus engedelyezese
+    
+    if(lampaciklusnexttemp(1) ~= 0)
+        if((cycleVerificationCntr == 20) && (lampaciklusnexttemp(1) == lampaciklusnexttemp(2))) %enged uj ciklus és nulláz
+            lampaciklusnext = lampaciklusnexttemp(1);
+            lampaciklusnexttemp = [0 0];
+            cycleVerificationCntr = -1;
+        elseif((cycleVerificationCntr == 20) && (lampaciklusnexttemp(1) ~= lampaciklusnexttemp(2))) %csak nullaz
+            lampaciklusnexttemp = [0 0];
+            cycleVerificationCntr = -1;
         end
-    elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
-        if(nCarNum > sCarNum + 4)
-            decideNextCycleN()
-        elseif(sCarNum > nCarNum + 4)
-            decideNextCycleS()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-    elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
-        if(nCarNum > eCarNum + 4)
-            decideNextCycleN()
-        elseif(eCarNum > nCarNum + 4)
-            decideNextCycleE()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-        
-        
-        %West
-    elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
-        decideNextCycleW()
-    elseif((jamBoolN == 1) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 0))
-        if(wCarNum > nCarNum + 4)
-            decideNextCycleW()
-        elseif(nCarNum > wCarNum + 4)
-            decideNextCycleN()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-    elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 1) && (jamBoolE == 0))
-        if(wCarNum > sCarNum + 4)
-            decideNextCycleW()
-        elseif(sCarNum > wCarNum + 4)
-            decideNextCycleS()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-    elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 1))
-        if(wCarNum > eCarNum + 4)
-            decideNextCycleW()
-        elseif(eCarNum > wCarNum + 4)
-            decideNextCycleE()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-        
-        
-        %South
-    elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
-        decideNextCycleS()
-    elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 0))
-        if(sCarNum > nCarNum + 4)
-            decideNextCycleS()
-        elseif(nCarNum > sCarNum + 4)
-            decideNextCycleN()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-    elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 1) && (jamBoolE == 0))
-        if(sCarNum > wCarNum + 4)
-            decideNextCycleS()
-        elseif(wCarNum > sCarNum + 4)
-            decideNextCycleW()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-    elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 1))
-        if(sCarNum > eCarNum + 4)
-            decideNextCycleS()
-        elseif(eCarNum > sCarNum + 4)
-            decideNextCycleE()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-        
-        
-        %East
-    elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
-        decideNextCycleE()
-    elseif((jamBoolN == 1) && (jamBoolW == 0) && (jamBoolS == 0) && (jamBoolE == 1))
-        if(eCarNum > nCarNum + 4)
-            decideNextCycleE()
-        elseif(nCarNum > eCarNum + 4)
-            decideNextCycleN()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-    elseif((jamBoolN == 0) && (jamBoolW == 1) && (jamBoolS == 0) && (jamBoolE == 1))
-        if(eCarNum > wCarNum + 4)
-            decideNextCycleE()
-        elseif(wCarNum > eCarNum + 4)
-            decideNextCycleW()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-    elseif((jamBoolN == 0) && (jamBoolW == 0) && (jamBoolS == 1) && (jamBoolE == 1))
-        if(eCarNum > sCarNum + 4)
-            decideNextCycleE()
-        elseif(sCarNum > eCarNum + 4)
-            decideNextCycleS()
-        else
-            lampaciklusnext = lampaciklusaktualis;
-        end
-        
-    else
-        lampaciklusnext = lampaciklusaktualis;
+        cycleVerificationCntr = cycleVerificationCntr + 1;
     end
-end
-
-
-
-
-%% Verifikalas uj ciklus engedelyezesehez ha valtozik a tipus
-%lampaciklusnexttemp = [fix, valtozo]
-%uj otlet lampaciklusnexttemp = [elozo, mostani]
-%kivalaszt elozot, var x mennyiseget kovi kivalasztasahoz, ha a ketto
-%egyezik akkor mehet kovi ciklus engedelyezese
-
-if(lampaciklusnexttemp(1) ~= 0)
-    if((cycleVerificationCntr == 20) && (lampaciklusnexttemp(1) == lampaciklusnexttemp(2))) %enged uj ciklus és nulláz
-        lampaciklusnext = lampaciklusnexttemp(1);
-        lampaciklusnexttemp = [0 0];
-        cycleVerificationCntr = -1;
-    elseif((cycleVerificationCntr == 20) && (lampaciklusnexttemp(1) ~= lampaciklusnexttemp(2))) %csak nullaz
-        lampaciklusnexttemp = [0 0];
-        cycleVerificationCntr = -1;
-    end
-    cycleVerificationCntr = cycleVerificationCntr + 1;
 end
 
 %     if(lampaciklusnexttemp(1) == lampaciklusnexttemp(2))
@@ -375,7 +383,7 @@ end
 %         end
 %     else
 %         lampaciklusnexttemp = [0 0];
-%         cycleVerificationCntr = 0; 
+%         cycleVerificationCntr = 0;
 %     end
 
 

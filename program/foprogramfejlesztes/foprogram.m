@@ -296,7 +296,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 1;
-        cycletype = 2;
+        cycletype = 1;
     elseif(cycledone == 10)
         overloadNTS = 1;
         overloadNTE = 0;
@@ -307,7 +307,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 2;
+        cycletype = 1;
     elseif(cycledone == 11)
         overloadNTS = 0;
         overloadNTE = 1;
@@ -318,7 +318,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 2;
+        cycletype = 1;
     elseif(cycledone == 12)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -329,7 +329,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 2;
+        cycletype = 1;
     elseif(cycledone == 13)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -340,7 +340,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 2;
+        cycletype = 1;
     elseif(cycledone == 14)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -351,7 +351,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 2;
+        cycletype = 1;
     elseif(cycledone == 15)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -362,7 +362,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 2;
+        cycletype = 1;
     elseif(cycledone == 16)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -373,7 +373,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 1;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 2;
+        cycletype = 1;
     elseif(cycledone == 17)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -384,7 +384,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 1;
         nooverload = 0;
-        cycletype = 2;
+        cycletype = 1;
     elseif(cycledone == 18)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -395,7 +395,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 1;
-        cycletype = 3;
+        cycletype = 1;
     elseif(cycledone == 19)
         overloadNTS = 1;
         overloadNTE = 0;
@@ -406,7 +406,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 3;
+        cycletype = 1;
     elseif(cycledone == 20)
         overloadNTS = 0;
         overloadNTE = 1;
@@ -417,7 +417,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 3;
+        cycletype = 1;
     elseif(cycledone == 21)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -428,7 +428,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 3;
+        cycletype = 1;
     elseif(cycledone == 22)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -439,7 +439,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 3;
+        cycletype = 1;
     elseif(cycledone == 23)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -450,7 +450,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 3;
+        cycletype = 1;
     elseif(cycledone == 24)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -461,7 +461,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 3;
+        cycletype = 1;
     elseif(cycledone == 25)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -472,7 +472,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 1;
         overloadETS = 0;
         nooverload = 0;
-        cycletype = 3;
+        cycletype = 1;
     elseif(cycledone == 26)
         overloadNTS = 0;
         overloadNTE = 0;
@@ -483,7 +483,205 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         overloadETW = 0;
         overloadETS = 1;
         nooverload = 0;
-        cycletype = 3;
+        cycletype = 1;
+    elseif(cycledone == 27)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 1;
+        cycletype = 1;
+    elseif(cycledone == 28)
+        overloadNTS = 1;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 29)
+        overloadNTS = 0;
+        overloadNTE = 1;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 30)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 1;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 31)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 1;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 32)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 1;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 33)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 1;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 34)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 1;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 35)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 1;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 36)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 1;
+        cycletype = 1;
+    elseif(cycledone == 37)
+        overloadNTS = 1;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 38)
+        overloadNTS = 0;
+        overloadNTE = 1;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 39)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 1;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 40)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 1;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 41)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 1;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 42)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 1;
+        overloadETW = 0;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 43)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 1;
+        overloadETS = 0;
+        nooverload = 0;
+        cycletype = 1;
+    elseif(cycledone == 44)
+        overloadNTS = 0;
+        overloadNTE = 0;
+        overloadWTE = 0;
+        overloadWTN = 0;
+        overloadSTN = 0;
+        overloadSTW = 0;
+        overloadETW = 0;
+        overloadETS = 1;
+        nooverload = 0;
+        cycletype = 1;
     end
     
     
@@ -800,10 +998,10 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                 end
                 
             else
-                lampChange = 6;
-                %changeMainLampCycleLength()
+                %lampChange = 6;
+                changeMainLampCycleLength()
                 disp(lampChange)
-                disp(row)
+                %disp(row)
             end
             lampCycleChange = lampCycleChange + 1;
         end
@@ -817,7 +1015,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         pause(0.1);
         whileLoopCounter = whileLoopCounter + 1;
     end
-    path = strcat('C:\Users\csokviktor\Desktop\eredmenyek\test', int2str(cycledone), '.xlsx');
+    path = strcat('C:\Users\csokviktor\Desktop\egyetem\szakdolgozat\eredmenyek\test', int2str(cycledone), '.xlsx');
     xlswrite(path, resultMatrix)
     cycledone = cycledone + 1;
 end

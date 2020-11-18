@@ -56,7 +56,7 @@ eLaneCntrClose = 0;
 
 for i = 1:carnum
     % Far matrix
-    for o = 1:8
+    for o = 1:7
         if((isequal(car{i}{2}.XData, nlane1{o}(1)) && isequal(car{i}{2}.YData, nlane1{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, nlane2{o}(1)) && isequal(car{i}{2}.YData, nlane2{o}(2)))...
                 ||  (isequal(car{i}{2}.XData, nlane3{o}(1)) && isequal(car{i}{2}.YData, nlane3{o}(2)))...
@@ -84,7 +84,7 @@ for i = 1:carnum
     end
     
     % Close matrix
-    for u = 9:11
+    for u = 8:11
         if((isequal(car{i}{2}.XData, nlane1{u}(1)) && isequal(car{i}{2}.YData, nlane1{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, nlane2{u}(1)) && isequal(car{i}{2}.YData, nlane2{u}(2)))...
                 ||  (isequal(car{i}{2}.XData, nlane3{u}(1)) && isequal(car{i}{2}.YData, nlane3{u}(2)))...
@@ -112,6 +112,8 @@ for i = 1:carnum
     end
 end
 
+Kp = 1;
+
 
 if(row == 1 || row == 9 || row == 17)
     if(lampaciklusaktualis == 1 || lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
@@ -133,30 +135,43 @@ if(row == 1 || row == 9 || row == 17)
     end
     
     if(row == 9)
-        if(closeCntr <= 1)
-            lampChange = 2;
-        elseif(jamBool == 1)
-            lampChange = 10;
-        elseif((closeCntr >= 3) && (closeCntr <= 6) && (farCntr < 3))
-            lampChange = 4;
-        elseif((closeCntr >= 6) && (closeCntr <= 9) && (farCntr > 9))
-            lampChange = 8;
-        else
-            lampChange = 6;
-        end
+        SP = 9;
     else
-        if(closeCntr <= 1)
-            lampChange = 2;
-        elseif(jamBool == 1)
-            lampChange = 10;
-        elseif((closeCntr >= 2) && (closeCntr <= 4) && (farCntr < 2))
-            lampChange = 4;
-        elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
-            lampChange = 8;
-        else
-            lampChange = 6;
-        end
+        SP = 6;
     end
+    
+    if(closeCntr <= 1)
+        lampChange = 2;
+    else
+        e = SP - (closeCntr*1.5 + farCntr*0.5);
+        lampChange = Kp*e;
+    end
+    
+%     if(row == 9)
+%         if(closeCntr <= 1)
+%             lampChange = 2;
+%         elseif(jamBool == 1)
+%             lampChange = 10;
+%         elseif((closeCntr >= 3) && (closeCntr <= 6) && (farCntr < 3))
+%             lampChange = 4;
+%         elseif((closeCntr >= 6) && (closeCntr <= 9) && (farCntr > 9))
+%             lampChange = 8;
+%         else
+%             lampChange = 6;
+%         end
+%     else
+%         if(closeCntr <= 1)
+%             lampChange = 2;
+%         elseif(jamBool == 1)
+%             lampChange = 10;
+%         elseif((closeCntr >= 2) && (closeCntr <= 4) && (farCntr < 2))
+%             lampChange = 4;
+%         elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
+%             lampChange = 8;
+%         else
+%             lampChange = 6;
+%         end
+%     end
 
 
 elseif(row == 3 || row == 11 || row == 19)
@@ -178,17 +193,26 @@ elseif(row == 3 || row == 11 || row == 19)
         jamBool = jamBoolN;
     end
     
+    SP = 6;
+    
     if(closeCntr <= 1)
         lampChange = 2;
-    elseif(jamBool == 1)
-        lampChange = 10;
-    elseif((closeCntr >= 2) && (closeCntr <= 4)&& (farCntr < 2))
-        lampChange = 4;
-    elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
-        lampChange = 8;
     else
-        lampChange = 6;
+        e = SP - (closeCntr*1.5 + farCntr*0.5);
+        lampChange = Kp*e;
     end
+    
+%     if(closeCntr <= 1)
+%         lampChange = 2;
+%     elseif(jamBool == 1)
+%         lampChange = 10;
+%     elseif((closeCntr >= 2) && (closeCntr <= 4)&& (farCntr < 2))
+%         lampChange = 4;
+%     elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
+%         lampChange = 8;
+%     else
+%         lampChange = 6;
+%     end
 
     
 elseif(row == 5 || row == 13 || row == 21)
@@ -211,30 +235,43 @@ elseif(row == 5 || row == 13 || row == 21)
     end
     
     if(row == 13)
-        if(closeCntr <= 1)
-            lampChange = 2;
-        elseif(jamBool == 1)
-            lampChange = 10;
-        elseif((closeCntr >= 2) && (closeCntr <= 3) && (farCntr < 2))
-            lampChange = 4;
-        elseif((closeCntr >= 3) && (closeCntr <= 4) && (farCntr > 5))
-            lampChange = 8;
-        else
-            lampChange = 6;
-        end
+        SP = 3;
     else
-        if(closeCntr <= 1)
-            lampChange = 2;
-        elseif(jamBool == 1)
-            lampChange = 10;
-        elseif((closeCntr >= 2) && (closeCntr <= 4) && (farCntr < 2))
-            lampChange = 4;
-        elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
-            lampChange = 8;
-        else
-            lampChange = 6;
-        end
+        SP = 6;
     end
+    
+    if(closeCntr <= 1)
+        lampChange = 2;
+    else
+        e = SP - (closeCntr*1.5 + farCntr*0.5);
+        lampChange = Kp*e;
+    end
+    
+%     if(row == 13)
+%         if(closeCntr <= 1)
+%             lampChange = 2;
+%         elseif(jamBool == 1)
+%             lampChange = 10;
+%         elseif((closeCntr >= 2) && (closeCntr <= 3) && (farCntr < 2))
+%             lampChange = 4;
+%         elseif((closeCntr >= 3) && (closeCntr <= 4) && (farCntr > 5))
+%             lampChange = 8;
+%         else
+%             lampChange = 6;
+%         end
+%     else
+%         if(closeCntr <= 1)
+%             lampChange = 2;
+%         elseif(jamBool == 1)
+%             lampChange = 10;
+%         elseif((closeCntr >= 2) && (closeCntr <= 4) && (farCntr < 2))
+%             lampChange = 4;
+%         elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
+%             lampChange = 8;
+%         else
+%             lampChange = 6;
+%         end
+%     end
     
 
 elseif(row == 7 || row == 15 || row == 23)
@@ -256,17 +293,34 @@ elseif(row == 7 || row == 15 || row == 23)
         jamBool = jamBoolS;
     end
     
+    SP = 6;
+    
     if(closeCntr <= 1)
         lampChange = 2;
-    elseif(jamBool == 1)
-        lampChange = 10;    
-    elseif((closeCntr >= 2) && (closeCntr <= 4) && (farCntr < 2))
-        lampChange = 4;
-    elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
-        lampChange = 8;
     else
-        lampChange = 6;
+        e = SP - (closeCntr*1.5 + farCntr*0.5);
+        lampChange = Kp*e;
     end
+    
+%     if(closeCntr <= 1)
+%         lampChange = 2;
+%     elseif(jamBool == 1)
+%         lampChange = 10;    
+%     elseif((closeCntr >= 2) && (closeCntr <= 4) && (farCntr < 2))
+%         lampChange = 4;
+%     elseif((closeCntr >= 4) && (closeCntr <= 6) && (farCntr > 7))
+%         lampChange = 8;
+%     else
+%         lampChange = 6;
+%     end
+end
+
+lampChange = round(lampChange);
+lampChange = abs(lampChange);
+lampChange = round((lampChange-2)/2)*2 + 2;
+
+if(lampChange == 0)
+    lampChange = 2;
 end
 
 

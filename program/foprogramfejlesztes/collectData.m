@@ -86,68 +86,6 @@ for i = 1:carnum
     end
 end
 
-%Give the direction of the green sign
-% %North
-% if(row == 1 || row == 9 || row == 17)
-%     greenDirection = 1;
-% %West
-% elseif(row == 3 || row == 11 || row == 19)
-%     greenDirection = 2;
-% %South
-% elseif(row == 5 || row == 13 || row == 21)
-%     greenDirection = 3;
-% %East
-% elseif(row == 7 || row == 15 || row == 23)
-%     greenDirection = 4;
-% end
-% if(row == 1 || row == 9 || row == 17)
-%     if(lampaciklusaktualis == 1 || lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
-%         greenDirection = 1;
-%     elseif(lampaciklusaktualis == 4 || lampaciklusaktualis == 5)
-%         greenDirection = 2;
-%     elseif(lampaciklusaktualis == 6 || lampaciklusaktualis == 7)
-%         greenDirection = 3;
-%     elseif(lampaciklusaktualis == 8 || lampaciklusaktualis == 9)
-%         greenDirection = 4;
-%     end
-% 
-% 
-% elseif(row == 3 || row == 11 || row == 19)
-%     if(lampaciklusaktualis == 1 || lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
-%         greenDirection = 2;
-%     elseif(lampaciklusaktualis == 4 || lampaciklusaktualis == 5)
-%         greenDirection = 3;
-%     elseif(lampaciklusaktualis == 6 || lampaciklusaktualis == 7)
-%         greenDirection = 4;
-%     elseif(lampaciklusaktualis == 8 || lampaciklusaktualis == 9)
-%         greenDirection = 1;
-%     end
-% 
-%     
-% elseif(row == 5 || row == 13 || row == 21)
-%     if(lampaciklusaktualis == 1 || lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
-%         greenDirection = 3;
-%     elseif(lampaciklusaktualis == 4 || lampaciklusaktualis == 5)
-%         greenDirection = 4;
-%     elseif(lampaciklusaktualis == 6 || lampaciklusaktualis == 7)
-%         greenDirection = 1;
-%     elseif(lampaciklusaktualis == 8 || lampaciklusaktualis == 9)
-%         greenDirection = 2;
-%     end
-%     
-% 
-% elseif(row == 7 || row == 15 || row == 23)
-%     if(lampaciklusaktualis == 1 || lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
-%         greenDirection = 4;
-%     elseif(lampaciklusaktualis == 4 || lampaciklusaktualis == 5)
-%         greenDirection = 1;
-%     elseif(lampaciklusaktualis == 6 || lampaciklusaktualis == 7)
-%         greenDirection = 2;
-%     elseif(lampaciklusaktualis == 8 || lampaciklusaktualis == 9)
-%         greenDirection = 3;
-%     end
-% 
-% end
 
 if(light{1}{5} == X6 || light{1}{5} == X8)
     greenDirection = 1;
@@ -184,5 +122,4 @@ end
 %create the next line of the result matrix
 temp = [nLaneCarNum, wLaneCarNum, sLaneCarNum, eLaneCarNum, greenDirection, lampaciklusaktualis, overloadType];
 resultMatrixOut = [resultMatrixIn;temp];
-valami = 1;
 end

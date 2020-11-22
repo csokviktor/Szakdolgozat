@@ -377,9 +377,15 @@ if(intelligent == 1)
         else
             if((lampaciklusnexttemp(1) == 0))
                 lampaciklusnexttemp(1) = 1;
-            elseif(cycleVerificationCntr == 20)
+            elseif(cycleVerificationCntr == 8)
                 lampaciklusnexttemp(2) = 1;
             end
+        end
+        
+        if(lampaciklusnexttemp(1) == lampaciklusaktualis)
+            lampaciklusnexttemp(1) = 0;
+        else
+            valami = 1;
         end
     end
     
@@ -393,17 +399,15 @@ if(intelligent == 1)
     %egyezik akkor mehet kovi ciklus engedelyezese
     
     if(lampaciklusnexttemp(1) ~= 0)
-        if((cycleVerificationCntr == 20) && (lampaciklusnexttemp(1) == lampaciklusnexttemp(2))) %enged uj ciklus és nulláz
+        if((cycleVerificationCntr == 8) && (lampaciklusnexttemp(1) == lampaciklusnexttemp(2))) %enged uj ciklus és nulláz
             lampaciklusnext = lampaciklusnexttemp(1);
-            lampaciklusnexttemp(1) = lampaciklusnexttemp(2);
-            lampaciklusnexttemp(2) = 0;
-            cycleVerificationCntr = -1;
-        elseif((cycleVerificationCntr == 20) && (lampaciklusnexttemp(1) ~= lampaciklusnexttemp(2))) %csak nullaz
-            lampaciklusnexttemp(1) = lampaciklusnexttemp(2);
-            lampaciklusnexttemp(2) = 0;
-            cycleVerificationCntr = -1;
+            lampaciklusnexttemp = [0 0];
+            cycleVerificationCntr = 0;
+        elseif((cycleVerificationCntr == 8) && (lampaciklusnexttemp(1) ~= lampaciklusnexttemp(2))) %csak nullaz
+            lampaciklusnexttemp = [0 0];
+            cycleVerificationCntr = 0;
         end
-        cycleVerificationCntr = cycleVerificationCntr + 1;
+        %cycleVerificationCntr = cycleVerificationCntr + 1;
     end
 end
 
@@ -435,13 +439,13 @@ end
         if(nStraightCntr > nLeftCntr + 2)
             if((lampaciklusnexttemp(1) == 0))
                 lampaciklusnexttemp(1) = 2;
-            elseif(cycleVerificationCntr == 20)
+            elseif(cycleVerificationCntr == 8)
                 lampaciklusnexttemp(2) = 2;
             end
         elseif(nLeftCntr > nStraightCntr + 3)
             if((lampaciklusnexttemp(1) == 0))
                 lampaciklusnexttemp(1) = 3;
-            elseif(cycleVerificationCntr == 20)
+            elseif(cycleVerificationCntr == 8)
                 lampaciklusnexttemp(2) = 3;
             end
         else
@@ -453,13 +457,13 @@ end
         if(wStraightCntr > wLeftCntr + 2)
             if((lampaciklusnexttemp(1) == 0))
                 lampaciklusnexttemp(1) = 4;
-            elseif(cycleVerificationCntr == 20)
+            elseif(cycleVerificationCntr == 8)
                 lampaciklusnexttemp(2) = 4;
             end
         elseif(wLeftCntr > wStraightCntr + 3)
             if((lampaciklusnexttemp(1) == 0))
                 lampaciklusnexttemp(1) = 5;
-            elseif(cycleVerificationCntr == 20)
+            elseif(cycleVerificationCntr == 8)
                 lampaciklusnexttemp(2) = 5;
             end
         else
@@ -471,13 +475,13 @@ end
         if(sStraightCntr > sLeftCntr + 2)
             if((lampaciklusnexttemp(1) == 0))
                 lampaciklusnexttemp(1) = 6;
-            elseif(cycleVerificationCntr == 20)
+            elseif(cycleVerificationCntr == 8)
                 lampaciklusnexttemp(2) = 6;
             end
         elseif(sLeftCntr > sStraightCntr + 3)
             if((lampaciklusnexttemp(1) == 0))
                 lampaciklusnexttemp(1) = 7;
-            elseif(cycleVerificationCntr == 20)
+            elseif(cycleVerificationCntr == 8)
                 lampaciklusnexttemp(2) = 7;
             end
         else
@@ -489,13 +493,13 @@ end
         if(eStraightCntr > eLeftCntr + 2)
             if((lampaciklusnexttemp(1) == 0))
                 lampaciklusnexttemp(1) = 8;
-            elseif(cycleVerificationCntr == 20)
+            elseif(cycleVerificationCntr == 8)
                 lampaciklusnexttemp(2) = 8;
             end
         elseif(eLeftCntr > eStraightCntr + 3)
             if((lampaciklusnexttemp(1) == 0))
                 lampaciklusnexttemp(1) = 9;
-            elseif(cycleVerificationCntr == 20)
+            elseif(cycleVerificationCntr == 8)
                 lampaciklusnexttemp(2) = 9;
             end
         else

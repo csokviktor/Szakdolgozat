@@ -1,16 +1,35 @@
-% test = [0,0,0;1,1,2;2,2,2];
-% xlswrite('C:\Users\csokviktor\Desktop\test.xlsx', test)
+%descrete plot for results
+results = readmatrix("C:\Users\csokviktor\Desktop\excelekazábrákhoz\balrasemmi.xlsx");
+northCars = results(1:end, 1);
+westCars = results(1:end, 2);
+southCars = results(1:end, 3);
+eastCars = results(1:end, 4);
+greenDirection = results(1:end, 5);
+cycleType = results(1:end, 6);
+overloadType = results(1:end, 7);
 
-random = datasample([1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48], 1, 'Weights', [2 2 15 15 2 2 2 2 15 15 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]);
-for i = 1:200000
-    randTemp = datasample([1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48], 1, 'Weights', [2 2 15 15 2 2 2 2 15 15 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]);
-    random = [random,randTemp];
-end
-random = random';
-
-[GC,GR] = groupcounts(random);
-
-
-
-
-
+f = figure('position',[100,100,1300,600]);
+title("Dynamics of the cars in the lanes", "FontSize", 14)
+ylim([0 25])
+hold on
+stairs(northCars, 'LineWidth', 2);
+hold on
+stairs(westCars, 'LineWidth', 2);
+hold on
+stairs(southCars, 'LineWidth', 2);
+hold on
+stairs(eastCars, 'LineWidth', 2);
+hold on
+stairs(greenDirection, 'LineWidth', 2);
+hold on
+stairs(cycleType, 'LineWidth', 2);
+hold on
+legend("North car number", "West car number", "South car number", "East car number",...
+    "Green direction", "Cycle type");
+hold on
+axes = gca;
+axes.YGrid = "on";
+axes.YMinorGrid = "on";
+axes.YMinorTick = "on";
+axes.XGrid = "on";
+hold off

@@ -135,15 +135,15 @@ if(row == 1 || row == 9 || row == 17)
     end
     
     if(row == 9)
-        SP = 9;
+        SP = 8;
     else
-        SP = 6;
+        SP = 4;
     end
     
     if(closeCntr <= 1)
         lampChange = 2;
     else
-        e = SP - (closeCntr*1.5 + farCntr*0.5);
+        e = SP - (closeCntr*1.25 + farCntr*0.75);
         lampChange = Kp*e;
     end
     
@@ -193,12 +193,12 @@ elseif(row == 3 || row == 11 || row == 19)
         jamBool = jamBoolN;
     end
     
-    SP = 6;
+    SP = 4;
     
     if(closeCntr <= 1)
         lampChange = 2;
     else
-        e = SP - (closeCntr*1.5 + farCntr*0.5);
+        e = SP - (closeCntr*1.25 + farCntr*0.75);
         lampChange = Kp*e;
     end
     
@@ -235,15 +235,15 @@ elseif(row == 5 || row == 13 || row == 21)
     end
     
     if(row == 13)
-        SP = 3;
+        SP = 1;
     else
-        SP = 6;
+        SP = 4;
     end
     
     if(closeCntr <= 1)
         lampChange = 2;
     else
-        e = SP - (closeCntr*1.5 + farCntr*0.5);
+        e = SP - (closeCntr*1.25 + farCntr*0.75);
         lampChange = Kp*e;
     end
     
@@ -293,12 +293,12 @@ elseif(row == 7 || row == 15 || row == 23)
         jamBool = jamBoolS;
     end
     
-    SP = 6;
+    SP = 4;
     
     if(closeCntr <= 1)
         lampChange = 2;
     else
-        e = SP - (closeCntr*1.5 + farCntr*0.5);
+        e = SP - (closeCntr*1.25 + farCntr*0.75);
         lampChange = Kp*e;
     end
     
@@ -315,12 +315,13 @@ elseif(row == 7 || row == 15 || row == 23)
 %     end
 end
 
-lampChange = round(lampChange);
 lampChange = abs(lampChange);
 lampChange = round((lampChange-2)/2)*2 + 2;
 
 if(lampChange == 0)
     lampChange = 2;
+elseif(lampChange >= 22)
+    lampChange = 22;
 end
 
 

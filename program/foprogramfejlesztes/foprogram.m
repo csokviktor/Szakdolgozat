@@ -157,15 +157,6 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
     overloadETS = 0;
     nooverload = 1;
     
-    %savban levo autok szamolasahoz ha torlodas van
-    nelorecntr = 1;
-    nbalracntr = 1;
-    welorecntr = 1;
-    wbalracntr = 1;
-    selorecntr = 1;
-    sbalracntr = 1;
-    eelorecntr = 1;
-    ebalracntr = 1;
     
     %sarga lampa tartasahoz ha van belul valaki
     breakbool1 = 0;
@@ -993,6 +984,9 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                         row = row - 1;
                         lampCycleChange = lampCycleChange - 1;
                         breakbool1 = 0;
+                        if(lampaciklusnexttemp(1) ~= 0)
+                            cycleVerificationCntr = cycleVerificationCntr - 1;
+                        end
                         break
                     end
                 end
@@ -1004,6 +998,9 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                 %disp(row)
             end
             lampCycleChange = lampCycleChange + 1;
+            if(lampaciklusnexttemp(1) ~= 0)
+                cycleVerificationCntr = cycleVerificationCntr + 1;
+            end
         end
         
         resultMatrix = collectData(resultMatrix, car, carnum, lampaciklusaktualis, light);
@@ -1015,7 +1012,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         pause(0.1);
         whileLoopCounter = whileLoopCounter + 1;
     end
-    path = strcat('C:\Users\csokviktor\Desktop\egyetem\szakdolgozat\eredmenyek\test', int2str(cycledone), '.xlsx');
+    path = strcat('C:\Users\csokviktor\Desktop\excelResultsTemp\test', int2str(cycledone), '.xlsx');
     xlswrite(path, resultMatrix)
     cycledone = cycledone + 1;
 end

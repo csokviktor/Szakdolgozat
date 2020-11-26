@@ -1,5 +1,5 @@
 %descrete plot for results
-results = readmatrix("C:\Users\csokviktor\Desktop\excelekazábrákhoz\balrasemmi.xlsx");
+results = readmatrix("C:\Users\csokviktor\Desktop\excelekazábrákhoz\balraciklushossz.xlsx");
 northCars = results(1:end, 1);
 westCars = results(1:end, 2);
 southCars = results(1:end, 3);

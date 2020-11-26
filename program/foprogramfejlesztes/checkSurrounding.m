@@ -31,7 +31,7 @@ for h = 1:carnum
                     %4
                 elseif(isequal(car{h}{2}.XData, -20) && isequal(car{i}{2}.XData, 20) && isequal(car{h}{2}.YData, car{i}{2}.YData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(1), 20) && isequal(car{i}{1}{car{i}{3} + 1}(1), 20) && isequal(car{h}{1}{car{h}{3} + 1}(2), car{i}{1}{car{i}{3} + 1}(2)))
-                    car{h}{7} = 0;
+                    car{i}{7} = 0;
                     %5
                 elseif(isequal(car{h}{2}.XData, -20) && isequal(car{i}{2}.XData, 20) && isequal(car{h}{2}.YData, car{i}{2}.YData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(1), 20) && isequal(car{i}{1}{car{i}{3} + 1}(1), -20) && isequal(car{h}{1}{car{h}{3} + 1}(2), car{i}{1}{car{i}{3} + 1}(2)))
@@ -39,7 +39,7 @@ for h = 1:carnum
                     %6
                 elseif(isequal(car{h}{2}.XData, -20) && isequal(car{i}{2}.XData, 20) && isequal(car{h}{2}.YData, car{i}{2}.YData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(1), -20) && isequal(car{i}{1}{car{i}{3} + 1}(1), -20) && isequal(car{h}{1}{car{h}{3} + 1}(2), car{i}{1}{car{i}{3} + 1}(2)))
-                    car{i}{7} = 0;
+                    car{h}{7} = 0;
                     %7
                 elseif(isequal(car{h}{2}.XData, -60) && isequal(car{i}{2}.XData, 20) && isequal(car{h}{2}.YData, car{i}{2}.YData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(1), -20) && isequal(car{i}{1}{car{i}{3} + 1}(1), -20) && isequal(car{h}{1}{car{h}{3} + 1}(2), car{i}{1}{car{i}{3} + 1}(2)))
@@ -61,7 +61,7 @@ for h = 1:carnum
                     %4
                 elseif(isequal(car{h}{2}.YData, -20) && isequal(car{i}{2}.YData, 20) && isequal(car{h}{2}.XData, car{i}{2}.XData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(2), 20) && isequal(car{i}{1}{car{i}{3} + 1}(2), 20) && isequal(car{h}{1}{car{h}{3} + 1}(1), car{i}{1}{car{i}{3} + 1}(1)))
-                    car{h}{7} = 0;
+                    car{i}{7} = 0;
                     %5
                 elseif(isequal(car{h}{2}.YData, -20) && isequal(car{i}{2}.YData, 20) && isequal(car{h}{2}.XData, car{i}{2}.XData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(2), 20) && isequal(car{i}{1}{car{i}{3} + 1}(2), -20) && isequal(car{h}{1}{car{h}{3} + 1}(1), car{i}{1}{car{i}{3} + 1}(1)))
@@ -69,7 +69,7 @@ for h = 1:carnum
                     %6
                 elseif(isequal(car{h}{2}.YData, -20) && isequal(car{i}{2}.YData, 20) && isequal(car{h}{2}.XData, car{i}{2}.XData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(2), -20) && isequal(car{i}{1}{car{i}{3} + 1}(2), -20) && isequal(car{h}{1}{car{h}{3} + 1}(1), car{i}{1}{car{i}{3} + 1}(1)))
-                    car{i}{7} = 0;
+                    car{h}{7} = 0;
                     %7
                 elseif(isequal(car{h}{2}.YData, -60) && isequal(car{i}{2}.YData, 20) && isequal(car{h}{2}.XData, car{i}{2}.XData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(2), -20) && isequal(car{i}{1}{car{i}{3} + 1}(2), -20) && isequal(car{h}{1}{car{h}{3} + 1}(1), car{i}{1}{car{i}{3} + 1}(1)))
@@ -91,7 +91,7 @@ for h = 1:carnum
                     %4
                 elseif(isequal(car{h}{2}.XData, 20) && isequal(car{i}{2}.XData, -20) && isequal(car{h}{2}.YData, car{i}{2}.YData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(1), -20) && isequal(car{i}{1}{car{i}{3} + 1}(1), -20) && isequal(car{h}{1}{car{h}{3} + 1}(2), car{i}{1}{car{i}{3} + 1}(2)))
-                    car{h}{7} = 0;
+                    car{i}{7} = 0;
                     %5
                 elseif(isequal(car{h}{2}.XData, 20) && isequal(car{i}{2}.XData, -20) && isequal(car{h}{2}.YData, car{i}{2}.YData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(1), -20) && isequal(car{i}{1}{car{i}{3} + 1}(1), 20) && isequal(car{h}{1}{car{h}{3} + 1}(2), car{i}{1}{car{i}{3} + 1}(2)))
@@ -99,7 +99,7 @@ for h = 1:carnum
                     %6
                 elseif(isequal(car{h}{2}.XData, 20) && isequal(car{i}{2}.XData, -20) && isequal(car{h}{2}.YData, car{i}{2}.YData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(1), 20) && isequal(car{i}{1}{car{i}{3} + 1}(1), 20) && isequal(car{h}{1}{car{h}{3} + 1}(2), car{i}{1}{car{i}{3} + 1}(2)))
-                    car{i}{7} = 0;
+                    car{h}{7} = 0;
                     %7
                 elseif(isequal(car{h}{2}.XData, 60) && isequal(car{i}{2}.XData, -20) && isequal(car{h}{2}.YData, car{i}{2}.YData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(1), 20) && isequal(car{i}{1}{car{i}{3} + 1}(1), 20) && isequal(car{h}{1}{car{h}{3} + 1}(2), car{i}{1}{car{i}{3} + 1}(2)))
@@ -121,7 +121,7 @@ for h = 1:carnum
                     %4
                 elseif(isequal(car{h}{2}.YData, 20) && isequal(car{i}{2}.YData, -20) && isequal(car{h}{2}.XData, car{i}{2}.XData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(2), -20) && isequal(car{i}{1}{car{i}{3} + 1}(2), -20) && isequal(car{h}{1}{car{h}{3} + 1}(1), car{i}{1}{car{i}{3} + 1}(1)))
-                    car{h}{7} = 0;
+                    car{i}{7} = 0;
                     %5
                 elseif(isequal(car{h}{2}.YData, 20) && isequal(car{i}{2}.YData, -20) && isequal(car{h}{2}.XData, car{i}{2}.XData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(2), -20) && isequal(car{i}{1}{car{i}{3} + 1}(2), 20) && isequal(car{h}{1}{car{h}{3} + 1}(1), car{i}{1}{car{i}{3} + 1}(1)))
@@ -129,7 +129,7 @@ for h = 1:carnum
                     %6
                 elseif(isequal(car{h}{2}.YData, 20) && isequal(car{i}{2}.YData, -20) && isequal(car{h}{2}.XData, car{i}{2}.XData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(2), 20) && isequal(car{i}{1}{car{i}{3} + 1}(2), 20) && isequal(car{h}{1}{car{h}{3} + 1}(1), car{i}{1}{car{i}{3} + 1}(1)))
-                    car{i}{7} = 0;
+                    car{h}{7} = 0;
                     %7
                 elseif(isequal(car{h}{2}.YData, 60) && isequal(car{i}{2}.YData, -20) && isequal(car{h}{2}.XData, car{i}{2}.XData)... % egymas mellett vannak e
                         && isequal(car{h}{1}{car{h}{3} + 1}(2), 20) && isequal(car{i}{1}{car{i}{3} + 1}(2), 20) && isequal(car{h}{1}{car{h}{3} + 1}(1), car{i}{1}{car{i}{3} + 1}(1)))

@@ -735,6 +735,14 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             lampaciklusnext = 1;
         elseif(lampaciklusaktualis == 8 && lampaciklusnext == 4)
             lampaciklusnext = 1;
+        elseif(lampaciklusaktualis == 2 && lampaciklusnext == 7)
+            lampaciklusnext = 1;
+        elseif(lampaciklusaktualis == 4 && lampaciklusnext == 9)
+            lampaciklusnext = 1;
+        elseif(lampaciklusaktualis == 6 && lampaciklusnext == 3)
+            lampaciklusnext = 1;
+        elseif(lampaciklusaktualis == 8 && lampaciklusnext == 5)
+            lampaciklusnext = 1;
         end
         
         %blokkolasok beallitasa azonnal ha masik ciklust akarunk
@@ -764,6 +772,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         % uj auto generalasa
         if(whileLoopCounter == 3)
             whileLoopCounter = 0;
+            rng('shuffle');
             generateNewCarRand = randi([1 popUp.Value]);
             for i = 1:generateNewCarRand
                 if(carnumadded ~= carnumgoal)
@@ -892,7 +901,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
                 end
                 
                 % itt vizsgaljuk h a 2x2 teljesulhet e
-                if((lampaciklusnext == 1) || (lampaciklusnext == 3) || (lampaciklusnext == 4) || (lampaciklusnext == 7) || (lampaciklusnext == 9))
+                if((lampaciklusnext == 1) || (lampaciklusnext == 3) || (lampaciklusnext == 5) || (lampaciklusnext == 7) || (lampaciklusnext == 9))
                     check2x2();
                 end
                 
@@ -1003,7 +1012,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
             end
         end
         
-        resultMatrix = collectData(resultMatrix, car, carnum, lampaciklusaktualis, light);
+        resultMatrix = collectData(resultMatrix, car, carnum, lampaciklusaktualis, light, lampaciklusnext);
         
         %utkozes kezeles
         if(isequal(collision{1}, 1))
@@ -1012,7 +1021,7 @@ while((cycledone ~= cyclenumgoal) && (collision{1} == 0))
         pause(0.1);
         whileLoopCounter = whileLoopCounter + 1;
     end
-    path = strcat('C:\Users\csokviktor\Desktop\excelResultsTemp\test', int2str(cycledone), '.xlsx');
+    path = strcat('C:\Users\csokviktor\Desktop\excelResultsTemp\test', int2str(cycledone + 1), '.xlsx');
     xlswrite(path, resultMatrix)
     cycledone = cycledone + 1;
 end

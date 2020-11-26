@@ -67,77 +67,125 @@ eStraightCntr = 0;
 eLeftCntr = 0;
 eOtherCntr = 0;
 
+if(lampaciklusaktualis == 2 || lampaciklusaktualis == 3)
+    nDist1 = 4;
+    nDist2 = 5;
+    wDist1 = 3;
+    wDist2 = 4;
+    sDist1 = 3;
+    sDist2 = 4;
+    eDist1 = 3;
+    eDist2 = 4;
+elseif(lampaciklusaktualis == 4 || lampaciklusaktualis == 5)
+    nDist1 = 3;
+    nDist2 = 4;
+    wDist1 = 4;
+    wDist2 = 5;
+    sDist1 = 3;
+    sDist2 = 4;
+    eDist1 = 3;
+    eDist2 = 4;
+elseif(lampaciklusaktualis == 6 || lampaciklusaktualis == 7)
+    nDist1 = 3;
+    nDist2 = 4;
+    wDist1 = 3;
+    wDist2 = 4;
+    sDist1 = 4;
+    sDist2 = 5;
+    eDist1 = 3;
+    eDist2 = 4;
+elseif(lampaciklusaktualis == 8 || lampaciklusaktualis == 9)
+    nDist1 = 3;
+    nDist2 = 4;
+    wDist1 = 3;
+    wDist2 = 4;
+    sDist1 = 3;
+    sDist2 = 4;
+    eDist1 = 4;
+    eDist2 = 5;
+else
+    nDist1 = 3;
+    nDist2 = 4;
+    wDist1 = 3;
+    wDist2 = 4;
+    sDist1 = 3;
+    sDist2 = 4;
+    eDist1 = 3;
+    eDist2 = 4;
+end
+
+
 %% torlodas letezesenek vizsgalata
 for o = 1:carnum
     %északi oldal
-    if(isequal(car{o}{2}.XData, nlane1{3}(1)) && isequal(car{o}{2}.YData, nlane1{3}(2)))
+    if(isequal(car{o}{2}.XData, nlane1{nDist1}(1)) && isequal(car{o}{2}.YData, nlane1{nDist1}(2)))
         jamN(1) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane1{4}(1)) && isequal(car{o}{2}.YData, nlane1{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, nlane1{nDist2}(1)) && isequal(car{o}{2}.YData, nlane1{nDist2}(2)) && isequal(car{o}{7},0))
         jamN(2) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane2{3}(1)) && isequal(car{o}{2}.YData, nlane2{3}(2))...
+    elseif(isequal(car{o}{2}.XData, nlane2{nDist1}(1)) && isequal(car{o}{2}.YData, nlane2{nDist1}(2))...
             &&  (~isequal(car{o}{5}, N1) && ~isequal(car{o}{5}, N2) && ~isequal(car{o}{5}, N3) && ~isequal(car{o}{5}, N4)))
         jamN(3) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane2{4}(1)) && isequal(car{o}{2}.YData, nlane2{4}(2)) && isequal(car{o}{7},0)...
+    elseif(isequal(car{o}{2}.XData, nlane2{nDist2}(1)) && isequal(car{o}{2}.YData, nlane2{nDist2}(2)) && isequal(car{o}{7},0)...
             &&  (~isequal(car{o}{5}, N1) && ~isequal(car{o}{5}, N2) && ~isequal(car{o}{5}, N3) && ~isequal(car{o}{5}, N4)))
         jamN(4) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane3{3}(1)) && isequal(car{o}{2}.YData, nlane3{3}(2))...
+    elseif(isequal(car{o}{2}.XData, nlane3{nDist1}(1)) && isequal(car{o}{2}.YData, nlane3{nDist1}(2))...
             &&  (~isequal(car{o}{5}, N1) && ~isequal(car{o}{5}, N2) && ~isequal(car{o}{5}, N3) && ~isequal(car{o}{5}, N4)))
         jamN(5) = 1;
-    elseif(isequal(car{o}{2}.XData, nlane3{4}(1)) && isequal(car{o}{2}.YData, nlane3{4}(2)) && isequal(car{o}{7},0)...
+    elseif(isequal(car{o}{2}.XData, nlane3{nDist2}(1)) && isequal(car{o}{2}.YData, nlane3{nDist2}(2)) && isequal(car{o}{7},0)...
             &&  (~isequal(car{o}{5}, N1) && ~isequal(car{o}{5}, N2) && ~isequal(car{o}{5}, N3) && ~isequal(car{o}{5}, N4)))
         jamN(6) = 1;
         
         %nyugati oldal
-    elseif(isequal(car{o}{2}.XData, wlane1{3}(1)) && isequal(car{o}{2}.YData, wlane1{3}(2)))
+    elseif(isequal(car{o}{2}.XData, wlane1{wDist1}(1)) && isequal(car{o}{2}.YData, wlane1{wDist1}(2)))
         jamW(1) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane1{4}(1)) && isequal(car{o}{2}.YData, wlane1{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, wlane1{wDist2}(1)) && isequal(car{o}{2}.YData, wlane1{wDist2}(2)) && isequal(car{o}{7},0))
         jamW(2) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane2{3}(1)) && isequal(car{o}{2}.YData, wlane2{3}(2))...
+    elseif(isequal(car{o}{2}.XData, wlane2{wDist1}(1)) && isequal(car{o}{2}.YData, wlane2{wDist1}(2))...
             &&  (~isequal(car{o}{5}, W1) && ~isequal(car{o}{5}, W2) && ~isequal(car{o}{5}, W3) && ~isequal(car{o}{5}, W4)))
         jamW(3) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane2{4}(1)) && isequal(car{o}{2}.YData, wlane2{4}(2)) && isequal(car{o}{7},0)...
+    elseif(isequal(car{o}{2}.XData, wlane2{wDist2}(1)) && isequal(car{o}{2}.YData, wlane2{wDist2}(2)) && isequal(car{o}{7},0)...
             &&  (~isequal(car{o}{5}, W1) && ~isequal(car{o}{5}, W2) && ~isequal(car{o}{5}, W3) && ~isequal(car{o}{5}, W4)))
         jamW(4) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane3{3}(1)) && isequal(car{o}{2}.YData, wlane3{3}(2))...
+    elseif(isequal(car{o}{2}.XData, wlane3{wDist1}(1)) && isequal(car{o}{2}.YData, wlane3{wDist1}(2))...
             &&  (~isequal(car{o}{5}, W1) && ~isequal(car{o}{5}, W2) && ~isequal(car{o}{5}, W3) && ~isequal(car{o}{5}, W4)))
         jamW(5) = 1;
-    elseif(isequal(car{o}{2}.XData, wlane3{4}(1)) && isequal(car{o}{2}.YData, wlane3{4}(2)) && isequal(car{o}{7},0)...
+    elseif(isequal(car{o}{2}.XData, wlane3{wDist2}(1)) && isequal(car{o}{2}.YData, wlane3{wDist2}(2)) && isequal(car{o}{7},0)...
             &&  (~isequal(car{o}{5}, W1) && ~isequal(car{o}{5}, W2) && ~isequal(car{o}{5}, W3) && ~isequal(car{o}{5}, W4)))
         jamW(6) = 1;
         
         %déli oldal
-    elseif(isequal(car{o}{2}.XData, slane1{3}(1)) && isequal(car{o}{2}.YData, slane1{3}(2)))
+    elseif(isequal(car{o}{2}.XData, slane1{sDist1}(1)) && isequal(car{o}{2}.YData, slane1{sDist1}(2)))
         jamS(1) = 1;
-    elseif(isequal(car{o}{2}.XData, slane1{4}(1)) && isequal(car{o}{2}.YData, slane1{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, slane1{sDist2}(1)) && isequal(car{o}{2}.YData, slane1{sDist2}(2)) && isequal(car{o}{7},0))
         jamS(2) = 1;
-    elseif(isequal(car{o}{2}.XData, slane2{3}(1)) && isequal(car{o}{2}.YData, slane2{3}(2))...
+    elseif(isequal(car{o}{2}.XData, slane2{sDist1}(1)) && isequal(car{o}{2}.YData, slane2{sDist1}(2))...
             &&  (~isequal(car{o}{5}, S1) && ~isequal(car{o}{5}, S2) && ~isequal(car{o}{5}, S3) && ~isequal(car{o}{5}, S4)))
         jamS(3) = 1;
-    elseif(isequal(car{o}{2}.XData, slane2{4}(1)) && isequal(car{o}{2}.YData, slane2{4}(2)) && isequal(car{o}{7},0)...
+    elseif(isequal(car{o}{2}.XData, slane2{sDist2}(1)) && isequal(car{o}{2}.YData, slane2{sDist2}(2)) && isequal(car{o}{7},0)...
             &&  (~isequal(car{o}{5}, S1) && ~isequal(car{o}{5}, S2) && ~isequal(car{o}{5}, S3) && ~isequal(car{o}{5}, S4)))
         jamS(4) = 1;
-    elseif(isequal(car{o}{2}.XData, slane3{3}(1)) && isequal(car{o}{2}.YData, slane3{3}(2))...
+    elseif(isequal(car{o}{2}.XData, slane3{sDist1}(1)) && isequal(car{o}{2}.YData, slane3{sDist1}(2))...
             &&  (~isequal(car{o}{5}, S1) && ~isequal(car{o}{5}, S2) && ~isequal(car{o}{5}, S3) && ~isequal(car{o}{5}, S4)))
         jamS(5) = 1;
-    elseif(isequal(car{o}{2}.XData, slane3{4}(1)) && isequal(car{o}{2}.YData, slane3{4}(2)) && isequal(car{o}{7},0)...
+    elseif(isequal(car{o}{2}.XData, slane3{sDist2}(1)) && isequal(car{o}{2}.YData, slane3{sDist2}(2)) && isequal(car{o}{7},0)...
             &&  (~isequal(car{o}{5}, S1) && ~isequal(car{o}{5}, S2) && ~isequal(car{o}{5}, S3) && ~isequal(car{o}{5}, S4)))
         jamS(6) = 1;
         
         %keleti oldal
-    elseif(isequal(car{o}{2}.XData, elane1{3}(1)) && isequal(car{o}{2}.YData, elane1{3}(2)))
+    elseif(isequal(car{o}{2}.XData, elane1{eDist1}(1)) && isequal(car{o}{2}.YData, elane1{eDist1}(2)))
         jamE(1) = 1;
-    elseif(isequal(car{o}{2}.XData, elane1{4}(1)) && isequal(car{o}{2}.YData, elane1{4}(2)) && isequal(car{o}{7},0))
+    elseif(isequal(car{o}{2}.XData, elane1{eDist2}(1)) && isequal(car{o}{2}.YData, elane1{eDist2}(2)) && isequal(car{o}{7},0))
         jamE(2) = 1;
-    elseif(isequal(car{o}{2}.XData, elane2{3}(1)) && isequal(car{o}{2}.YData, elane2{3}(2))...
+    elseif(isequal(car{o}{2}.XData, elane2{eDist1}(1)) && isequal(car{o}{2}.YData, elane2{eDist1}(2))...
             &&  (~isequal(car{o}{5}, E1) && ~isequal(car{o}{5}, E2) && ~isequal(car{o}{5}, E3) && ~isequal(car{o}{5}, E4)))
         jamE(3) = 1;
-    elseif(isequal(car{o}{2}.XData, elane2{4}(1)) && isequal(car{o}{2}.YData, elane2{4}(2)) && isequal(car{o}{7},0)...
+    elseif(isequal(car{o}{2}.XData, elane2{eDist2}(1)) && isequal(car{o}{2}.YData, elane2{eDist2}(2)) && isequal(car{o}{7},0)...
             &&  (~isequal(car{o}{5}, E1) && ~isequal(car{o}{5}, E2) && ~isequal(car{o}{5}, E3) && ~isequal(car{o}{5}, E4)))
         jamE(4) = 1;
-    elseif(isequal(car{o}{2}.XData, elane3{3}(1)) && isequal(car{o}{2}.YData, elane3{3}(2))...
+    elseif(isequal(car{o}{2}.XData, elane3{eDist1}(1)) && isequal(car{o}{2}.YData, elane3{eDist1}(2))...
             &&  (~isequal(car{o}{5}, E1) && ~isequal(car{o}{5}, E2) && ~isequal(car{o}{5}, E3) && ~isequal(car{o}{5}, E4)))
         jamE(5) = 1;
-    elseif(isequal(car{o}{2}.XData, elane3{4}(1)) && isequal(car{o}{2}.YData, elane3{4}(2)) && isequal(car{o}{7},0)...
+    elseif(isequal(car{o}{2}.XData, elane3{eDist2}(1)) && isequal(car{o}{2}.YData, elane3{eDist2}(2)) && isequal(car{o}{7},0)...
             &&  (~isequal(car{o}{5}, E1) && ~isequal(car{o}{5}, E2) && ~isequal(car{o}{5}, E3) && ~isequal(car{o}{5}, E4)))
         jamE(6) = 1;
     end

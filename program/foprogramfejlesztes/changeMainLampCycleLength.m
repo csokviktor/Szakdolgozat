@@ -134,8 +134,9 @@ if(row == 1 || row == 9 || row == 17)
         jamBool = jamBoolE;
     end
     
+    carNum = closeCntr + farCntr;
     if(row == 9)
-        SP = 8;
+        SP = 12;
     else
         SP = 4;
     end
@@ -315,6 +316,7 @@ elseif(row == 7 || row == 15 || row == 23)
 %     end
 end
 
+
 lampChange = abs(lampChange);
 lampChange = round((lampChange-2)/2)*2 + 2;
 
@@ -323,6 +325,7 @@ if(lampChange == 0)
 elseif(lampChange >= 22)
     lampChange = 22;
 end
+
 
 
 end

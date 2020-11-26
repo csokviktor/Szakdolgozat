@@ -1,4 +1,4 @@
-function resultMatrixOut = collectData(resultMatrixIn, car, carnum, lampaciklusaktualis, light)
+function resultMatrixOut = collectData(resultMatrixIn, car, carnum, lampaciklusaktualis, light, lampaciklusnext)
 global nlane1;
 global nlane2;
 global nlane3;
@@ -120,6 +120,6 @@ end
 
 
 %create the next line of the result matrix
-temp = [nLaneCarNum, wLaneCarNum, sLaneCarNum, eLaneCarNum, greenDirection, lampaciklusaktualis, overloadType];
+temp = [nLaneCarNum, wLaneCarNum, sLaneCarNum, eLaneCarNum, greenDirection, lampaciklusaktualis, overloadType, lampaciklusnext];
 resultMatrixOut = [resultMatrixIn;temp];
 end

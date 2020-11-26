@@ -48,7 +48,7 @@ X5 = sym('X5');
 bool = rem(row, 2);
 
 if(bool == 1)
-    range = 5;
+    range = 7;
 else
     range = 10;
 end
